@@ -696,19 +696,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const log_1 = __importDefault(__webpack_require__(/*! ../util/log */ "../../node_modules/scratch-vm/src/util/log.ts"));
 /**
- * @typedef {object} DispatchCallMessage - a message to the dispatch system representing a service method call
- * @property {*} responseId - send a response message with this response ID. See {@link DispatchResponseMessage}
- * @property {string} service - the name of the service to be called
- * @property {string} method - the name of the method to be called
- * @property {Array|undefined} args - the arguments to be passed to the method
- */
-/**
- * @typedef {object} DispatchResponseMessage - a message to the dispatch system representing the results of a call
- * @property {*} responseId - a copy of the response ID from the call which generated this response
- * @property {*|undefined} error - if this is truthy, then it contains results from a failed call (such as an exception)
- * @property {*|undefined} result - if error is not truthy, then this contains the return value of the call (if any)
- */
-/**
  * @typedef {DispatchCallMessage|DispatchResponseMessage} DispatchMessage
  * Any message to the dispatch system.
  */
@@ -932,10 +919,13 @@ exports.default = SharedDispatch;
 
 "use strict";
 
-const SharedDispatch = __webpack_require__(/*! ./shared-dispatch */ "../../node_modules/scratch-vm/src/dispatch/shared-dispatch.ts");
-// @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'log'.
-const log = __webpack_require__(/*! ../util/log */ "../../node_modules/scratch-vm/src/util/log.ts");
-const { centralDispatchService } = __webpack_require__(/*! ../extension-support/tw-extension-worker-context */ "../../node_modules/scratch-vm/src/extension-support/tw-extension-worker-context.ts");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const shared_dispatch_1 = __importDefault(__webpack_require__(/*! ./shared-dispatch */ "../../node_modules/scratch-vm/src/dispatch/shared-dispatch.ts"));
+const log_1 = __importDefault(__webpack_require__(/*! ../util/log */ "../../node_modules/scratch-vm/src/util/log.ts"));
+const tw_extension_worker_context_1 = __webpack_require__(/*! ../extension-support/tw-extension-worker-context */ "../../node_modules/scratch-vm/src/extension-support/tw-extension-worker-context.ts");
 /**
  * This class provides a Worker with the means to participate in the message dispatch system managed by CentralDispatch.
  * From any context in the messaging system, the dispatcher's "call" method can call any method on any "service"
@@ -943,18 +933,9 @@ const { centralDispatchService } = __webpack_require__(/*! ../extension-support/
  * worker boundaries as needed.
  * @see {CentralDispatch}
  */
-class WorkerDispatch extends SharedDispatch {
+class WorkerDispatch extends shared_dispatch_1.default {
     constructor() {
         super();
-        /**
-         * This promise will be resolved when we have successfully connected to central dispatch.
-         * @type {Promise}
-         * @see {waitForConnection}
-         * @private
-         */
-        this._connectionPromise = new Promise(resolve => {
-            this._onConnect = resolve;
-        });
         /**
          * Map of service name to local service provider.
          * If a service is not listed here, it is assumed to be provided by another context (another Worker or the main
@@ -963,8 +944,13 @@ class WorkerDispatch extends SharedDispatch {
          * @type {object}
          */
         this.services = {};
-        this._onMessage = this._onMessage.bind(this, centralDispatchService);
+        this._connectionPromise = new Promise(resolve => {
+            this._onConnect = resolve;
+        });
+        // @ts-expect-error
+        this._onMessage = this._onMessage.bind(this, tw_extension_worker_context_1.centralDispatchService);
         if (typeof self !== 'undefined') {
+            // @ts-expect-error
             self.onmessage = this._onMessage;
         }
     }
@@ -988,10 +974,10 @@ class WorkerDispatch extends SharedDispatch {
      */
     setService(service, provider) {
         if (this.services.hasOwnProperty(service)) {
-            log.warn(`Worker dispatch replacing existing service provider for ${service}`);
+            log_1.default.warn(`Worker dispatch replacing existing service provider for ${service}`);
         }
         this.services[service] = provider;
-        return this.waitForConnection.then(() => this._remoteCall(centralDispatchService, 'dispatch', 'setService', service));
+        return this.waitForConnection.then(() => this._remoteCall(tw_extension_worker_context_1.centralDispatchService, 'dispatch', 'setService', service));
     }
     /**
      * Fetch the service provider object for a particular service name.
@@ -1004,7 +990,7 @@ class WorkerDispatch extends SharedDispatch {
         // if we don't have a local service by this name, contact central dispatch by calling `postMessage` on self
         const provider = this.services[service];
         return {
-            provider: provider || centralDispatchService,
+            provider: provider || tw_extension_worker_context_1.centralDispatchService,
             isRemote: !provider
         };
     }
@@ -1028,12 +1014,12 @@ class WorkerDispatch extends SharedDispatch {
                 promise = Promise.resolve();
                 break;
             default:
-                log.error(`Worker dispatch received message for unknown method: ${message.method}`);
+                log_1.default.error(`Worker dispatch received message for unknown method: ${message.method}`);
         }
         return promise;
     }
 }
-module.exports = new WorkerDispatch();
+exports.default = new WorkerDispatch();
 
 
 /***/ }),
@@ -1170,13 +1156,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const ScratchCommon = __webpack_require__(/*! ./tw-extension-api-common */ "../../node_modules/scratch-vm/src/extension-support/tw-extension-api-common.ts");
-const dispatch = __webpack_require__(/*! ../dispatch/worker-dispatch */ "../../node_modules/scratch-vm/src/dispatch/worker-dispatch.ts");
-// @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'log'.
-const log = __webpack_require__(/*! ../util/log */ "../../node_modules/scratch-vm/src/util/log.ts");
-const { isWorker } = __webpack_require__(/*! ./tw-extension-worker-context */ "../../node_modules/scratch-vm/src/extension-support/tw-extension-worker-context.ts");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const tw_extension_api_common_1 = __importDefault(__webpack_require__(/*! ./tw-extension-api-common */ "../../node_modules/scratch-vm/src/extension-support/tw-extension-api-common.ts"));
+const worker_dispatch_1 = __importDefault(__webpack_require__(/*! ../dispatch/worker-dispatch */ "../../node_modules/scratch-vm/src/dispatch/worker-dispatch.ts"));
+const log_1 = __importDefault(__webpack_require__(/*! ../util/log */ "../../node_modules/scratch-vm/src/util/log.ts"));
+const tw_extension_worker_context_1 = __webpack_require__(/*! ./tw-extension-worker-context */ "../../node_modules/scratch-vm/src/extension-support/tw-extension-worker-context.ts");
 const loadScripts = (url) => {
-    if (isWorker) {
+    if (tw_extension_worker_context_1.isWorker) {
         importScripts(url);
     }
     else {
@@ -1199,8 +1188,8 @@ class ExtensionWorker {
         this.firstRegistrationPromise = new Promise(resolve => {
             this.firstRegistrationCallback = resolve;
         });
-        dispatch.waitForConnection.then(() => {
-            dispatch.call('extensions', 'allocateWorker').then((x) => __awaiter(this, void 0, void 0, function* () {
+        worker_dispatch_1.default.waitForConnection.then(() => {
+            worker_dispatch_1.default.call('extensions', 'allocateWorker').then((x) => __awaiter(this, void 0, void 0, function* () {
                 const [id, extension] = x;
                 this.workerId = id;
                 try {
@@ -1208,11 +1197,11 @@ class ExtensionWorker {
                     yield this.firstRegistrationPromise;
                     const initialRegistrations = this.initialRegistrations;
                     this.initialRegistrations = null;
-                    Promise.all(initialRegistrations).then(() => dispatch.call('extensions', 'onWorkerInit', id));
+                    Promise.all(initialRegistrations).then(() => worker_dispatch_1.default.call('extensions', 'onWorkerInit', id));
                 }
                 catch (e) {
-                    log.error(e);
-                    dispatch.call('extensions', 'onWorkerInit', id, `${e}`);
+                    log_1.default.error(e);
+                    worker_dispatch_1.default.call('extensions', 'onWorkerInit', id, `${e}`);
                 }
             }));
         });
@@ -1222,8 +1211,8 @@ class ExtensionWorker {
         const extensionId = this.nextExtensionId++;
         this.extensions.push(extensionObject);
         const serviceName = `extension.${this.workerId}.${extensionId}`;
-        const promise = dispatch.setService(serviceName, extensionObject)
-            .then(() => dispatch.call('extensions', 'registerExtensionService', serviceName));
+        const promise = worker_dispatch_1.default.setService(serviceName, extensionObject)
+            .then(() => worker_dispatch_1.default.call('extensions', 'registerExtensionService', serviceName));
         if (this.initialRegistrations) {
             this.firstRegistrationCallback();
             this.initialRegistrations.push(promise);
@@ -1234,7 +1223,7 @@ class ExtensionWorker {
 // @ts-expect-error TS(2339): Property 'Scratch' does not exist on type 'typeof ... Remove this comment to see the full error message
 global.Scratch = global.Scratch || {};
 // @ts-expect-error TS(2339): Property 'Scratch' does not exist on type 'typeof ... Remove this comment to see the full error message
-Object.assign(global.Scratch, ScratchCommon);
+Object.assign(global.Scratch, tw_extension_api_common_1.default);
 /**
  * Expose only specific parts of the worker to extensions.
  */
@@ -1318,11 +1307,11 @@ exports.default = Scratch;
 
 "use strict";
 
-module.exports = {
-    isWorker: true,
-    // centralDispatchService is the object to call postMessage() on to send a message to parent.
-    centralDispatchService: self
-};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.centralDispatchService = exports.isWorker = void 0;
+exports.isWorker = true;
+// centralDispatchService is the object to call postMessage() on to send a message to parent.
+exports.centralDispatchService = self;
 
 
 /***/ }),
