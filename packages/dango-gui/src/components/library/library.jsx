@@ -185,7 +185,10 @@ class LibraryComponent extends React.Component {
                             <Button
                                 className={styles.uploadButton}
                                 onClick={this.props.onUpload}
-                            >Upload</Button>
+                                disabled={this.props.isUploading}
+                            >
+                                {this.props.isUploading ? 'Uploading...' : 'Upload'}
+                            </Button>
                         )}
                         {this.props.filterable && this.props.tags && (
                             <Divider className={classNames(styles.filterBarItem, styles.divider)} />
@@ -268,6 +271,7 @@ LibraryComponent.propTypes = {
         /* eslint-enable react/no-unused-prop-types, lines-around-comment */
     ),
     filterable: PropTypes.bool,
+    isUploading: PropTypes.bool,
     id: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
     onItemMouseEnter: PropTypes.func,

@@ -25,9 +25,13 @@ const messages = defineMessages({
 class ExtensionLibrary extends React.PureComponent {
     constructor (props) {
         super(props);
+        this.state = {
+            uploading: false
+        };
         bindAll(this, [
             'handleItemSelect',
-            'handleUpload'
+            'handleUpload',
+            'loadAsDataUrl'
         ]);
     }
     handleItemSelect (item) {
@@ -47,23 +51,39 @@ class ExtensionLibrary extends React.PureComponent {
             }
         }
     }
+    loadAsDataUrl (file) {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file, 'utf8');
+            reader.onload = () => {
+                resolve(reader.result);
+            };
+        });
+    }
     handleUpload () {
         const input = document.createElement('input');
         input.setAttribute('type', 'file');
         input.setAttribute('accept', '.js,.ccx');
         input.setAttribute('multiple', true);
-        input.onchange = event => {
+        input.onchange = async (event) => {
             const files = event.target.files;
+            this.setState({isUploading: true});
             for (const file of files) {
                 const fileName = file.name;
                 const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1);
                 switch (fileExt) {
                 case 'js': {
-                    // Load as data URL
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file, 'utf8');
-                    reader.onload = () => {
-                        this.props.vm.extensionManager.loadExtensionURL(reader.result);
+                    // Load as dataURI
+                    try {
+                        const result = await this.loadAsDataUrl(file);
+                        try {
+                            await this.props.vm.extensionManager.loadExtensionURL(result);
+                            if (this.props.visible) this.props.onRequestClose();
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    } catch (e) {
+                        console.log(e);
                     }
                     break;
                 }
@@ -72,10 +92,11 @@ class ExtensionLibrary extends React.PureComponent {
                     break;
                 }
                 default: {
-                    alert('Unsupported format');
+                    alert('Unsupported extension format: ' + fileName);
                 }
                 }
             }
+            this.setState({isUploading: false});
         };
         input.click();
     }
@@ -90,6 +111,7 @@ class ExtensionLibrary extends React.PureComponent {
                 filterable
                 showUploadButton
                 id="extensionLibrary"
+                isUploading={this.state.isUploading}
                 title={this.props.intl.formatMessage(messages.extensionTitle)}
                 visible={this.props.visible}
                 onItemSelected={this.handleItemSelect}

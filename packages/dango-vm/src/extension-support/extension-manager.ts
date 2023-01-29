@@ -226,6 +226,7 @@ class ExtensionManager {
             return (parsedURL.protocol === 'https:' ||
                 parsedURL.protocol === 'http:' ||
                 parsedURL.protocol === 'data:' ||
+                parsedURL.protocol === 'blob:' ||
                 parsedURL.protocol === 'file:');
         } catch (e) {
             return false;
