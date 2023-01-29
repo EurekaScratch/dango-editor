@@ -1,0 +1,107 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import bindAll from 'lodash.bindall';
+import {defineMessages, injectIntl} from 'react-intl';
+import VM from 'scratch-vm';
+
+import SettingsComponent from '../components/settings-modal/settings-modal.jsx';
+
+import {updateSetting} from '../reducers/settings';;
+
+class SettingsModal extends React.Component {
+    constructor (props) {
+        super(props);
+        bindAll(this, [
+            'handleChangeSettingsItem',
+            'handleChangeFramerate',
+            'handleChangeCompiler',
+            'handleChangeHQPen',
+            'handleChangeSaveSettings',
+            'handleChangeWarpTimer',
+            'handleChangeInterpolation'
+        ]);
+    }
+
+    handleChangeSettingsItem (id, value) {
+        this.props.updateSettings(id, value);
+    }
+
+    handleChangeCompiler (option) {
+        this.props.vm.setCompilerOptions({
+            enabled: option
+        });
+    }
+    
+    handleChangeWarpTimer (option) {
+        this.props.vm.setCompilerOptions({
+            warpTimer: option
+        });
+    }
+
+    handleChangeHQPen (option) {
+        this.props.vm.renderer.setUseHighQualityRender(option);
+    }
+    
+    handleChangeSaveSettings (option) {
+        // todo
+    }
+
+    handleChangeFramerate (framerate) {
+        this.props.updateSettings('framerate', framerate);
+        this.props.vm.setFramerate(framerate);
+    }
+    
+    handleChangeInterpolation (option) {
+        this.props.vm.setInterpolation(option);
+    }
+
+    render () {
+        return (
+            <SettingsComponent
+                onChangeSettingsItem={this.handleChangeSettingsItem}
+                onChangeFramerate={this.handleChangeFramerate}
+                onChangeCompiler={this.handleChangeCompiler}
+                onChangeHQPen={this.handleChangeHQPen}
+                onChangeSaveSettings={this.handleChangeSaveSettings}
+                onChangeWarpTimer={this.handleChangeWarpTimer}
+                onChangeInterpolation={this.handleChangeInterpolation}
+                {...this.props}
+            />
+        );
+    }
+}
+
+SettingsModal.propTypes = {
+    vm: PropTypes.instanceOf(VM).isRequired,
+    extensionSettings: PropTypes.object,
+    settings: PropTypes.object.isRequired,
+    framerate: PropTypes.number.isRequired,
+    compiler: PropTypes.bool.isRequired,
+    hqpen: PropTypes.bool.isRequired,
+    hideNonOriginalBlocks: PropTypes.bool.isRequired,
+    saveSettings: PropTypes.bool.isRequired,
+    saveExtension: PropTypes.bool.isRequired,
+    updateSettings: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+    vm: state.scratchGui.vm,
+    extensionSettings: state.scratchGui.extensionSettings,
+    settings: state.scratchGui.settings,
+    framerate: state.scratchGui.settings.framerate,
+    compiler: state.scratchGui.settings.compiler,
+    hqpen: state.scratchGui.settings.hqpen,
+    hideNonOriginalBlocks: state.scratchGui.settings.hideNonOriginalBlocks,
+    saveSettings: state.scratchGui.settings.saveSettings,
+    saveExtension: state.scratchGui.settings.saveExtension
+});
+
+const mapDispatchToProps = dispatch => ({
+    updateSettings: (name, value) => dispatch(updateSetting(name, value))
+});
+
+export default injectIntl(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SettingsModal));

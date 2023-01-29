@@ -1,0 +1,27 @@
+# General
+.DS_Store
+.vscode
+**/node_modules
+**/yarn-error.log
+**/dist
+
+# scratch-blocks
+packages/scratch-blocks/dart_compressed.js
+packages/scratch-blocks/javascript_compressed.js
+packages/scratch-blocks/lua_compressed.js
+packages/scratch-blocks/php_compressed.js
+packages/scratch-blocks/python_compressed.js
+packages/scratch-blocks/accessible/*
+packages/scratch-blocks/msg/js/*
+!packages/scratch-blocks/msg/js/en.js
+packages/scratch-blocks/msg/json/*
+!packages/scratch-blocks/msg/json/en.json
+packages/scratch-blocks/*compiler*.jar
+packages/scratch-blocks/chromedriver
+packages/scratch-blocks/blockly_*.js
+packages/scratch-blocks/blocks_*.js
+
+# scratch-vm
+packages/scratch-vm/playground
+packages/scratch-vm/benchmark
+packages/scratch-vm/translations

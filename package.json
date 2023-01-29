@@ -1,24 +1,26 @@
 {
-    "name": "dango",
-    "description": "Dango's Workspace",
-    "private": true,
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ],
-        "nohoist": [
-            "google-closure-library",
-            "google-closure-compiler.cmd",
-            "google-closure-compiler.cmd"
-        ]
-    },
-    "scripts": {
-        "start": "yarn workspace scratch-gui start",
-        "build": "yarn block:build && yarn workspace scratch-gui build",
-        "test:unit": "yarn workspace scratch-gui test:unit && yarn workspace scratch-vm tap:unit",
-        "vm:start": "yarn workspace scratch-vm start",
-        "vm:type": "yarn workspace scratch-vm checktype",
-        "block:build": "yarn workspace scratch-blocks prepublish:old"
-    },
-    "version": "0.0.0"
+  "name": "dango",
+  "description": "Dango's Workspace",
+  "private": true,
+  "engines": {
+    "node": ">=16"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/google-closure-library",
+      "**/google-closure-compiler",
+      "**/google-closure-cmd"
+    ]
+  },
+  "scripts": {
+    "start": "yarn workspace scratch-gui start",
+    "build": "yarn block:build && yarn workspace scratch-gui build",
+    "test:unit": "yarn workspace scratch-gui test:unit && yarn workspace scratch-vm tap:unit",
+    "vm:start": "yarn workspace scratch-vm start",
+    "vm:type": "yarn workspace scratch-vm checktype",
+    "block:build": "yarn workspace scratch-blocks prepublish:old"
+  }
 }

@@ -1,0 +1,27 @@
+// TW Snapshot
+// Input SHA-256: 19e0b3f9dcac763041039a8ffe87b6732eb744f9ebb136e8d61a53ccf19118e3
+
+// Sprite1 script
+(function factoryXYZ(thread) { const target = thread.target; const runtime = target.runtime; const stage = runtime.getTargetForStage();
+const b0 = stage.variables["PsY$$vp$IVH;dDAr[q2h"];
+const b1 = runtime.getOpcodeFunction("looks_say");
+const b2 = stage.variables["l^q!%fq]Bv;72dlGf}^Z"];
+return function* genXYZ () {
+b0.value = 0;
+yield* executeInCompatibilityLayer({"MESSAGE":"plan 0",}, b1, false, false, null);
+for (var a0 = 30; a0 >= 0.5; a0--) {
+b2.value = runtime.ioDevices.clock.projectTimer();
+thread.timer = timer();
+var a1 = Math.max(0, 1000 * 0);
+runtime.requestRedraw();
+yield;
+while (thread.timer.timeElapsed() < a1) {
+yield;
+}
+thread.timer = null;
+yield;
+}
+b0.value = 1;
+yield* executeInCompatibilityLayer({"MESSAGE":"end",}, b1, false, false, null);
+retire();
+}; })

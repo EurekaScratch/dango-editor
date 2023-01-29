@@ -1,0 +1,86 @@
+// TW Snapshot
+// Input SHA-256: badd564b5bce22a82223511c91ba701da5314e5ad83e46a08ea5f401a4338b20
+
+// Sprite2 script
+(function factoryXYZ(thread) { const target = thread.target; const runtime = target.runtime; const stage = runtime.getTargetForStage();
+const b0 = runtime.getOpcodeFunction("looks_say");
+const b1 = stage.variables[",OktMIwz{~bdgWnPEa8u"];
+const b2 = stage.variables["yfy(G`K5K^fJcXAfiN4i"];
+return function* genXYZ () {
+yield* executeInCompatibilityLayer({"MESSAGE":"plan 14",}, b0, false, false, null);
+if ((10 === 10)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 1",}, b0, false, false, null);
+}
+if ((10 === 10)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 2",}, b0, false, false, null);
+}
+b1.value = 10;
+if (((+b1.value || 0) === 10)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 3",}, b0, false, false, null);
+}
+if (compareEqual(b1.value, "010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 4",}, b0, false, false, null);
+}
+if (compareEqual(b1.value, "0000000010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 5",}, b0, false, false, null);
+}
+for (var a0 = 1; a0 >= 0.5; a0--) {
+if (((+b1.value || 0) === 10)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 6",}, b0, false, false, null);
+}
+if (compareEqual(b1.value, "010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 7",}, b0, false, false, null);
+}
+if (compareEqual(b1.value, "0000000010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 8",}, b0, false, true, null);
+if (hasResumedFromPromise) {hasResumedFromPromise = false;continue;}
+}
+yield;
+}
+b2.value = "010";
+if (((+b2.value || 0) === 10)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 9",}, b0, false, false, null);
+}
+if (compareEqual(b2.value, "010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 10",}, b0, false, false, null);
+}
+if (compareEqual(b2.value, "0000000010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 11",}, b0, false, false, null);
+}
+for (var a1 = 1; a1 >= 0.5; a1--) {
+if (((+b2.value || 0) === 10)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 12",}, b0, false, false, null);
+}
+if (compareEqual(b2.value, "010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 13",}, b0, false, false, null);
+}
+if (compareEqual(b2.value, "0000000010")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"pass 14",}, b0, false, true, null);
+if (hasResumedFromPromise) {hasResumedFromPromise = false;continue;}
+}
+yield;
+}
+if ((0 === 1)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+if ((1 === 0)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+if ((0 === 1)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+if (compareEqual(" ", 0)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+if (compareEqual(0, " ")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+if (compareEqual("", 0)) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+if (compareEqual(0, "")) {
+yield* executeInCompatibilityLayer({"MESSAGE":"fail",}, b0, false, false, null);
+}
+yield* executeInCompatibilityLayer({"MESSAGE":"end",}, b0, false, false, null);
+retire();
+}; })

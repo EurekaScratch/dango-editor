@@ -1,0 +1,37 @@
+# OSX
+.DS_Store
+
+# NPM
+/node_modules
+npm-*
+
+# Localization / I18N
+common.pyc
+.settings
+.project
+*.pyc
+*.komodoproject
+/nbproject/private/
+
+# Unused by scratch-blocks
+dart_compressed.js
+javascript_compressed.js
+lua_compressed.js
+php_compressed.js
+python_compressed.js
+
+# Editor
+.vscode
+
+/accessible/*
+/msg/js/*
+!/msg/js/en.js
+/msg/json/*
+!/msg/json/en.json
+/gh-pages/main.js
+/gh-pages/playgrounds
+/gh-pages/Gemfile.lock
+/gh-pages/closure-library
+/gh-pages/_site
+/*compiler*.jar
+/chromedriver

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "jsx": "preserve",
+    "paths": {
+        "scratch-render": ["../../node_modules/@turbowarp/types/index.d.ts"],
+        "scratch-svg-renderer": ["../../node_modules/@turbowarp/types/index.d.ts"],
+        "scratch-render-fonts": ["../../node_modules/@turbowarp/types/index.d.ts"],
+        "scratch-storage": ["../../node_modules/@turbowarp/types/index.d.ts"],
+        "scratch-audio": ["../../node_modules/@turbowarp/types/index.d.ts"],
+        "scratch-parser": ["../../node_modules/@turbowarp/types/index.d.ts"],
+        "scratch-blocks": ["../../node_modules/@turbowarp/types/index.d.ts"]
+    },
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

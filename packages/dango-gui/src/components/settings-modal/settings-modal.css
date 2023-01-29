@@ -1,0 +1,79 @@
+@import "../../css/colors.css";
+@import "../../css/units.css";
+
+.modal-content {
+    width: 900px;
+}
+
+.tag {
+    margin: 0 0.5rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 80%;
+    background-color: rgb(53, 129, 234);
+    border: 1px solid rgb(42, 103, 187);
+    color: white;
+}
+
+.body {
+    background: $ui-white;
+    max-height: 80vh;
+    display: flex;
+}
+
+.menu, .content {
+    padding: 1.5rem 2.25rem;
+    overflow-y: auto;
+}
+
+.menu {
+    flex: 1;
+    border-right: solid 1px $ui-black-transparent;
+}
+
+.menu > p {
+    margin: 0.5em 0em;
+    cursor: pointer;
+}
+
+.content {
+    flex: 5;
+}
+
+.elastic {
+    display: flex;
+    margin-right: auto;
+    flex-wrap: 1;
+}
+
+.category {
+    font-weight: bold;
+    margin: 0;
+    padding: 1em 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    transition-duration: .2s;
+    border-radius: $form-radius;
+}
+
+.item:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.input {
+    width: 5rem;
+}
+
+.select-small {
+    width: 10rem;
+}
+
+.select-big {
+    width: 15rem;
+}

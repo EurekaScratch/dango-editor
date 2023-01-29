@@ -1,0 +1,33 @@
+// TW Snapshot
+// Input SHA-256: 58dd6f369897907ea46fffbb8210d8bc15db59f26ce117ff4211035afff17f23
+
+// Sprite1 script
+(function factoryXYZ(thread) { const target = thread.target; const runtime = target.runtime; const stage = runtime.getTargetForStage();
+const b0 = runtime.getOpcodeFunction("looks_say");
+const b1 = stage.variables["`jEk@4|i[#Fk?(8x)AV.-my variable"];
+const b2 = runtime.getOpcodeFunction("sensing_userid");
+const b3 = runtime.getOpcodeFunction("motion_xscroll");
+const b4 = runtime.getOpcodeFunction("motion_yscroll");
+const b5 = runtime.getOpcodeFunction("motion_scroll_right");
+const b6 = runtime.getOpcodeFunction("motion_scroll_up");
+const b7 = runtime.getOpcodeFunction("motion_align_scene");
+const b8 = runtime.getOpcodeFunction("looks_setstretchto");
+const b9 = runtime.getOpcodeFunction("looks_changestretchby");
+const b10 = runtime.getOpcodeFunction("looks_hideallsprites");
+return function* genXYZ () {
+yield* executeInCompatibilityLayer({"MESSAGE":"plan 1",}, b0, false, false, null);
+b1.value = (yield* executeInCompatibilityLayer({}, b2, false, false, null));
+b1.value = (yield* executeInCompatibilityLayer({}, b3, false, false, null));
+b1.value = (yield* executeInCompatibilityLayer({}, b4, false, false, null));
+yield* executeInCompatibilityLayer({"DISTANCE":10,}, b5, false, false, null);
+yield* executeInCompatibilityLayer({"DISTANCE":10,}, b6, false, false, null);
+yield* executeInCompatibilityLayer({"ALIGNMENT":"bottom-left",}, b7, false, false, null);
+yield* executeInCompatibilityLayer({"STRETCH":100,}, b8, false, false, null);
+yield* executeInCompatibilityLayer({"STRETCH":100,}, b8, false, false, null);
+yield* executeInCompatibilityLayer({"CHANGE":10,}, b9, false, false, null);
+yield* executeInCompatibilityLayer({"CHANGE":10,}, b9, false, false, null);
+yield* executeInCompatibilityLayer({}, b10, false, false, null);
+yield* executeInCompatibilityLayer({"MESSAGE":"pass",}, b0, false, false, null);
+yield* executeInCompatibilityLayer({"MESSAGE":"end",}, b0, false, false, null);
+retire();
+}; })
