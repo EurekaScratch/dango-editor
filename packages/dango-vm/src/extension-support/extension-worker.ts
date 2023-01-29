@@ -1,10 +1,9 @@
 /* eslint-env worker */
 
-const ScratchCommon = require('./tw-extension-api-common');
-const dispatch = require('../dispatch/worker-dispatch');
-// @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'log'.
-const log = require('../util/log');
-const {isWorker} = require('./tw-extension-worker-context');
+import ScratchCommon from './tw-extension-api-common';
+import dispatch from '../dispatch/worker-dispatch';
+import log from '../util/log';
+import {isWorker} from './tw-extension-worker-context';
 
 const loadScripts = (url: any) => {
     if (isWorker) {

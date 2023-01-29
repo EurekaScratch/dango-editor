@@ -1,8 +1,6 @@
-const SharedDispatch = require('./shared-dispatch');
-
-// @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'log'.
-const log = require('../util/log');
-const {centralDispatchService} = require('../extension-support/tw-extension-worker-context');
+import SharedDispatch, {DispatchCallMessage} from './shared-dispatch';
+import log from '../util/log';
+import {centralDispatchService} from '../extension-support/tw-extension-worker-context';
 
 /**
  * This class provides a Worker with the means to participate in the message dispatch system managed by CentralDispatch.
@@ -12,30 +10,33 @@ const {centralDispatchService} = require('../extension-support/tw-extension-work
  * @see {CentralDispatch}
  */
 class WorkerDispatch extends SharedDispatch {
+    /**
+     * This promise will be resolved when we have successfully connected to central dispatch.
+     * @type {Promise}
+     * @see {waitForConnection}
+     * @private
+     */
+    _connectionPromise: Promise<void>;
+    // @ts-expect-error
+    _onConnect: () => void;
+    /**
+     * Map of service name to local service provider.
+     * If a service is not listed here, it is assumed to be provided by another context (another Worker or the main
+     * thread).
+     * @see {setService}
+     * @type {object}
+     */
+    services: any = {};
     constructor () {
         super();
-
-        /**
-         * This promise will be resolved when we have successfully connected to central dispatch.
-         * @type {Promise}
-         * @see {waitForConnection}
-         * @private
-         */
         this._connectionPromise = new Promise(resolve => {
             this._onConnect = resolve;
         });
 
-        /**
-         * Map of service name to local service provider.
-         * If a service is not listed here, it is assumed to be provided by another context (another Worker or the main
-         * thread).
-         * @see {setService}
-         * @type {object}
-         */
-        this.services = {};
-
+        // @ts-expect-error
         this._onMessage = this._onMessage.bind(this, centralDispatchService);
         if (typeof self !== 'undefined') {
+            // @ts-expect-error
             self.onmessage = this._onMessage;
         }
     }
@@ -59,7 +60,7 @@ class WorkerDispatch extends SharedDispatch {
      * @param {object} provider - a local object which provides this service.
      * @returns {Promise} - a promise which will resolve once the service is registered.
      */
-    setService (service: any, provider: any) {
+    setService (service: string, provider: any) {
         if (this.services.hasOwnProperty(service)) {
             log.warn(`Worker dispatch replacing existing service provider for ${service}`);
         }
@@ -74,7 +75,7 @@ class WorkerDispatch extends SharedDispatch {
      * @returns {{provider:(object|Worker), isRemote:boolean}} - the means to contact the service, if found
      * @protected
      */
-    _getServiceProvider (service: any) {
+    _getServiceProvider (service: string) {
         // if we don't have a local service by this name, contact central dispatch by calling `postMessage` on self
         const provider = this.services[service];
         return {
@@ -91,7 +92,7 @@ class WorkerDispatch extends SharedDispatch {
      * @returns {Promise|undefined} - a promise for the results of this operation, if appropriate
      * @protected
      */
-    _onDispatchMessage (worker: any, message: any) {
+    _onDispatchMessage (worker: Worker, message: DispatchCallMessage) {
         let promise;
         switch (message.method) {
         case 'handshake':
@@ -109,4 +110,4 @@ class WorkerDispatch extends SharedDispatch {
     }
 }
 
-module.exports = new WorkerDispatch();
+export default new WorkerDispatch();

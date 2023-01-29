@@ -1,17 +1,45 @@
 import log from '../util/log';
+
+ /**
+  * a message to the dispatch system representing a service method call
+  */
+export interface DispatchCallMessage {
+    /**
+     * send a response message with this response ID. See {@link DispatchResponseMessage}
+     */
+    responseId: number;
+    /**
+     * the name of the service to be called
+     */
+    service: string;
+    /**
+     * the name of the method to be called
+     */
+    method: string;
+    /**
+     * the arguments to be passed to the method
+     */
+    args?: unknown[];
+}
+
 /**
- * @typedef {object} DispatchCallMessage - a message to the dispatch system representing a service method call
- * @property {*} responseId - send a response message with this response ID. See {@link DispatchResponseMessage}
- * @property {string} service - the name of the service to be called
- * @property {string} method - the name of the method to be called
- * @property {Array|undefined} args - the arguments to be passed to the method
+ * a message to the dispatch system representing the results of a call
  */
-/**
- * @typedef {object} DispatchResponseMessage - a message to the dispatch system representing the results of a call
- * @property {*} responseId - a copy of the response ID from the call which generated this response
- * @property {*|undefined} error - if this is truthy, then it contains results from a failed call (such as an exception)
- * @property {*|undefined} result - if error is not truthy, then this contains the return value of the call (if any)
- */
+export interface DispatchResponseMessage {
+    /**
+     * a copy of the response ID from the call which generated this response
+     */
+    responseId: number;
+    /**
+     * if this is truthy, then it contains results from a failed call (such as an exception)
+     */
+    error?: unknown;
+    /**
+     * if error is not truthy, then this contains the return value of the call (if any)
+     */
+    result?: unknown;
+}
+
 /**
  * @typedef {DispatchCallMessage|DispatchResponseMessage} DispatchMessage
  * Any message to the dispatch system.
@@ -21,22 +49,18 @@ import log from '../util/log';
  * {@link CentralDispatch} and {@link WorkerDispatch}.
  */
 class SharedDispatch {
-    callbacks: any;
-    nextResponseId: any;
-    constructor () {
-        /**
-         * List of callback registrations for promises waiting for a response from a call to a service on another
-         * worker. A callback registration is an array of [resolve,reject] Promise functions.
-         * Calls to local services don't enter this list.
-         * @type {Array.<Function[]>}
-         */
-        this.callbacks = [];
-        /**
-         * The next response ID to be used.
-         * @type {int}
-         */
-        this.nextResponseId = 0;
-    }
+    /**
+     * List of callback registrations for promises waiting for a response from a call to a service on another
+     * worker. A callback registration is an array of [resolve,reject] Promise functions.
+     * Calls to local services don't enter this list.
+     * @type {Array.<Function[]>}
+     */
+    callbacks: [Function, Function][] = [];
+    /**
+     * The next response ID to be used.
+     * @type {int}
+     */
+    nextResponseId = 0;
     /**
      * Call a particular method on a particular service, regardless of whether that service is provided locally or on
      * a worker. If the service is provided by a worker, the `args` will be copied using the Structured Clone
@@ -51,7 +75,7 @@ class SharedDispatch {
      * @param {*} [args] - the arguments to be copied to the method, if any.
      * @returns {Promise} - a promise for the return value of the service method.
      */
-    call (service: any, method: any, ...args: any[]) {
+    call (service: string, method: string, ...args: unknown[]) {
         return this.transferCall(service, method, null, ...args);
     }
     /**
@@ -69,7 +93,7 @@ class SharedDispatch {
      * @param {*} [args] - the arguments to be copied to the method, if any.
      * @returns {Promise} - a promise for the return value of the service method.
      */
-    transferCall (service: any, method: any, transfer: any, ...args: any[]) {
+    transferCall (service: string, method: string, transfer: any, ...args: unknown[]) {
         try {
             // @ts-expect-error TS(2339): Property 'provider' does not exist on type 'void'.
             const {provider, isRemote} = this._getServiceProvider(service);
@@ -91,7 +115,7 @@ class SharedDispatch {
      * @returns {boolean} - true if the service is remote (calls must cross a Worker boundary), false otherwise.
      * @private
      */
-    _isRemoteService (service: any) {
+    _isRemoteService (service: string) {
         // @ts-expect-error TS(2339): Property 'isRemote' does not exist on type 'void'.
         return this._getServiceProvider(service).isRemote;
     }
@@ -103,7 +127,7 @@ class SharedDispatch {
      * @param {*} [args] - the arguments to be copied to the method, if any.
      * @returns {Promise} - a promise for the return value of the service method.
      */
-    _remoteCall (provider: any, service: any, method: any, ...args: any[]) {
+    _remoteCall (provider: any, service: string, method: string, ...args: unknown[]) {
         return this._remoteTransferCall(provider, service, method, null, ...args);
     }
     /**
@@ -115,7 +139,7 @@ class SharedDispatch {
      * @param {*} [args] - the arguments to be copied to the method, if any.
      * @returns {Promise} - a promise for the return value of the service method.
      */
-    _remoteTransferCall (provider: any, service: any, method: any, transfer: any, ...args: any[]) {
+    _remoteTransferCall (provider: any, service: string, method: string, transfer: any, ...args: any[]) {
         return new Promise((resolve, reject) => {
             const responseId = this._storeCallbacks(resolve, reject);
             /** @TODO: remove this hack! this is just here so we don't try to send `util` to a worker */
@@ -151,7 +175,7 @@ class SharedDispatch {
      * @param {DispatchResponseMessage} message - the message containing the response value(s).
      * @protected
      */
-    _deliverResponse (responseId: any, message: any) {
+    _deliverResponse (responseId: number, message: DispatchResponseMessage) {
         try {
             const [resolve, reject] = this.callbacks[responseId];
             delete this.callbacks[responseId];
@@ -170,7 +194,7 @@ class SharedDispatch {
      * @param {MessageEvent} event - the message event to be handled.
      * @protected
      */
-    _onMessage (worker: any, event: any) {
+    _onMessage (worker: Worker, event: any) {
         /** @type {DispatchMessage} */
         const message = event.data;
         message.args = message.args || [];
@@ -201,7 +225,7 @@ class SharedDispatch {
      * @returns {{provider:(object|Worker), isRemote:boolean}} - the means to contact the service, if found
      * @protected
      */
-    _getServiceProvider (service: any) {
+    _getServiceProvider (service: string) {
         throw new Error(`Could not get provider for ${service}: _getServiceProvider not implemented`);
     }
     /**
@@ -212,7 +236,7 @@ class SharedDispatch {
      * @returns {Promise|undefined} - a promise for the results of this operation, if appropriate
      * @private
      */
-    _onDispatchMessage (worker: any, message: any) {
+    _onDispatchMessage (worker: Worker, message: DispatchCallMessage) {
         throw new Error(`Unimplemented dispatch message handler cannot handle ${message.method} method`);
     }
 }

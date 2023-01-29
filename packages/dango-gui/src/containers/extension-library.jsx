@@ -26,7 +26,8 @@ class ExtensionLibrary extends React.PureComponent {
     constructor (props) {
         super(props);
         bindAll(this, [
-            'handleItemSelect'
+            'handleItemSelect',
+            'handleUpload'
         ]);
     }
     handleItemSelect (item) {
@@ -46,6 +47,38 @@ class ExtensionLibrary extends React.PureComponent {
             }
         }
     }
+    handleUpload () {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', '.js,.ccx');
+        input.setAttribute('multiple', true);
+        input.onchange = event => {
+            const files = event.target.files;
+            for (const file of files) {
+                const fileName = file.name;
+                const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1);
+                switch (fileExt) {
+                case 'js': {
+                    // Load as data URL
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file, 'utf8');
+                    reader.onload = () => {
+                        this.props.vm.extensionManager.loadExtensionURL(reader.result);
+                    }
+                    break;
+                }
+                case 'ccx': {
+                    // todo
+                    break;
+                }
+                default: {
+                    alert('Unsupported format');
+                }
+                }
+            }
+        };
+        input.click();
+    }
     render () {
         const extensionLibraryThumbnailData = extensionLibraryContent.map(extension => ({
             rawURL: extension.iconURL || extensionIcon,
@@ -55,10 +88,12 @@ class ExtensionLibrary extends React.PureComponent {
             <LibraryComponent
                 data={extensionLibraryThumbnailData}
                 filterable
+                showUploadButton
                 id="extensionLibrary"
                 title={this.props.intl.formatMessage(messages.extensionTitle)}
                 visible={this.props.visible}
                 onItemSelected={this.handleItemSelect}
+                onUpload={this.handleUpload}
                 onRequestClose={this.props.onRequestClose}
             />
         );

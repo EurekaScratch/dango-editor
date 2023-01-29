@@ -8,6 +8,7 @@ import LibraryItem from '../../containers/library-item.jsx';
 import Modal from '../../containers/modal.jsx';
 import Divider from '../divider/divider.jsx';
 import Filter from '../filter/filter.jsx';
+import Button from '../button/button.jsx';
 import TagButton from '../../containers/tag-button.jsx';
 import Spinner from '../spinner/spinner.jsx';
 
@@ -180,6 +181,12 @@ class LibraryComponent extends React.Component {
                                 onClear={this.handleFilterClear}
                             />
                         )}
+                        {this.props.showUploadButton && (
+                            <Button
+                                className={styles.uploadButton}
+                                onClick={this.props.onUpload}
+                            >Upload</Button>
+                        )}
                         {this.props.filterable && this.props.tags && (
                             <Divider className={classNames(styles.filterBarItem, styles.divider)} />
                         )}
@@ -266,9 +273,11 @@ LibraryComponent.propTypes = {
     onItemMouseEnter: PropTypes.func,
     onItemMouseLeave: PropTypes.func,
     onItemSelected: PropTypes.func,
+    onUpload: PropTypes.func,
     onRequestClose: PropTypes.func,
     setStopHandler: PropTypes.func,
     showPlayButton: PropTypes.bool,
+    showUploadButton: PropTypes.bool,
     tags: PropTypes.arrayOf(PropTypes.shape(TagButton.propTypes)),
     title: PropTypes.string.isRequired
 };
