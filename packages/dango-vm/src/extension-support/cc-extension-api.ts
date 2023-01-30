@@ -1,8 +1,9 @@
-const ArgumentType = require('./argument-type');
-const ScratchBlocksConstants = require('../engine/scratch-blocks-constants');
-const xmlEscape = require('../util/xml-escape');
-const maybeFormatMessage = require('../util/maybe-format-message');
-const formatMessage = require('format-message');
+// @ts-nocheck
+import ArgumentType from './argument-type';
+import ScratchBlocksConstants from '../engine/scratch-blocks-constants';
+import xmlEscape from '../util/xml-escape';
+import maybeFormatMessage from '../util/maybe-format-message';
+import formatMessage from 'format-message';
 
 const blockType = [
     '', // ERROR: 0
@@ -617,4 +618,4 @@ class ExtensionAPI {
     }
 }
 
-module.exports = ExtensionAPI;
+export default ExtensionAPI;
