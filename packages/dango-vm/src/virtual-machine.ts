@@ -30,6 +30,9 @@ import sb3, {
 } from './serialization/sb3';
 import sb2 from './serialization/sb2';
 
+// ClipCC's extension API is very scary, and we don't consider migrating it to TypeScript for now.
+const CCExtensionAPI = require('./extension-support/cc-extension-api');
+
 /**
  * Indicates the type is dependent on the existence of a renderer.
  */
@@ -85,6 +88,10 @@ interface Sound extends BaseAsset {
     soundId: string;
 }
 
+interface ClipExtensionAPI {
+    new: (vm: VirtualMachine) => void;
+}
+
 let _TextEncoder: any;
 if (typeof TextEncoder === 'undefined') {
     _TextEncoder = require('text-encoding').TextEncoder;
@@ -125,6 +132,7 @@ class VirtualMachine extends EventEmitter {
     extensionManager: ExtensionManager;
     runtime: Runtime;
     securityManager: SecurityManager;
+    ccExtensionAPI: ClipExtensionAPI;
     constructor () {
         super();
         /**
@@ -259,6 +267,8 @@ class VirtualMachine extends EventEmitter {
         this.flyoutBlockListener = this.flyoutBlockListener.bind(this);
         this.monitorBlockListener = this.monitorBlockListener.bind(this);
         this.variableListener = this.variableListener.bind(this);
+        // cc - extension api
+        this.ccExtensionAPI = new CCExtensionAPI(this);
     }
     /**
      * Start running the VM - do this before anything else.

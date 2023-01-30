@@ -36,6 +36,7 @@
     "atob": "2.1.2",
     "btoa": "1.2.1",
     "canvas-toBlob": "1.0.0",
+    "clipcc-extension": "^0.2.0",
     "decode-html": "2.0.0",
     "diff-match-patch": "1.0.4",
     "format-message": "6.2.1",

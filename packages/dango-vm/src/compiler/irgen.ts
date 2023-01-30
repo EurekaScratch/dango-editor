@@ -104,7 +104,18 @@ class ScriptTreeGenerator {
         // Flyout blocks are stored in a special container.
         return this.blocks.getBlock(blockId) || this.blocks.runtime.flyoutBlocks.getBlock(blockId);
     }
-    getBlockInfo (fullOpcode: any) {
+    getBlockInfo (fullOpcode: string) {
+        // cc - Provides generation support for id systems that contain ".".
+        if (fullOpcode.indexOf('.') !== -1) {
+            for (const ext of this.runtime._blockInfo) {
+                for (const blockInfo of ext.blocks) {
+                    if (blockInfo.info.opcode === fullOpcode) {
+                        return blockInfo;
+                    }
+                }
+            }
+            return null;
+        }
         const [category, opcode] = StringUtil.splitFirst(fullOpcode, '_');
         if (!category || !opcode) {
             return null;

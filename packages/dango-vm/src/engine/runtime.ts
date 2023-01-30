@@ -133,7 +133,7 @@ const COMMENT_CONFIG_MAGIC = ' // _twconfig_';
  * Information used for converting Scratch argument types into scratch-blocks data.
  * @type {object.<ArgumentType, {shadowType: string, fieldType: string}>}
  */
-const ArgumentTypeMap = (() => {
+export const ArgumentTypeMap = (() => {
     const map : Record<ArgumentType, ArgumentInfo> | any = {};
     map[ArgumentType.ANGLE] = {
         shadow: {
@@ -206,7 +206,7 @@ interface ScratchBlocksJSON {
     [argsName: string]: any;
 }
 
-interface ScratchBlocksContext {
+export interface ScratchBlocksContext {
     argsMap: Record<string, string>;
     blockJSON: ScratchBlocksJSON;
     categoryInfo: CategoryInfo;
@@ -1445,7 +1445,7 @@ class Runtime extends EventEmitter {
      * @return {object} JSON blob for a scratch-blocks image field.
      * @private
      */
-    private _constructInlineImageJson (argInfo: ExtensionArgumentMetadata) {
+    _constructInlineImageJson (argInfo: ExtensionArgumentMetadata) {
         if (!argInfo.dataURI) {
             log.warn('Missing data URI in extension block with argument type IMAGE');
         }

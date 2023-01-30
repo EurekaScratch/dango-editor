@@ -1224,6 +1224,8 @@ Blockly.BlockSvg.prototype.renderClassify_ = function() {
       shapes.push('boolean');
     } else if (this.edgeShape_ === Blockly.OUTPUT_SHAPE_ROUND) {
       shapes.push('round');
+    } else if (this.edgeShape_ === Blockly.OUTPUT_SHAPE_LAMBDA) {
+      shapes.push('square');
     }
   } else {
     // count the number of statement inputs

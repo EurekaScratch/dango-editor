@@ -4289,6 +4289,11 @@ cli-width@^3.0.0:
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-3.0.0.tgz#a2f48437a2caa9a22436e794bf071ec9e61cedf6"
   integrity sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==
 
+clipcc-extension@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/clipcc-extension/-/clipcc-extension-0.2.0.tgz#30b792fb90863fd8df4631f73f49f6f67d3ee5a8"
+  integrity sha512-Oqu26y37Ncavogm9DR42nm7tXT3GZj4UJFVHM39GZ31agiTCyjZdRckXlfT/Dg6hohotiyTz5MxoL2OKa+Sxeg==
+
 cliui@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-3.2.0.tgz#120601537a916d29940f934da3b48d585a39213d"

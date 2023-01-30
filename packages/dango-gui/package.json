@@ -34,6 +34,7 @@
     "base64-loader": "1.0.0",
     "bowser": "1.9.4",
     "classnames": "2.2.6",
+    "clipcc-extension": "^0.2.0",
     "computed-style-to-inline-style": "3.0.0",
     "copy-webpack-plugin": "6.4.1",
     "core-js": "2.5.7",

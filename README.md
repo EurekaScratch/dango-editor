@@ -13,6 +13,6 @@ A Scratch mod focused on new features, Based on [Turbowarp](https://github.com/T
 - [x] Custom Reporter
 - [x] TypeScript VM
 - [ ] More standardized Extension API
-- [ ] Compatible with ClipCC Extension
+- [x] Compatible with ClipCC Extension
 # ⚓ License
 Since clipcc-vm uses AGPL-3.0, this project will also use the same license. see [LICENSE](./LICENSE).

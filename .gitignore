@@ -5,23 +5,23 @@
 **/yarn-error.log
 **/dist
 
-# scratch-blocks
-packages/scratch-blocks/dart_compressed.js
-packages/scratch-blocks/javascript_compressed.js
-packages/scratch-blocks/lua_compressed.js
-packages/scratch-blocks/php_compressed.js
-packages/scratch-blocks/python_compressed.js
-packages/scratch-blocks/accessible/*
-packages/scratch-blocks/msg/js/*
-!packages/scratch-blocks/msg/js/en.js
-packages/scratch-blocks/msg/json/*
-!packages/scratch-blocks/msg/json/en.json
-packages/scratch-blocks/*compiler*.jar
-packages/scratch-blocks/chromedriver
-packages/scratch-blocks/blockly_*.js
-packages/scratch-blocks/blocks_*.js
+# dango-blocks
+packages/dango-blocks/dart_compressed.js
+packages/dango-blocks/javascript_compressed.js
+packages/dango-blocks/lua_compressed.js
+packages/dango-blocks/php_compressed.js
+packages/dango-blocks/python_compressed.js
+packages/dango-blocks/accessible/*
+packages/dango-blocks/msg/js/*
+!packages/dango-blocks/msg/js/en.js
+packages/dango-blocks/msg/json/*
+!packages/dango-blocks/msg/json/en.json
+packages/dango-blocks/*compiler*.jar
+packages/dango-blocks/chromedriver
+packages/dango-blocks/blockly_*.js
+packages/dango-blocks/blocks_*.js
 
 # scratch-vm
-packages/scratch-vm/playground
-packages/scratch-vm/benchmark
-packages/scratch-vm/translations
+packages/dango-vm/playground
+packages/dango-vm/benchmark
+packages/dango-vm/translations

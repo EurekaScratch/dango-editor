@@ -37,7 +37,11 @@ enum BlockType {
     /**
      * General reporter with numeric or string value
      */
-    REPORTER = 'reporter'
+    REPORTER = 'reporter',
+    /**
+     * Lambda reporter with callable function.
+     */
+    Lambda = 'Lambda'
 };
 
 export default BlockType;

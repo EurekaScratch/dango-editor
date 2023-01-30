@@ -1,13 +1,19 @@
 import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {connect} from 'react-redux';
 import VM from 'scratch-vm';
+import ClipCCExtension from 'clipcc-extension';
 import {defineMessages, injectIntl, intlShape} from 'react-intl';
+import {addLocales, updateLocale} from '../reducers/locales';
 
 import extensionLibraryContent from '../lib/libraries/extensions/index.jsx';
 
 import LibraryComponent from '../components/library/library.jsx';
 import extensionIcon from '../components/action-menu/icon--sprite.svg';
+
+import JSZip from 'jszip';
+import vm from 'vm';
 
 const messages = defineMessages({
     extensionTitle: {
@@ -88,7 +94,60 @@ class ExtensionLibrary extends React.PureComponent {
                     break;
                 }
                 case 'ccx': {
-                    // todo
+                    let info, instance;
+                    try {
+                        const zipData = await JSZip.loadAsync(file);
+                        // Load info
+                        if ('info.json' in zipData.files) {
+                            const content = await zipData.files['info.json'].async('text');
+                            info = JSON.parse(content);
+                            if (ClipCCExtension.extensionManager.exist(info.id)) {
+                                break;
+                            }
+                        } else {
+                            throw new Error('Cannot find \'main.js\' in ccx extension');
+                        }
+                        if ('main.js' in zipData.files) {
+                            // global exposure, at least for now :(
+                            if (!window.ClipCCExtension) {
+                                const apiInstance = {
+                                    gui: {},
+                                    vm: this.props.vm.ccExtensionAPI,
+                                    blocks: {}
+                                };
+                                ClipCCExtension.api.registExtensionAPI(apiInstance);
+                                window.ClipCCExtension = ClipCCExtension;
+                            }
+                            const script = new vm.Script(await zipData.files['main.js'].async('text'));
+                            const ExtensionPrototype = script.runInThisContext();
+                            instance = new ExtensionPrototype();
+                        }
+                        
+                        // Load locale
+                        const locale = {};
+                        for (const fileName in zipData.files) {
+                            const result = fileName.match(/^locales\/([A-Za-z0-9_-]+).json$/);
+                            if (result) {
+                                locale[result[1]] = JSON.parse(await zipData.files[fileName].async('text'));
+                            }
+                        }
+                        if (info.default_language && locale.hasOwnProperty(info.default_language)) {
+                            // default language param
+                            locale.default = locale[info.default_language];
+                        } else {
+                            locale.default = locale.en;
+                        }
+                        this.props.addLocales(locale);
+                        this.props.updateLocale();
+                        ClipCCExtension.extensionManager.addInstance(info.id, info, instance);
+                            ClipCCExtension.extensionManager.loadExtensionsWithMode(
+                            [info],
+                            extension => this.props.vm.extensionManager.loadExtensionURL(extension)
+                        );
+            return;
+                    } catch (e) {
+                        console.error(e);
+                    }
                     break;
                 }
                 default: {
@@ -126,8 +185,18 @@ ExtensionLibrary.propTypes = {
     intl: intlShape.isRequired,
     onCategorySelected: PropTypes.func,
     onRequestClose: PropTypes.func,
+    addLocales: PropTypes.func.isRequired,
+    updateLocale: PropTypes.func.isRequired,
     visible: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired // eslint-disable-line react/no-unused-prop-types
 };
 
-export default injectIntl(ExtensionLibrary);
+const mapDispatchToProps = dispatch => ({
+    addLocales: (locales) => dispatch(addLocales(locales)),
+    updateLocale: () => dispatch(updateLocale())
+});
+
+export default injectIntl(connect(
+    undefined,
+    mapDispatchToProps
+)(ExtensionLibrary));
