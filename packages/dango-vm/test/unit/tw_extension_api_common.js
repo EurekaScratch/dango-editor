@@ -17,8 +17,10 @@ test('TargetType', t => {
 });
 
 test('Cast', t => {
-    // Cast is thoroughly tested elsewhere. We just want to make sure that the public methods
-    // don't get deleted unexpectedly.
+    /*
+     * Cast is thoroughly tested elsewhere. We just want to make sure that the public methods
+     * don't get deleted unexpectedly.
+     */
     t.equal(ScratchCommon.Cast.toNumber('5'), 5);
     t.equal(ScratchCommon.Cast.toBoolean('true'), true);
     t.equal(ScratchCommon.Cast.toString('something'), 'something');

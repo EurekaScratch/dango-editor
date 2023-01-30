@@ -1,5 +1,5 @@
 const {test} = require('tap');
-require('../fixtures/tw_mock_blob'); // must load Blob before VM so JSZip thinks Blob is supported
+require('../fixtures/tw_mock_blob'); // Must load Blob before VM so JSZip thinks Blob is supported
 const fs = require('fs');
 const pathUtil = require('path');
 const VirtualMachine = require('../../src/virtual-machine');
@@ -17,8 +17,10 @@ test('saveProjectSb3', async t => {
     vm.attachStorage(makeTestStorage());
     await vm.loadProject(fixture);
 
-    // Test that it defaults to Blob
-    // Note: we use a mock implementation of Blob in tests
+    /*
+     * Test that it defaults to Blob
+     * Note: we use a mock implementation of Blob in tests
+     */
     const blob = await vm.saveProjectSb3();
     t.type(blob, Blob);
 

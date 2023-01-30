@@ -47,8 +47,10 @@ const whenThreadsComplete = (t, vm, timeLimit = 2000) => (
             reject(new Error('time limit reached'));
         }, timeLimit);
 
-        // Clear the interval to allow the process to exit
-        // naturally.
+        /*
+         * Clear the interval to allow the process to exit
+         * naturally.
+         */
         t.tearDown(() => {
             clearInterval(intervalId);
             clearTimeout(timeoutId);
@@ -66,8 +68,10 @@ fs.readdirSync(executeDir)
             log.suggest.deny('vm', 'error');
             t.tearDown(() => log.suggest.clear());
 
-            // Map string messages to tap reporting methods. This will be used
-            // with events from scratch's runtime emitted on block instructions.
+            /*
+             * Map string messages to tap reporting methods. This will be used
+             * with events from scratch's runtime emitted on block instructions.
+             */
             let didPlan;
             let didEnd;
             const reporters = {
@@ -95,16 +99,20 @@ fs.readdirSync(executeDir)
                     return reporters[command](text.substring(command.length).trim());
                 }
 
-                // Default to a comment with the full text if we didn't match
-                // any command prefix
+                /*
+                 * Default to a comment with the full text if we didn't match
+                 * any command prefix
+                 */
                 return reporters.comment(text);
             };
 
             const vm = new VirtualMachine();
             vm.attachStorage(makeTestStorage());
 
-            // Start the VM and initialize some vm properties.
-            // complete.
+            /*
+             * Start the VM and initialize some vm properties.
+             * complete.
+             */
             vm.start();
             vm.clear();
             vm.setCompatibilityMode(false);
@@ -121,8 +129,10 @@ fs.readdirSync(executeDir)
                 });
             }
 
-            // Stop the runtime interval once the test is complete so the test
-            // process may naturally exit.
+            /*
+             * Stop the runtime interval once the test is complete so the test
+             * process may naturally exit.
+             */
             t.tearDown(() => {
                 vm.stop();
             });
@@ -132,8 +142,10 @@ fs.readdirSync(executeDir)
 
             const project = readFileToBuffer(path.resolve(executeDir, uri));
 
-            // Load the project and once all threads are complete ensure that
-            // the scratch project sent us a "end" message.
+            /*
+             * Load the project and once all threads are complete ensure that
+             * the scratch project sent us a "end" message.
+             */
             return vm.loadProject(project)
                 .then(() => vm.greenFlag())
                 .then(() => whenThreadsComplete(t, vm))
@@ -143,10 +155,12 @@ fs.readdirSync(executeDir)
                         t.comment('did not say "plan NUMBER_OF_TESTS"');
                     }
 
-                    // End must be called so that tap knows the test is done. If
-                    // the test has an SAY "end" block but that block did not
-                    // execute, this explicit failure will raise that issue so
-                    // it can be resolved.
+                    /*
+                     * End must be called so that tap knows the test is done. If
+                     * the test has an SAY "end" block but that block did not
+                     * execute, this explicit failure will raise that issue so
+                     * it can be resolved.
+                     */
                     if (!didEnd) {
                         t.fail('did not say "end"');
                         t.end();

@@ -59,9 +59,11 @@ test('loading sb2 project with visible video monitor should not load extension',
     });
 });
 
-// This test looks a little different than the rest because loading a project with
-// the video sensing block requires a mock renderer and other setup, so instead
-// we are just using deserialize to test what we need instead
+/*
+ * This test looks a little different than the rest because loading a project with
+ * the video sensing block requires a mock renderer and other setup, so instead
+ * we are just using deserialize to test what we need instead
+ */
 test('sb2 project with video sensing blocks and monitor should load extension but not monitor', t => {
     const vm = new VirtualMachine();
 

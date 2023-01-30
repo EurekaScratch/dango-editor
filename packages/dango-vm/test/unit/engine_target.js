@@ -81,7 +81,7 @@ test('createVariable calls cloud io device\'s requestCreateVariable', t => {
 
     const target = new Target(runtime);
     target.isStage = true;
-    target.createVariable('foo', 'bar', Variable.SCALAR_TYPE, true /* isCloud */);
+    target.createVariable('foo', 'bar', Variable.SCALAR_TYPE, true /* IsCloud */);
 
     const variables = target.variables;
     t.equal(Object.keys(variables).length, 1);
@@ -106,7 +106,7 @@ test('createVariable does not call cloud io device\'s requestCreateVariable if t
 
     const target = new Target(runtime);
     target.isStage = false;
-    target.createVariable('foo', 'bar', Variable.SCALAR_TYPE, true /* isCloud */);
+    target.createVariable('foo', 'bar', Variable.SCALAR_TYPE, true /* IsCloud */);
 
     const variables = target.variables;
     t.equal(Object.keys(variables).length, 1);
@@ -115,7 +115,7 @@ test('createVariable does not call cloud io device\'s requestCreateVariable if t
     t.equal(variable.name, 'bar');
     t.equal(variable.type, Variable.SCALAR_TYPE);
     t.equal(variable.value, 0);
-    // isCloud flag doesn't get set if the target is not the stage
+    // IsCloud flag doesn't get set if the target is not the stage
     t.equal(variable.isCloud, false);
     t.equal(requestCreateCloudWasCalled, false);
 
@@ -160,8 +160,10 @@ test('renameVariable2', t => {
     t.end();
 });
 
-// Rename Variable that with id that exists as another variable's name.
-// Expect no change.
+/*
+ * Rename Variable that with id that exists as another variable's name.
+ * Expect no change.
+ */
 test('renameVariable3', t => {
     const target = new Target(new Runtime());
     target.createVariable('foo1', 'foo', Variable.SCALAR_TYPE);
@@ -400,8 +402,10 @@ test('duplicateVariables duplicates all variables', t => {
     t.equal(Object.keys(target.variables).length, 2);
     t.equal(Object.keys(duplicateVariables).length, 2);
 
-    // Should be able to find original var IDs in both this target's variables and
-    // the duplicate variables since a blocks container was not specified.
+    /*
+     * Should be able to find original var IDs in both this target's variables and
+     * the duplicate variables since a blocks container was not specified.
+     */
     t.equal(target.variables.hasOwnProperty('var ID 1'), true);
     t.equal(target.variables.hasOwnProperty('var ID 2'), true);
     t.equal(duplicateVariables.hasOwnProperty('var ID 1'), true);
@@ -413,12 +417,14 @@ test('duplicateVariables duplicates all variables', t => {
     t.equal(target.variables['var ID 2'].value, duplicateVariables['var ID 2'].value);
     t.equal(duplicateVariables['var ID 2'].value, 'foo');
 
-    // The two sets of variables should still be distinct, modifying the target's variables
-    // should not affect the duplicated variables, and vice-versa
+    /*
+     * The two sets of variables should still be distinct, modifying the target's variables
+     * should not affect the duplicated variables, and vice-versa
+     */
 
     var1.value = 10;
     t.equal(target.variables['var ID 1'].value, 10);
-    t.equal(duplicateVariables['var ID 1'].value, 3); // should remain unchanged from initial value
+    t.equal(duplicateVariables['var ID 1'].value, 3); // Should remain unchanged from initial value
 
     duplicateVariables['var ID 2'].value = 'bar';
     t.equal(target.variables['var ID 2'].value, 'foo');
@@ -450,8 +456,10 @@ test('duplicateVariables re-IDs variables when a block container is provided', t
     // Deep clone this target's blocks to pass in to 'duplicateVariables'
     const copiedBlocks = target.blocks.duplicate();
 
-    // The copied block should still have the same ID, and its VARIABLE field should still refer to
-    // the original variable id
+    /*
+     * The copied block should still have the same ID, and its VARIABLE field should still refer to
+     * the original variable id
+     */
     t.type(copiedBlocks.getBlock('a block'), 'object');
     t.type(copiedBlocks.getBlock('a block').fields.VARIABLE, 'object');
     t.equal(copiedBlocks.getBlock('a block').fields.VARIABLE.id, 'mock var id');
@@ -476,8 +484,10 @@ test('duplicateVariables re-IDs variables when a block container is provided', t
     t.equal(target.blocks.getBlock('a block').fields.VARIABLE.id, 'mock var id');
     t.equal(target.blocks.getBlock('a block').fields.VARIABLE.value, 'a mock variable');
 
-    // The copied blocks passed into duplicateVariables should now reference the new
-    // variable ID
+    /*
+     * The copied blocks passed into duplicateVariables should now reference the new
+     * variable ID
+     */
     const mockVariableDupe = dupes[dupeVarNames.indexOf('a mock variable')];
     const mockVarDupeID = mockVariableDupe.id;
 
@@ -585,8 +595,10 @@ test('creating comment with id that already exists does not change existing comm
 
     const comment = comments['a comment'];
     t.notEqual(comment, null);
-    // All of the comment properties should remain unchanged from the first
-    // time createComment was called
+    /*
+     * All of the comment properties should remain unchanged from the first
+     * time createComment was called
+     */
     t.equal(comment.blockId, null);
     t.equal(comment.text, 'some comment text');
     t.equal(comment.x, 10);

@@ -43,8 +43,10 @@ test('xmlEscape should handle non strings', t => {
     const arrayWithNumbers = [1, 2, 3];
     t.equal(xml(arrayWithNumbers), '1,2,3');
 
-    // Objects shouldn't get provided to replaceUnsafeChars, but in the event
-    // they do, it should just return the object (and log an error)
+    /*
+     * Objects shouldn't get provided to replaceUnsafeChars, but in the event
+     * they do, it should just return the object (and log an error)
+     */
     const object = {hello: 'world'};
     t.equal(xml(object), object);
 

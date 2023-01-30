@@ -55,9 +55,11 @@ test('Load video sensing extension and video properties', async t => {
 
         t.ok(vm.extensionManager.isExtensionLoaded('videoSensing'));
 
-        // Check that the stage target has the video state values we expect
-        // based on the test project files, then check that the video io device
-        // has the expected state as well
+        /*
+         * Check that the stage target has the video state values we expect
+         * based on the test project files, then check that the video io device
+         * has the expected state as well
+         */
         t.equal(stage.videoState, project.videoState);
         t.equal(vm.runtime.ioDevices.video.mirror, project.mirror);
         t.equal(stage.videoTransparency, project.videoTransparency);

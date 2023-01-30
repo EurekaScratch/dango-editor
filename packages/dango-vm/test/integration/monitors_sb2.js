@@ -14,17 +14,23 @@ test('importing sb2 project with monitors', t => {
     // Evaluate playground data and exit
     vm.on('playgroundData', e => {
         const threads = JSON.parse(e.threads);
-        // All monitors should create threads that finish during the step and
-        // are revoved from runtime.threads.
+        /*
+         * All monitors should create threads that finish during the step and
+         * are revoved from runtime.threads.
+         */
         t.equal(threads.length, 0);
 
-        // we care that the last step updated the right number of monitors
-        // we don't care whether the last step ran other threads or not
+        /*
+         * We care that the last step updated the right number of monitors
+         * we don't care whether the last step ran other threads or not
+         */
         const lastStepUpdatedMonitorThreads = vm.runtime._lastStepDoneThreads.filter(thread => thread.updateMonitor);
         t.equal(lastStepUpdatedMonitorThreads.length, 8);
 
-        // There should be one additional hidden monitor that is in the monitorState but
-        // does not start a thread.
+        /*
+         * There should be one additional hidden monitor that is in the monitorState but
+         * does not start a thread.
+         */
         t.equal(vm.runtime._monitorState.size, 9);
 
         const stage = vm.runtime.targets[0];
@@ -65,9 +71,11 @@ test('importing sb2 project with monitors', t => {
         t.equal(monitorRecord.width, 106); // Make sure these are imported from lists.
         t.equal(monitorRecord.height, 206);
 
-        // Backdrop name monitor is visible, not sprite specific
-        // should get imported with id that references the name parameter
-        // via '_name' at the end since the 3.0 block has a dropdown.
+        /*
+         * Backdrop name monitor is visible, not sprite specific
+         * should get imported with id that references the name parameter
+         * via '_name' at the end since the 3.0 block has a dropdown.
+         */
         monitorRecord = vm.runtime._monitorState.get('backdropnumbername_name');
         t.equal(monitorRecord.opcode, 'looks_backdropnumbername');
         t.equal(monitorRecord.mode, 'default');
@@ -75,7 +83,7 @@ test('importing sb2 project with monitors', t => {
         t.equal(monitorRecord.spriteName, null);
         t.equal(monitorRecord.targetId, null);
 
-        // x position monitor is in large mode, specific to sprite 1
+        // X position monitor is in large mode, specific to sprite 1
         monitorRecord = vm.runtime._monitorState.get(`${target.id}_xposition`);
         t.equal(monitorRecord.opcode, 'motion_xposition');
         t.equal(monitorRecord.mode, 'large');
@@ -87,10 +95,12 @@ test('importing sb2 project with monitors', t => {
         let monitorId;
         let monitorBlock;
 
-        // The monitor IDs for the sensing_current block should be unique
-        // to the parameter that is selected on the block being monitored.
-        // The paramater portion of the id should be lowercase even
-        // though the field value on the block is uppercase.
+        /*
+         * The monitor IDs for the sensing_current block should be unique
+         * to the parameter that is selected on the block being monitored.
+         * The paramater portion of the id should be lowercase even
+         * though the field value on the block is uppercase.
+         */
 
         monitorId = 'current_date';
         monitorRecord = vm.runtime._monitorState.get(monitorId);

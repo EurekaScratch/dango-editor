@@ -20,9 +20,11 @@ const projectUri = path.resolve(__dirname, '../fixtures/corrupt_svg.sb2');
 const project = readFileToBuffer(projectUri);
 const costumeFileName = '1.svg';
 const originalCostume = extractAsset(projectUri, costumeFileName);
-// We need to get the actual md5 because we hand modified the svg to corrupt it
-// after we downloaded the project from Scratch
-// Loading the project back into the VM will correct the assetId and md5
+/*
+ * We need to get the actual md5 because we hand modified the svg to corrupt it
+ * after we downloaded the project from Scratch
+ * Loading the project back into the VM will correct the assetId and md5
+ */
 const brokenCostumeMd5 = md5(originalCostume);
 
 global.Image = function () {

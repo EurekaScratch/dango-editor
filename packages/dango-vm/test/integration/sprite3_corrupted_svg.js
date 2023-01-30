@@ -24,9 +24,11 @@ const sprite = readFileToBuffer(spriteUri);
 
 const costumeFileName = 'a267f8b97ee9cf8aa9832aa0b4cfd9eb.svg';
 const originalCostume = extractAsset(spriteUri, costumeFileName);
-// We need to get the actual md5 because we hand modified the svg to corrupt it
-// after we downloaded the project from Scratch
-// Loading the project back into the VM will correct the assetId and md5
+/*
+ * We need to get the actual md5 because we hand modified the svg to corrupt it
+ * after we downloaded the project from Scratch
+ * Loading the project back into the VM will correct the assetId and md5
+ */
 const brokenCostumeMd5 = md5(originalCostume);
 
 let vm;

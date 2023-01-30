@@ -89,8 +89,10 @@ test('whenclicked blocks imported separately', t => {
 });
 
 test('Ordering', t => {
-    // This SB2 has 3 sprites that have been reordered in scratch 2
-    // so the order in the file is not the order specified by the indexInLibrary property.
+    /*
+     * This SB2 has 3 sprites that have been reordered in scratch 2
+     * so the order in the file is not the order specified by the indexInLibrary property.
+     */
     const uri = path.resolve(__dirname, '../fixtures/ordering.sb2');
     const json = extractProjectJson(uri);
     const rt = new Runtime();

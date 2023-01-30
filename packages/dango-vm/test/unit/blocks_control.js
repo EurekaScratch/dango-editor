@@ -122,8 +122,10 @@ test('forEach', t => {
         }
     };
 
-    // for each (variable) in "5"
-    // ..should yield variable values 1, 2, 3, 4, 5
+    /*
+     * For each (variable) in "5"
+     * ..should yield variable values 1, 2, 3, 4, 5
+     */
     util.stackFrame = Object.create(null);
     variableValues.splice(0);
     variable.value = 0;
@@ -131,8 +133,10 @@ test('forEach', t => {
     c.forEach({VARIABLE: {}, VALUE: value}, util);
     t.deepEqual(variableValues, [1, 2, 3, 4, 5]);
 
-    // for each (variable) in 4
-    // ..should yield variable values 1, 2, 3, 4
+    /*
+     * For each (variable) in 4
+     * ..should yield variable values 1, 2, 3, 4
+     */
     util.stackFrame = Object.create(null);
     variableValues.splice(0);
     variable.value = 0;

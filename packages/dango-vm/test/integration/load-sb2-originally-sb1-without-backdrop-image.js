@@ -28,7 +28,7 @@ test('sb2 project (originally from Scratch 1.4) with missing backdrop image shou
     t.doesNotThrow(() => {
         vm.loadProject(project).then(() => {
 
-            t.equal(vm.runtime.targets.length, 2); // stage and default sprite
+            t.equal(vm.runtime.targets.length, 2); // Stage and default sprite
 
             vm.greenFlag();
 

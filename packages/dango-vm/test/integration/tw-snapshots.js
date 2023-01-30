@@ -14,8 +14,10 @@ for (const testCase of Snapshots.tests) {
         } else if (result === 'MISSING_SNAPSHOT') {
             t.fail('snapshot is missing; run: node test/snapshot --update');
         } else {
-            // This assertion will always fail, but tap will print out the snapshots
-            // for comparison.
+            /*
+             * This assertion will always fail, but tap will print out the snapshots
+             * for comparison.
+             */
             t.equal(expected, actual, 'did not match; you may have to run: node snapshot-tests --update');
         }
         t.end();

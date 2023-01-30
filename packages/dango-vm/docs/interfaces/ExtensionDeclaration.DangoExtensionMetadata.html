@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>ExtensionMetadata | scratch-vm</title><meta name="description" content="Documentation for scratch-vm"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>DangoExtensionMetadata | scratch-vm</title><meta name="description" content="Documentation for scratch-vm"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container">
 <div class="table-cell" id="tsd-search" data-base="..">
 <div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
@@ -14,19 +14,19 @@
 <ul class="tsd-breadcrumb">
 <li><a href="../modules.html">scratch-vm</a></li>
 <li><a href="../modules/ExtensionDeclaration.html">ExtensionDeclaration</a></li>
-<li><a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a></li></ul>
-<h1>Interface ExtensionMetadata</h1></div>
+<li><a href="ExtensionDeclaration.DangoExtensionMetadata.html">DangoExtensionMetadata</a></li></ul>
+<h1>Interface DangoExtensionMetadata</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>All the metadata needed to register an extension.</p>
+<div class="tsd-comment tsd-typography"><p>Dango&#39;s Extension Metadata.</p>
 </div></section>
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
-<li><span class="target">ExtensionMetadata</span>
+<li><a href="ExtensionDeclaration.ExtensionMetadata.html" class="tsd-signature-type" data-tsd-kind="Interface">ExtensionMetadata</a>
 <ul class="tsd-hierarchy">
-<li><a href="ExtensionDeclaration.DangoExtensionMetadata.html" class="tsd-signature-type" data-tsd-kind="Interface">DangoExtensionMetadata</a></li></ul></li></ul></section><aside class="tsd-sources">
+<li><span class="target">DangoExtensionMetadata</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L41">packages/dango-vm/src/extension-support/extension-metadata.ts:41</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L100">packages/dango-vm/src/extension-support/extension-metadata.ts:100</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -34,115 +34,134 @@
 <div class="tsd-accordion-details">
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Properties</h3>
-<div class="tsd-index-list"><a href="ExtensionDeclaration.ExtensionMetadata.html#blockIconURI" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-1024-path"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)" id="icon-1024-text"></path></svg><span>block<wbr/>IconURI?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#blocks" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>blocks</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#color1" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>color1?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#color2" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>color2?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#color3" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>color3?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#customFieldTypes" class="tsd-index-link deprecated tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>custom<wbr/>Field<wbr/>Types?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#docsURI" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>docsURI?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#id" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>id</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#menuIconURI" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>menu<wbr/>IconURI?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#menus" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>menus?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#name" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>name?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#showStatusButton" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>show<wbr/>Status<wbr/>Button?</span></a>
-<a href="ExtensionDeclaration.ExtensionMetadata.html#translation_map" class="tsd-index-link deprecated tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>translation_<wbr/>map?</span></a>
+<div class="tsd-index-list"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#blockIconURI" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-1024-path"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)" id="icon-1024-text"></path></svg><span>block<wbr/>IconURI?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#blocks" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>blocks</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#color1" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>color1?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#color2" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>color2?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#color3" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>color3?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#customFieldTypes" class="tsd-index-link deprecated tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>custom<wbr/>Field<wbr/>Types?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#docsURI" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>docsURI?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#id" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>id</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#menuIconURI" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>menu<wbr/>IconURI?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#menus" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>menus?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#name" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>name?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#sandboxMode" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>sandbox<wbr/>Mode?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#showStatusButton" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>show<wbr/>Status<wbr/>Button?</span></a>
+<a href="ExtensionDeclaration.DangoExtensionMetadata.html#translation_map" class="tsd-index-link deprecated tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>translation_<wbr/>map?</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="blockIconURI" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="blockIconURI" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>block<wbr/>IconURI</span><a href="#blockIconURI" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
 <div class="tsd-signature">block<wbr/>IconURI<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>URI for an image to be placed on each block in this extension.
 Should be a data: URI</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#blockIconURI">blockIconURI</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L56">packages/dango-vm/src/extension-support/extension-metadata.ts:56</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="blocks" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="blocks" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>blocks</span><a href="#blocks" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">blocks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="ExtensionDeclaration.ExtensionBlockMetadata.html" class="tsd-signature-type" data-tsd-kind="Interface">ExtensionBlockMetadata</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>the blocks provided by this extension, plus separators</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#blocks">blocks</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L81">packages/dango-vm/src/extension-support/extension-metadata.ts:81</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="color1" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="color1" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>color1</span><a href="#color1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">color1<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>Should be a hex color code.</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#color1">color1</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L69">packages/dango-vm/src/extension-support/extension-metadata.ts:69</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="color2" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="color2" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>color2</span><a href="#color2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">color2<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>Should be a hex color code.</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#color2">color2</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L73">packages/dango-vm/src/extension-support/extension-metadata.ts:73</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="color3" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="color3" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>color3</span><a href="#color3" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">color3<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>Should be a hex color code.</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#color3">color3</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L77">packages/dango-vm/src/extension-support/extension-metadata.ts:77</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="customFieldTypes" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="customFieldTypes" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span class="deprecated">custom<wbr/>Field<wbr/>Types</span><a href="#customFieldTypes" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">custom<wbr/>Field<wbr/>Types<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="ExtensionDeclaration.CustomFieldType.html" class="tsd-signature-type" data-tsd-kind="Interface">CustomFieldType</a><span class="tsd-signature-symbol">&gt;</span></div>
 <div class="tsd-comment tsd-typography">
 <h3>Deprecated</h3><p>only preserved, no practical use</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#customFieldTypes">customFieldTypes</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L89">packages/dango-vm/src/extension-support/extension-metadata.ts:89</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="docsURI" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="docsURI" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>docsURI</span><a href="#docsURI" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">docsURI<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>link to documentation content for this extension</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#docsURI">docsURI</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L65">packages/dango-vm/src/extension-support/extension-metadata.ts:65</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="id" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="id" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>id</span><a href="#id" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>a unique alphanumeric identifier for this extension. No special characters allowed.</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#id">id</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L45">packages/dango-vm/src/extension-support/extension-metadata.ts:45</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="menuIconURI" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="menuIconURI" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>menu<wbr/>IconURI</span><a href="#menuIconURI" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">menu<wbr/>IconURI<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>URI for an image to be placed on this extension&#39;s category menu item.
 Should be a data: URI</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#menuIconURI">menuIconURI</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L61">packages/dango-vm/src/extension-support/extension-metadata.ts:61</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="menus" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="menus" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>menus</span><a href="#menus" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">menus<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="ExtensionDeclaration.ExtensionMenu.html" class="tsd-signature-type" data-tsd-kind="Interface">ExtensionMenu</a><span class="tsd-signature-symbol">&gt;</span></div>
 <div class="tsd-comment tsd-typography"><p>map of menu name to metadata for each of this extension&#39;s menus.</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#menus">menus</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L85">packages/dango-vm/src/extension-support/extension-metadata.ts:85</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="name" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">name<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>the human-readable name of this extension.
 Defaults to ID if not specified.</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#name">name</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L50">packages/dango-vm/src/extension-support/extension-metadata.ts:50</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="showStatusButton" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="sandboxMode" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>sandbox<wbr/>Mode</span><a href="#sandboxMode" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<div class="tsd-signature">sandbox<wbr/>Mode<span class="tsd-signature-symbol">?:</span> <a href="../types/ExtensionDeclaration.SandboxMode.html" class="tsd-signature-type" data-tsd-kind="Type alias">SandboxMode</a></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L101">packages/dango-vm/src/extension-support/extension-metadata.ts:101</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="showStatusButton" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>show<wbr/>Status<wbr/>Button</span><a href="#showStatusButton" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">show<wbr/>Status<wbr/>Button<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#showStatusButton">showStatusButton</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L51">packages/dango-vm/src/extension-support/extension-metadata.ts:51</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="translation_map" class="tsd-anchor"></a>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a id="translation_map" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span class="deprecated">translation_<wbr/>map</span><a href="#translation_map" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">translation_<wbr/>map<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 <div class="tsd-comment tsd-typography"><p>translation maps</p>
 
 <h3>Deprecated</h3><p>only exists in documentation, not implemented</p>
 </div><aside class="tsd-sources">
+<p>Inherited from <a href="ExtensionDeclaration.ExtensionMetadata.html">ExtensionMetadata</a>.<a href="ExtensionDeclaration.ExtensionMetadata.html#translation_map">translation_map</a></p>
 <ul>
 <li>Defined in <a href="https://github.com/SimonShiki/editor/blob/dfc1ac5/packages/dango-vm/src/extension-support/extension-metadata.ts#L94">packages/dango-vm/src/extension-support/extension-metadata.ts:94</a></li></ul></aside></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -169,21 +188,22 @@ Defaults to ID if not specified.</p>
 <li class="current tsd-kind-namespace"><a href="../modules/ExtensionDeclaration.html">Extension<wbr/>Declaration</a></li></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky">
 <ul>
-<li class="current tsd-kind-interface tsd-parent-kind-namespace"><a href="ExtensionDeclaration.ExtensionMetadata.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg><span>Extension<wbr/>Metadata</span></a>
+<li class="current tsd-kind-interface tsd-parent-kind-namespace"><a href="ExtensionDeclaration.DangoExtensionMetadata.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg><span>Dango<wbr/>Extension<wbr/>Metadata</span></a>
 <ul>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#blockIconURI" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>block<wbr/>IconURI?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#blocks" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>blocks</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#color1" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>color1?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#color2" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>color2?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#color3" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>color3?</a></li>
-<li class="deprecated tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#customFieldTypes" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>custom<wbr/>Field<wbr/>Types?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#docsURI" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>docsURI?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#id" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>id</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#menuIconURI" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>menu<wbr/>IconURI?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#menus" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>menus?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#name" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>name?</a></li>
-<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#showStatusButton" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>show<wbr/>Status<wbr/>Button?</a></li>
-<li class="deprecated tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.ExtensionMetadata.html#translation_map" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>translation_<wbr/>map?</a></li></ul></li></ul></nav></div></div>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#blockIconURI" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>block<wbr/>IconURI?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#blocks" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>blocks</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#color1" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>color1?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#color2" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>color2?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#color3" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>color3?</a></li>
+<li class="deprecated tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#customFieldTypes" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>custom<wbr/>Field<wbr/>Types?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#docsURI" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>docsURI?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#id" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>id</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#menuIconURI" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>menu<wbr/>IconURI?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#menus" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>menus?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#name" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>name?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#sandboxMode" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>sandbox<wbr/>Mode?</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#showStatusButton" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>show<wbr/>Status<wbr/>Button?</a></li>
+<li class="deprecated tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ExtensionDeclaration.DangoExtensionMetadata.html#translation_map" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>translation_<wbr/>map?</a></li></ul></li></ul></nav></div></div>
 <div class="container tsd-generator">
 <p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
 <div class="overlay"></div><script src="../assets/main.js"></script></body></html>

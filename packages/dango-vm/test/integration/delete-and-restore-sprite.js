@@ -4,7 +4,7 @@ const makeTestStorage = require('../fixtures/make-test-storage');
 const readFileToBuffer = require('../fixtures/readProjectFile').readFileToBuffer;
 
 const VirtualMachine = require('../../src/virtual-machine');
-// const RenderedTarget = require('../../src/sprites/rendered-target');
+// Const RenderedTarget = require('../../src/sprites/rendered-target');
 
 const projectUri = path.resolve(__dirname, '../fixtures/default.sb2');
 const project = readFileToBuffer(projectUri);
@@ -17,9 +17,11 @@ test('spec', t => {
 });
 
 test('default cat', t => {
-    // Get default cat from .sprite2
-    // const uri = path.resolve(__dirname, '../fixtures/example_sprite.sprite2');
-    // const sprite = readFileToBuffer(uri);
+    /*
+     * Get default cat from .sprite2
+     * const uri = path.resolve(__dirname, '../fixtures/example_sprite.sprite2');
+     * const sprite = readFileToBuffer(uri);
+     */
 
     vm.attachStorage(makeTestStorage());
 
@@ -38,7 +40,7 @@ test('default cat', t => {
     t.doesNotThrow(() => {
         vm.loadProject(project).then(() => {
 
-            t.equal(vm.runtime.targets.length, 2); // stage and default sprite
+            t.equal(vm.runtime.targets.length, 2); // Stage and default sprite
 
             const defaultSprite = vm.runtime.targets[1];
 

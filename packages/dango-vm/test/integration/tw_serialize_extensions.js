@@ -22,7 +22,7 @@ test('Serializes custom extensions', t => {
     });
     vm.runtime.addTarget(target);
 
-    // test2 isn't used, so it shouldn't be included in the JSON
+    // Test2 isn't used, so it shouldn't be included in the JSON
     const serialized = JSON.parse(vm.toJSON());
     t.same(serialized.extensions, ['test1']);
     t.same(serialized.extensionURLs, {

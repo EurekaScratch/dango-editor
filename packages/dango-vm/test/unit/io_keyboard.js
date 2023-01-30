@@ -71,20 +71,21 @@ test('non-english key', t => {
     t.end();
 });
 
-/* TW: This test is disabled because we intentionally add support for modifier keys.
-test('ignore modifier key', t => {
-    const rt = new Runtime();
-    const k = new Keyboard(rt);
-
-    k.postData({
-        key: 'Shift',
-        isDown: true
-    });
-    t.strictDeepEquals(k._keysPressed, []);
-    t.strictEquals(k.getKeyIsDown('any'), false);
-    t.end();
-});
-*/
+/*
+ * TW: This test is disabled because we intentionally add support for modifier keys.
+ * test('ignore modifier key', t => {
+ *  const rt = new Runtime();
+ *  const k = new Keyboard(rt);
+ * 
+ *  k.postData({
+ *      key: 'Shift',
+ *      isDown: true
+ *  });
+ *  t.strictDeepEquals(k._keysPressed, []);
+ *  t.strictEquals(k.getKeyIsDown('any'), false);
+ *  t.end();
+ * });
+ */
 
 test('keyup', t => {
     const rt = new Runtime();

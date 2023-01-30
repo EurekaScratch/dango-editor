@@ -19,10 +19,12 @@ tap.beforeEach(() => {
 
     vm.attachStorage(makeTestStorage());
     return vm.loadProject(project).then(() => {
-        // The test in project_load_changed_state.js tests
-        // that loading a project does not emit a project changed
-        // event. This setup tries to be agnostic of whether that
-        // test is passing or failing.
+        /*
+         * The test in project_load_changed_state.js tests
+         * that loading a project does not emit a project changed
+         * event. This setup tries to be agnostic of whether that
+         * test is passing or failing.
+         */
         projectChanged = false;
     });
 });

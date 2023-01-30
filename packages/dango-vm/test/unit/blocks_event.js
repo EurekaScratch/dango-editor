@@ -63,23 +63,23 @@ test('#760 - broadcastAndWait', t => {
     util.thread = th;
     util.runtime = rt;
 
-    // creates threads
+    // Creates threads
     e.broadcastAndWait({BROADCAST_OPTION: {id: 'testBroadcastID', name: 'message'}}, util);
     t.strictEqual(rt.threads.length, 2);
     t.strictEqual(rt.threads[1].topBlock, 'receiveMessageBlock');
-    // yields when some thread is active
+    // Yields when some thread is active
     t.strictEqual(th.status, Thread.STATUS_YIELD);
     th.status = Thread.STATUS_RUNNING;
     e.broadcastAndWait({BROADCAST_OPTION: {id: 'testBroadcastID', name: 'message'}}, util);
     t.strictEqual(th.status, Thread.STATUS_YIELD);
-    // does not yield once all threads are done
+    // Does not yield once all threads are done
     th.status = Thread.STATUS_RUNNING;
     rt.threads[1].status = Thread.STATUS_DONE;
     rt.threads.splice(1, 1);
     e.broadcastAndWait({BROADCAST_OPTION: {id: 'testBroadcastID', name: 'message'}}, util);
     t.strictEqual(th.status, Thread.STATUS_RUNNING);
 
-    // restarts done threads that are in runtime threads
+    // Restarts done threads that are in runtime threads
     rt.updateThreadMap();
     th = rt._pushThread('broadcastAndWaitBlock', tgt);
     util.thread = th;
@@ -87,11 +87,11 @@ test('#760 - broadcastAndWait', t => {
     t.strictEqual(rt.threads.length, 3);
     t.strictEqual(rt.threads[2].status, Thread.STATUS_RUNNING);
     t.strictEqual(th.status, Thread.STATUS_YIELD);
-    // yields when some restarted thread is active
+    // Yields when some restarted thread is active
     th.status = Thread.STATUS_RUNNING;
     e.broadcastAndWait({BROADCAST_OPTION: {id: 'testBroadcastID', name: 'message'}}, util);
     t.strictEqual(th.status, Thread.STATUS_YIELD);
-    // does not yield once all threads are done
+    // Does not yield once all threads are done
     th.status = Thread.STATUS_RUNNING;
     rt.threads[2].status = Thread.STATUS_DONE;
     rt.threads.splice(2, 1);

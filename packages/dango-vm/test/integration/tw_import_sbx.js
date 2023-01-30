@@ -21,12 +21,12 @@ test('importing ScratchX/.sbx project', async t => {
                 savedExtensions: [
                     {
                         menus: {
-                            // not important for this test
+                            // Not important for this test
                         },
                         extensionName: 'Spotify',
                         javascriptURL: 'https://ericrosenbaum.github.io/spotify-extension/extension.js',
                         blockSpecs: [
-                            // not important for this test
+                            // Not important for this test
                         ]
                     },
                     {

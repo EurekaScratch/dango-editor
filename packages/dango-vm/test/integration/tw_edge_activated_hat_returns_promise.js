@@ -11,8 +11,10 @@ test('edge activated hats returning promises work properly', async t => {
         enabled: false
     });
 
-    // Modify event_whengreaterthan to return a Promise (like a custom extension would) and allow us
-    // to replace the value. This is a bit of a hack.
+    /*
+     * Modify event_whengreaterthan to return a Promise (like a custom extension would) and allow us
+     * to replace the value. This is a bit of a hack.
+     */
     let hatValue = false;
     vm.runtime._primitives.event_whengreaterthan = () => Promise.resolve(hatValue);
 
@@ -39,7 +41,7 @@ test('edge activated hats returning promises work properly', async t => {
 
     hatValue = true;
     await step();
-    // promise can't resolve in this tick, so block shouldn't run yet
+    // Promise can't resolve in this tick, so block shouldn't run yet
     t.equal(sayCounter, 0);
     await step();
     t.equal(sayCounter, 1);

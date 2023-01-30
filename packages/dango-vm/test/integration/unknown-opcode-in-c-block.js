@@ -18,12 +18,14 @@ test('unknown opcode', t => {
     vm.loadProject(project).then(() => {
         vm.greenFlag();
 
-        // The project has 3 blocks in a single stack:
-        //      when green flag => forever [ => "undefined"]
-        // the "undefined" block has opcode "foo" and was created by dragging
-        // a custom procedure caller named foo from the backpack into a project.
-        // It should be parsed in without error and it should
-        // leave the forever block empty.
+        /*
+         * The project has 3 blocks in a single stack:
+         *      when green flag => forever [ => "undefined"]
+         * the "undefined" block has opcode "foo" and was created by dragging
+         * a custom procedure caller named foo from the backpack into a project.
+         * It should be parsed in without error and it should
+         * leave the forever block empty.
+         */
         const blocks = vm.runtime.targets[1].blocks;
         const topBlockId = blocks.getScripts()[0];
         const secondBlockId = blocks.getNextBlock(topBlockId);

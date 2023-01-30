@@ -31,8 +31,10 @@ const runExecutionTests = compilerEnabled => async test => {
             callback: (args, util) => {
                 calledBlock1 = true;
                 t.type(util.thread, 'object');
-                // may have to update this ID when the project changes to match whatever the ID is for the
-                // procedures_call block to block 2 %s
+                /*
+                 * May have to update this ID when the project changes to match whatever the ID is for the
+                 * procedures_call block to block 2 %s
+                 */
                 t.equal(util.thread.peekStack(), 'c');
                 t.same(args, {
                     'number or text': 'banana'

@@ -19,9 +19,11 @@ test('importing sb2 project where block comment is converted to workspace commen
 
         const target = vm.runtime.targets[1];
 
-        // Sprite 1 has 1 comments, a workspace comment which was
-        // originally created via a block comment to workspace comment conversion in Scratch 2.0.
-        // What differentiates this test from above is that there are no scripts in this project.
+        /*
+         * Sprite 1 has 1 comments, a workspace comment which was
+         * originally created via a block comment to workspace comment conversion in Scratch 2.0.
+         * What differentiates this test from above is that there are no scripts in this project.
+         */
         const targetComments = Object.values(target.comments);
         t.equal(targetComments.length, 1);
         const spriteWorkspaceComments = targetComments.filter(comment => comment.blockId === null);

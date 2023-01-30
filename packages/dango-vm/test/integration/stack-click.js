@@ -8,7 +8,7 @@ const projectUri = path.resolve(__dirname, '../fixtures/stack-click.sb2');
 const project = readFileToBuffer(projectUri);
 
 /**
- * stack-click.sb2 contains a sprite at (0, 0) with a single stack
+ * Stack-click.sb2 contains a sprite at (0, 0) with a single stack
  *     when timer > 100000000
  *         move 100 steps
  * The intention is to make sure that the stack can be activated by a stack click

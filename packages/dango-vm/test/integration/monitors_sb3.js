@@ -15,17 +15,23 @@ test('importing sb3 project with monitors', t => {
     // Evaluate playground data and exit
     vm.on('playgroundData', e => {
         const threads = JSON.parse(e.threads);
-        // All monitors should create threads that finish during the step and
-        // are revoved from runtime.threads.
+        /*
+         * All monitors should create threads that finish during the step and
+         * are revoved from runtime.threads.
+         */
         t.equal(threads.length, 0);
 
-        // we care that the last step updated the right number of monitors
-        // we don't care whether the last step ran other threads or not
+        /*
+         * We care that the last step updated the right number of monitors
+         * we don't care whether the last step ran other threads or not
+         */
         const lastStepUpdatedMonitorThreads = vm.runtime._lastStepDoneThreads.filter(thread => thread.updateMonitor);
         t.equal(lastStepUpdatedMonitorThreads.length, 17);
 
-        // There should be one additional hidden monitor that is in the monitorState but
-        // does not start a thread.
+        /*
+         * There should be one additional hidden monitor that is in the monitorState but
+         * does not start a thread.
+         */
         t.equal(vm.runtime._monitorState.size, 18);
 
         const stage = vm.runtime.targets[0];
@@ -44,8 +50,10 @@ test('importing sb3 project with monitors', t => {
         t.equal(monitorRecord.isDiscrete, true); // The default if not present
         t.equal(monitorRecord.x, 10);
         t.equal(monitorRecord.y, 62);
-        // Height and width are only used for list monitors and should default to 0
-        // for all other monitors
+        /*
+         * Height and width are only used for list monitors and should default to 0
+         * for all other monitors
+         */
         t.equal(monitorRecord.width, 0);
         t.equal(monitorRecord.height, 0);
         t.equal(monitorRecord.visible, true);
@@ -125,9 +133,11 @@ test('importing sb3 project with monitors', t => {
         t.equal(monitorBlock.fields.VARIABLE.id, variableId);
         t.equal(monitorBlock.fields.VARIABLE.variableType, Variable.SCALAR_TYPE);
 
-        // Backdrop name monitor is visible, not sprite specific
-        // should get imported with id that references the name parameter
-        // via '_name' at the end since the 3.0 block has a dropdown.
+        /*
+         * Backdrop name monitor is visible, not sprite specific
+         * should get imported with id that references the name parameter
+         * via '_name' at the end since the 3.0 block has a dropdown.
+         */
         let monitorId = 'backdropnumbername_name';
         monitorRecord = vm.runtime._monitorState.get(monitorId);
         monitorBlock = vm.runtime.monitorBlocks.getBlock(monitorId);
@@ -139,9 +149,11 @@ test('importing sb3 project with monitors', t => {
         // Test that the monitor block and its fields were constructed correctly
         t.equal(monitorBlock.fields.NUMBER_NAME.value, 'name');
 
-        // Backdrop name monitor is visible, not sprite specific
-        // should get imported with id that references the name parameter
-        // via '_number' at the end since the 3.0 block has a dropdown.
+        /*
+         * Backdrop name monitor is visible, not sprite specific
+         * should get imported with id that references the name parameter
+         * via '_number' at the end since the 3.0 block has a dropdown.
+         */
         monitorId = 'backdropnumbername_number';
         monitorRecord = vm.runtime._monitorState.get(monitorId);
         monitorBlock = vm.runtime.monitorBlocks.getBlock(monitorId);
@@ -153,7 +165,7 @@ test('importing sb3 project with monitors', t => {
         // Test that the monitor block and its fields were constructed correctly
         t.equal(monitorBlock.fields.NUMBER_NAME.value, 'number');
 
-        // x position monitor is in large mode, specific to shirt sprite
+        // X position monitor is in large mode, specific to shirt sprite
         monitorId = `${shirtSprite.id}_xposition`;
         monitorRecord = vm.runtime._monitorState.get(monitorId);
         monitorBlock = vm.runtime.monitorBlocks.getBlock(monitorId);
@@ -163,7 +175,7 @@ test('importing sb3 project with monitors', t => {
         t.equal(monitorRecord.spriteName, 'Shirt-T');
         t.equal(monitorRecord.targetId, shirtSprite.id);
 
-        // y position monitor is in large mode, specific to shirt sprite
+        // Y position monitor is in large mode, specific to shirt sprite
         monitorId = `${shirtSprite.id}_yposition`;
         monitorRecord = vm.runtime._monitorState.get(monitorId);
         monitorBlock = vm.runtime.monitorBlocks.getBlock(monitorId);
@@ -173,7 +185,7 @@ test('importing sb3 project with monitors', t => {
         t.equal(monitorRecord.spriteName, 'Shirt-T');
         t.equal(monitorRecord.targetId, shirtSprite.id);
 
-        // direction monitor is in large mode, specific to shirt sprite
+        // Direction monitor is in large mode, specific to shirt sprite
         monitorId = `${shirtSprite.id}_direction`;
         monitorRecord = vm.runtime._monitorState.get(monitorId);
         monitorBlock = vm.runtime.monitorBlocks.getBlock(monitorId);
@@ -192,10 +204,12 @@ test('importing sb3 project with monitors', t => {
         t.equal(monitorRecord.spriteName, 'Shirt-T');
         t.equal(monitorRecord.targetId, shirtSprite.id);
 
-        // The monitor IDs for the sensing_current block should be unique
-        // to the parameter that is selected on the block being monitored.
-        // The paramater portion of the id should be lowercase even
-        // though the field value on the block is uppercase.
+        /*
+         * The monitor IDs for the sensing_current block should be unique
+         * to the parameter that is selected on the block being monitored.
+         * The paramater portion of the id should be lowercase even
+         * though the field value on the block is uppercase.
+         */
         monitorId = 'current_date';
         monitorRecord = vm.runtime._monitorState.get(monitorId);
         t.equal(monitorRecord.opcode, 'sensing_current');

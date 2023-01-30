@@ -76,9 +76,11 @@ test('switch costume block runs correctly', t => {
     // Non-existant costumes do nothing
     t.strictEqual(testCostume(['a', 'b', 'c', 'd'], 'e', 3), 3);
 
-    // Numeric arguments are always the costume index
-    // String arguments are treated as costume names, and coerced to
-    // a costume index as a fallback
+    /*
+     * Numeric arguments are always the costume index
+     * String arguments are treated as costume names, and coerced to
+     * a costume index as a fallback
+     */
     t.strictEqual(testCostume(['a', 'b', 'c', '2'], 2), 2);
     t.strictEqual(testCostume(['a', 'b', 'c', '2'], '2'), 4);
     t.strictEqual(testCostume(['a', 'b', 'c'], '2'), 2);
@@ -131,8 +133,10 @@ test('switch backdrop block runs correctly', t => {
     t.strictEqual(testBackdrop(['a', 'b', 'c', 'd'], 'previous backdrop', 3), 2);
     t.strictEqual(testBackdrop(['a', 'b', 'c', 'd'], 'next backdrop', 2), 3);
 
-    // 'previous backdrop', 'previous backdrop', 'random backdrop' can be overriden
-    // Test is deterministic since 'random backdrop' will not pick the same backdrop as currently selected
+    /*
+     * 'previous backdrop', 'previous backdrop', 'random backdrop' can be overriden
+     * Test is deterministic since 'random backdrop' will not pick the same backdrop as currently selected
+     */
     t.strictEqual(testBackdrop(['a', 'previous backdrop', 'c', 'd'], 'previous backdrop', 4), 2);
     t.strictEqual(testBackdrop(['next backdrop', 'b', 'c', 'd'], 'next backdrop', 3), 1);
     t.strictEqual(testBackdrop(['random backdrop', 'b', 'c', 'd'], 'random backdrop'), 1);

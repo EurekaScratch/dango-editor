@@ -8,9 +8,11 @@ tap.tearDown(() => process.nextTick(process.exit));
 
 const test = tap.test;
 
-// Test that loading a project does not emit a project change
-// This is in its own file so that it does not affect the test setup
-// and results of the other project changed state tests
+/*
+ * Test that loading a project does not emit a project change
+ * This is in its own file so that it does not affect the test setup
+ * and results of the other project changed state tests
+ */
 test('Loading a project should not emit a project changed event', t => {
     const projectUri = path.resolve(__dirname, '../fixtures/default.sb2');
     const project = readFileToBuffer(projectUri);

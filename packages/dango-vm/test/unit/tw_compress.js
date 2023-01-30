@@ -99,10 +99,10 @@ test('all IDs unique', t => {
         listSoup,
         broadcastSoup
     ] of [
-        [soup, '', ''],
-        ['', soup, ''],
-        ['', '', soup],
-    ]) {
+            [soup, '', ''],
+            ['', soup, ''],
+            ['', '', soup],
+        ]) {
         const data = {
             targets: [
                 {

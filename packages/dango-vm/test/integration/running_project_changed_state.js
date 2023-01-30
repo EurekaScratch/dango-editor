@@ -30,10 +30,12 @@ test('Running project should not emit project changed event', t => {
         vm.setCompatibilityMode(false);
         vm.setTurboMode(false);
         vm.loadProject(project).then(() => {
-            // The test in unit/project_load_changed_state.js tests
-            // that loading a project does not emit a project changed
-            // event. This setup tries to be agnostic of whether that
-            // test is passing or failing.
+            /*
+             * The test in unit/project_load_changed_state.js tests
+             * that loading a project does not emit a project changed
+             * event. This setup tries to be agnostic of whether that
+             * test is passing or failing.
+             */
             projectChanged = false;
 
             vm.greenFlag();

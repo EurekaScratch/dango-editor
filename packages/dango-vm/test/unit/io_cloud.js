@@ -51,7 +51,7 @@ test('postData update message updates the variable', t => {
         'a fake var id',
         'foo',
         Variable.SCALAR_TYPE,
-        true /* isCloud */
+        true /* IsCloud */
     );
     stage.variables[fooVar.id] = fooVar;
 
@@ -75,7 +75,7 @@ test('requestUpdateVariable calls provider\'s updateVariable function', t => {
         updateVariableCalled = true;
         mockVarName = name;
         mockVarValue = value;
-        return;
+        
     };
 
     const provider = {
@@ -101,7 +101,7 @@ test('requestCreateVariable calls provider\'s createVariable function', t => {
         createVariableCalled = true;
         mockVarName = name;
         mockVarValue = value;
-        return;
+        
     };
 
     const provider = {
@@ -128,7 +128,7 @@ test('requestRenameVariable calls provider\'s renameVariable function', t => {
         renameVariableCalled = true;
         mockVarOldName = oldName;
         mockVarNewName = newName;
-        return;
+        
     };
 
     const provider = {
@@ -151,7 +151,7 @@ test('requestDeleteVariable calls provider\'s deleteVariable function', t => {
     const mockDeleteVariable = name => {
         deleteVariableCalled = true;
         mockVarName = name;
-        return;
+        
     };
 
     const provider = {

@@ -24,7 +24,7 @@ const checkIsStackClickThread = (t, vm, stackClickThread) => {
 };
 
 /**
- * timer-greater-than-hat.sb2 contains a single stack
+ * Timer-greater-than-hat.sb2 contains a single stack
  *     when timer > -1
  *         change color effect by 25
  * The intention is to make sure that the hat block condition is evaluated
@@ -157,8 +157,10 @@ test('edge activated hat thread not added twice', t => {
  */
 test('edge activated hat should trigger for both sprites when sprite is duplicated', t => {
 
-    // Project that is similar to timer-greater-than-hat.sb2, but has code on the sprite so that
-    // the sprite can be duplicated
+    /*
+     * Project that is similar to timer-greater-than-hat.sb2, but has code on the sprite so that
+     * the sprite can be duplicated
+     */
     const projectWithSpriteUri = path.resolve(__dirname, '../fixtures/edge-triggered-hat.sb3');
     const projectWithSprite = readFileToBuffer(projectWithSpriteUri);
 
@@ -186,8 +188,10 @@ test('edge activated hat should trigger for both sprites when sprite is duplicat
 
             vm.duplicateSprite(vm.runtime.targets[1].id).then(() => {
                 vm.runtime._step();
-                // Check that the runtime's _edgeActivatedHatValues object has two separate keys
-                // after execute is run on each thread
+                /*
+                 * Check that the runtime's _edgeActivatedHatValues object has two separate keys
+                 * after execute is run on each thread
+                 */
                 numTargetEdgeHats = vm.runtime.targets.reduce((val, target) =>
                     val + Object.keys(target._edgeActivatedHatValues).length, 0);
                 t.equal(numTargetEdgeHats, 2);
@@ -204,8 +208,10 @@ test('edge activated hat should trigger for both sprites when sprite is duplicat
  */
 test('edge activated hat should trigger for both sprites when sprite is cloned', t => {
 
-    // Project that is similar to loudness-hat-block.sb2, but has code on the sprite so that
-    // the sprite can be duplicated
+    /*
+     * Project that is similar to loudness-hat-block.sb2, but has code on the sprite so that
+     * the sprite can be duplicated
+     */
     const projectWithSpriteUri = path.resolve(__dirname, '../fixtures/edge-triggered-hat.sb3');
     const projectWithSprite = readFileToBuffer(projectWithSpriteUri);
 
@@ -227,8 +233,10 @@ test('edge activated hat should trigger for both sprites when sprite is cloned',
             t.equal(vm.runtime.threads.length, 1);
             checkIsHatThread(t, vm, vm.runtime.threads[0]);
             t.assert(vm.runtime.threads[0].status === Thread.STATUS_RUNNING);
-            // Run execute on the thread to populate the runtime's
-            // _edgeActivatedHatValues object
+            /*
+             * Run execute on the thread to populate the runtime's
+             * _edgeActivatedHatValues object
+             */
             execute(vm.runtime.sequencer, vm.runtime.threads[0]);
             let numTargetEdgeHats = vm.runtime.targets.reduce((val, target) =>
                 val + Object.keys(target._edgeActivatedHatValues).length, 0);
@@ -238,8 +246,10 @@ test('edge activated hat should trigger for both sprites when sprite is cloned',
             vm.runtime.addTarget(cloneTarget);
 
             vm.runtime._step();
-            // Check that the runtime's _edgeActivatedHatValues object has two separate keys
-            // after execute is run on each thread
+            /*
+             * Check that the runtime's _edgeActivatedHatValues object has two separate keys
+             * after execute is run on each thread
+             */
             vm.runtime.threads.forEach(thread => execute(vm.runtime.sequencer, thread));
             numTargetEdgeHats = vm.runtime.targets.reduce((val, target) =>
                 val + Object.keys(target._edgeActivatedHatValues).length, 0);

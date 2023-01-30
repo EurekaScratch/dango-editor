@@ -17,12 +17,16 @@ test('importing sb2 project with special chars in variable names', t => {
     // Evaluate playground data and exit
     vm.on('playgroundData', e => {
         const threads = JSON.parse(e.threads);
-        // All monitors should create threads that finish during the step and
-        // are revoved from runtime.threads.
+        /*
+         * All monitors should create threads that finish during the step and
+         * are revoved from runtime.threads.
+         */
         t.equal(threads.length, 0);
 
-        // we care that the last step updated the right number of monitors
-        // we don't care whether the last step ran other threads or not
+        /*
+         * We care that the last step updated the right number of monitors
+         * we don't care whether the last step ran other threads or not
+         */
         const lastStepUpdatedMonitorThreads = vm.runtime._lastStepDoneThreads.filter(thread => thread.updateMonitor);
         t.equal(lastStepUpdatedMonitorThreads.length, 3);
 
@@ -37,9 +41,11 @@ test('importing sb2 project with special chars in variable names', t => {
         const abVarId = Object.keys(stage.variables).filter(k => stage.variables[k].name === 'a&b')[0];
         const abVar = stage.variables[abVarId];
         const abMonitor = vm.runtime._monitorState.get(abVarId);
-        // Check for unsafe characters, replaceUnsafeChars should just result in the original string
-        // (e.g. there was nothing to replace)
-        // Check that the variable ID does not have any unsafe characters
+        /*
+         * Check for unsafe characters, replaceUnsafeChars should just result in the original string
+         * (e.g. there was nothing to replace)
+         * Check that the variable ID does not have any unsafe characters
+         */
         t.equal(StringUtil.replaceUnsafeChars(abVarId), abVarId);
         // Check that the monitor record ID does not have any unsafe characters
         t.equal(StringUtil.replaceUnsafeChars(abMonitor.id), abMonitor.id);
@@ -51,8 +57,10 @@ test('importing sb2 project with special chars in variable names', t => {
         t.equal(abVar.value[0], 'thing');
         t.equal(abVar.value[1], 'thing\'1');
 
-        // Find all the references for this list, and verify they have the correct ID
-        // There should be 3 fields, 2 on the stage, and one on the cat
+        /*
+         * Find all the references for this list, and verify they have the correct ID
+         * There should be 3 fields, 2 on the stage, and one on the cat
+         */
         t.equal(allVarListFields[abVarId].length, 3);
         const stageBlocks = Object.keys(stage.blocks._blocks).map(blockId => stage.blocks._blocks[blockId]);
         const stageListBlocks = stageBlocks.filter(block => block.fields.hasOwnProperty('LIST'));
@@ -67,9 +75,11 @@ test('importing sb2 project with special chars in variable names', t => {
         const fooVarId = Object.keys(stage.variables).filter(k => stage.variables[k].name === '"foo')[0];
         const fooVar = stage.variables[fooVarId];
         const fooMonitor = vm.runtime._monitorState.get(fooVarId);
-        // Check for unsafe characters, replaceUnsafeChars should just result in the original string
-        // (e.g. there was nothing to replace)
-        // Check that the variable ID does not have any unsafe characters
+        /*
+         * Check for unsafe characters, replaceUnsafeChars should just result in the original string
+         * (e.g. there was nothing to replace)
+         * Check that the variable ID does not have any unsafe characters
+         */
         t.equal(StringUtil.replaceUnsafeChars(fooVarId), fooVarId);
         // Check that the monitor record ID does not have any unsafe characters
         t.equal(StringUtil.replaceUnsafeChars(fooMonitor.id), fooMonitor.id);
@@ -80,8 +90,10 @@ test('importing sb2 project with special chars in variable names', t => {
         t.equal(fooVar.type, Variable.SCALAR_TYPE);
         t.equal(fooVar.value, 'foo');
 
-        // Find all the references for this variable, and verify they have the correct ID
-        // There should be only two, one on the stage and one on bananas
+        /*
+         * Find all the references for this variable, and verify they have the correct ID
+         * There should be only two, one on the stage and one on bananas
+         */
         t.equal(allVarListFields[fooVarId].length, 2);
         const stageVarBlocks = stageBlocks.filter(block => block.fields.hasOwnProperty('VARIABLE'));
         t.equal(stageVarBlocks.length, 1);
@@ -93,9 +105,11 @@ test('importing sb2 project with special chars in variable names', t => {
         const ltPerfectVarId = Object.keys(bananas.variables).filter(k => bananas.variables[k].name === '< Perfect')[0];
         const ltPerfectVar = bananas.variables[ltPerfectVarId];
         const ltPerfectMonitor = vm.runtime._monitorState.get(ltPerfectVarId);
-        // Check for unsafe characters, replaceUnsafeChars should just result in the original string
-        // (e.g. there was nothing to replace)
-        // Check that the variable ID does not have any unsafe characters
+        /*
+         * Check for unsafe characters, replaceUnsafeChars should just result in the original string
+         * (e.g. there was nothing to replace)
+         * Check that the variable ID does not have any unsafe characters
+         */
         t.equal(StringUtil.replaceUnsafeChars(ltPerfectVarId), ltPerfectVarId);
         // Check that the monitor record ID does not have any unsafe characters
         t.equal(StringUtil.replaceUnsafeChars(ltPerfectMonitor.id), ltPerfectMonitor.id);
@@ -106,8 +120,10 @@ test('importing sb2 project with special chars in variable names', t => {
         t.equal(ltPerfectVar.type, Variable.SCALAR_TYPE);
         t.equal(ltPerfectVar.value, '> perfect');
 
-        // Find all the references for this variable, and verify they have the correct ID
-        // There should be one
+        /*
+         * Find all the references for this variable, and verify they have the correct ID
+         * There should be one
+         */
         t.equal(allVarListFields[ltPerfectVarId].length, 1);
         const bananasBlocks = Object.keys(bananas.blocks._blocks).map(blockId => bananas.blocks._blocks[blockId]);
         const bananasVarBlocks = bananasBlocks.filter(block => block.fields.hasOwnProperty('VARIABLE'));

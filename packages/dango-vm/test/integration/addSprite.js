@@ -38,7 +38,7 @@ test('default cat', t => {
     t.doesNotThrow(() => {
         vm.loadProject(project).then(() => {
 
-            t.equal(vm.runtime.targets.length, 2); // stage and default sprite
+            t.equal(vm.runtime.targets.length, 2); // Stage and default sprite
 
             // Add another sprite
             vm.addSprite(sprite).then(() => {

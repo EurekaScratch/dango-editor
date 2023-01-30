@@ -68,8 +68,10 @@ test('internal extension', t => {
     const goBlockInfo = func();
     t.ok(extension.status.goCalled);
 
-    // The 'go' block returns its own blockInfo. Make sure it matches the expected info.
-    // Note that the extension parser fills in missing fields so there are more fields here than in `getInfo`.
+    /*
+     * The 'go' block returns its own blockInfo. Make sure it matches the expected info.
+     * Note that the extension parser fills in missing fields so there are more fields here than in `getInfo`.
+     */
     const expectedBlockInfo = {
         arguments: {},
         blockAllThreads: false,
@@ -100,7 +102,7 @@ test('load sync', t => {
 
     t.equal(vm.runtime._blockInfo.length, 1);
 
-    // blocks should be an array of two items: a button pseudo-block and a reporter block.
+    // Blocks should be an array of two items: a button pseudo-block and a reporter block.
     t.equal(vm.runtime._blockInfo[0].blocks.length, 3);
     t.type(vm.runtime._blockInfo[0].blocks[0].info, 'object');
     t.type(vm.runtime._blockInfo[0].blocks[0].info.func, 'MAKE_A_VARIABLE');

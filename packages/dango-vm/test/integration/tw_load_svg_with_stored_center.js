@@ -15,7 +15,7 @@ test('importing SVG with stored rotation center', async t => {
     renderer.createSVGSkin = (svgText, rotationCenter) => {
         // Make sure that the rotation center given to the renderer is correct
         t.same(rotationCenter, [106.62300344745225, -11.822572945859918]);
-        // just need to return a valid skin ID, doesn't matter
+        // Just need to return a valid skin ID, doesn't matter
         return 1;
     };
     runtime.attachRenderer(renderer);

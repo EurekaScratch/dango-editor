@@ -33,8 +33,10 @@ test('importing an sb2 project with cloud variables', t => {
         const variable = stageVars[0];
         t.equal(variable.name, '☁ firstCloud');
         t.equal(Number(variable.value), 100); // Though scratch 2 requires
-        // cloud variables to be numbers, this is something that happens
-        // when the message is being sent to the server rather than on the client
+        /*
+         * Cloud variables to be numbers, this is something that happens
+         * when the message is being sent to the server rather than on the client
+         */
         t.equal(variable.isCloud, true);
 
         t.end();
@@ -65,8 +67,10 @@ test('importing an sb2 project with cloud variables at the limit for a project',
 });
 
 test('importing an sb2 project with cloud variables exceeding the limit for a project', t => {
-    // This tests a hacked project where additional cloud variables exceeding
-    // the project limit have been added.
+    /*
+     * This tests a hacked project where additional cloud variables exceeding
+     * the project limit have been added.
+     */
     const vm = new VirtualMachine();
     vm.attachStorage(makeTestStorage());
 
@@ -109,8 +113,10 @@ test('importing one project after the other resets cloud variable limit', t => {
             const variable = stageVars[0];
             t.equal(variable.name, '☁ firstCloud');
             t.equal(Number(variable.value), 100); // Though scratch 2 requires
-            // cloud variables to be numbers, this is something that happens
-            // when the message is being sent to the server rather than on the client
+            /*
+             * Cloud variables to be numbers, this is something that happens
+             * when the message is being sent to the server rather than on the client
+             */
             t.equal(variable.isCloud, true);
 
             t.equal(vm.runtime.canAddCloudVariable(), true);
@@ -121,8 +127,10 @@ test('importing one project after the other resets cloud variable limit', t => {
 });
 
 test('local cloud variables get imported as regular variables', t => {
-    // This tests a hacked project where a sprite-local variable is
-    // has the cloud variable flag set.
+    /*
+     * This tests a hacked project where a sprite-local variable is
+     * has the cloud variable flag set.
+     */
     const vm = new VirtualMachine();
     vm.attachStorage(makeTestStorage());
 

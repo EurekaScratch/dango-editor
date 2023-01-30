@@ -1,8 +1,10 @@
 const VM = require('../../src/virtual-machine');
 const {test} = require('tap');
 
-// The actual logic of the costume exporting and importing is tested elsewhere.
-// This is just to make sure that the VM's shims are going to the right place.
+/*
+ * The actual logic of the costume exporting and importing is tested elsewhere.
+ * This is just to make sure that the VM's shims are going to the right place.
+ */
 
 test('getExportedCostume', t => {
     const vm = new VM();
@@ -28,7 +30,7 @@ test('getExportedCostumeBase64', t => {
             },
             dataFormat: 'png'
         }),
-        // btoa("abc")
+        // Btoa("abc")
         'YWJj'
     );
     t.end();

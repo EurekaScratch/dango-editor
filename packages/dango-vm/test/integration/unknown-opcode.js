@@ -18,11 +18,13 @@ test('unknown opcode', t => {
     vm.loadProject(project).then(() => {
         vm.greenFlag();
 
-        // The project has 3 blocks in a single stack:
-        //      play sound => "undefined" => play sound
-        // the "undefined" block has opcode "0" and was found in the wild.
-        // It should be parsed in without error and it should bridge together
-        // the two play sound blocks, so there should not be a third block.
+        /*
+         * The project has 3 blocks in a single stack:
+         *      play sound => "undefined" => play sound
+         * the "undefined" block has opcode "0" and was found in the wild.
+         * It should be parsed in without error and it should bridge together
+         * the two play sound blocks, so there should not be a third block.
+         */
         const blocks = vm.runtime.targets[0].blocks;
         const topBlockId = blocks.getScripts()[0];
         const secondBlockId = blocks.getNextBlock(topBlockId);
@@ -39,8 +41,10 @@ test('unknown opcode', t => {
         t.equal(target.comments[topCommentId].text, 'pop1 comment');
         t.equal(target.comments[secondCommentId].text, 'pop2 comment');
 
-        // The comment previously attached to the undefined block should become
-        // a workspace comment, at 0/0, with the same text as it had.
+        /*
+         * The comment previously attached to the undefined block should become
+         * a workspace comment, at 0/0, with the same text as it had.
+         */
         const undefinedCommentId = Object.keys(target.comments).filter(id =>
             id !== topCommentId && id !== secondCommentId)[0];
         const undefinedComment = target.comments[undefinedCommentId];

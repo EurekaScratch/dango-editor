@@ -17,7 +17,7 @@ test('Deny both extensions', async t => {
     vm.securityManager.canLoadExtensionFromProject = () => false;
     try {
         await vm.loadProject(testProject);
-        // loadProject() should fail because extensions were denied
+        // LoadProject() should fail because extensions were denied
         t.fail();
     } catch (e) {
         t.pass();
@@ -33,7 +33,7 @@ test('Deny 1 of 2 extensions', async t => {
     vm.securityManager.canLoadExtensionFromProject = url => Promise.resolve(url === FETCH_EXTENSION);
     try {
         await vm.loadProject(testProject);
-        // loadProject() should fail because extensions were denied
+        // LoadProject() should fail because extensions were denied
         t.fail();
     } catch (e) {
         t.pass();

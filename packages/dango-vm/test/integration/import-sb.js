@@ -31,8 +31,10 @@ test('default', t => {
             const stageSounds = vm.runtime.targets[0].sprite.sounds;
             const firstSound = stageSounds[0];
 
-            // Check that the sound has the correct md5
-            // This md5 was obtained from the asset server
+            /*
+             * Check that the sound has the correct md5
+             * This md5 was obtained from the asset server
+             */
             t.equal(firstSound.md5, 'edb9713dedbe9a2e05c09e0540182ef1.wav');
 
             // After two seconds, get playground data and stop

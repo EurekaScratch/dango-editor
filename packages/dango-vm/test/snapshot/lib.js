@@ -5,7 +5,7 @@ const VM = require('../../src/virtual-machine');
 const JSGenerator = require('../../src/compiler/jsgen');
 
 const executeDir = path.resolve(__dirname, '../fixtures/execute');
-// sb2 project loading results in random IDs each time, so for now we only snapshot sb3 files
+// Sb2 project loading results in random IDs each time, so for now we only snapshot sb3 files
 const testFiles = fs.readdirSync(executeDir).filter(uri => uri.endsWith('.sb3'));
 
 /**
@@ -76,17 +76,17 @@ const generateActualSnapshot = async testCase => {
     await vm.loadProject(projectData);
 
     /*
-        Example source (manually formatted):
-        (function factory32(thread) {
-            const target = thread.target;
-            const runtime = target.runtime;
-            const stage = runtime.getTargetForStage();
-            return function* gen30_whatever () {
-                // ...
-            };
-        }; })
-        The numbers in the function names are indeterministic, we we remove them.
-    */
+     *Example source (manually formatted):
+     *(function factory32(thread) {
+     *    const target = thread.target;
+     *    const runtime = target.runtime;
+     *    const stage = runtime.getTargetForStage();
+     *    return function* gen30_whatever () {
+     *        // ...
+     *    };
+     *}; })
+     *The numbers in the function names are indeterministic, we we remove them.
+     */
     const normalizeJS = source => source
         .replace(/^\(function factory\d+/, '(function factoryXYZ')
         .replace(/return function\* gen\d+/, 'return function* genXYZ')

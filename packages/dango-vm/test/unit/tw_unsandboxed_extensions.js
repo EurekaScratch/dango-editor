@@ -1,10 +1,12 @@
 const tap = require('tap');
 const UnsandboxedExtensionRunner = require('../../src/extension-support/tw-unsandboxed-extension-runner');
 
-// Mock enough of the document API for the extension runner to think it works.
-// To more accurately test this, we want to make sure that the URLs we pass in are just strings.
-// We use a bit of hacky state here to make our document mock know what function to run
-// when a script with a given URL "loads"
+/*
+ * Mock enough of the document API for the extension runner to think it works.
+ * To more accurately test this, we want to make sure that the URLs we pass in are just strings.
+ * We use a bit of hacky state here to make our document mock know what function to run
+ * when a script with a given URL "loads"
+ */
 const scriptCallbacks = new Map();
 const setScript = (src, callback) => {
     scriptCallbacks.set(src, callback);
@@ -82,8 +84,10 @@ test('multiple VMs loading extensions', async t => {
 
     let api1 = null;
     setScript('https://turbowarp.org/1.js', async () => {
-        // Even if this extension takes a while to register, we should still have our own
-        // global.Scratch.
+        /*
+         * Even if this extension takes a while to register, we should still have our own
+         * global.Scratch.
+         */
         await new Promise(resolve => setTimeout(resolve, 100));
 
         if (api1) throw new Error('already ran 1');

@@ -158,7 +158,7 @@ test('setStageSize preserves monitor position relative to center of stage', t =>
     const rt = new Runtime();
     rt.requestAddMonitor(new Map([
         ['id', 'abc'],
-        // top right corner
+        // Top right corner
         ['x', 0],
         ['y', 0]
     ]));

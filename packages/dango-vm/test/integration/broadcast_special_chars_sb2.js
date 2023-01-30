@@ -28,9 +28,11 @@ test('importing sb2 project with special chars in message names', t => {
 
         const abMessageId = Object.keys(stage.variables).filter(k => stage.variables[k].name === 'a&b')[0];
         const abMessage = stage.variables[abMessageId];
-        // Check for unsafe characters, replaceUnsafeChars should just result in the original string
-        // (e.g. there was nothing to replace)
-        // Check that the message ID does not have any unsafe characters
+        /*
+         * Check for unsafe characters, replaceUnsafeChars should just result in the original string
+         * (e.g. there was nothing to replace)
+         * Check that the message ID does not have any unsafe characters
+         */
         t.equal(StringUtil.replaceUnsafeChars(abMessageId), abMessageId);
 
         // Check that the message still has the correct info
@@ -42,9 +44,11 @@ test('importing sb2 project with special chars in message names', t => {
 
         const ltPerfectMessageId = Object.keys(stage.variables).filter(k => stage.variables[k].name === '< perfect')[0];
         const ltPerfectMessage = stage.variables[ltPerfectMessageId];
-        // Check for unsafe characters, replaceUnsafeChars should just result in the original string
-        // (e.g. there was nothing to replace)
-        // Check that the message ID does not have any unsafe characters
+        /*
+         * Check for unsafe characters, replaceUnsafeChars should just result in the original string
+         * (e.g. there was nothing to replace)
+         * Check that the message ID does not have any unsafe characters
+         */
         t.equal(StringUtil.replaceUnsafeChars(ltPerfectMessageId), ltPerfectMessageId);
 
         // Check that the message still has the correct info

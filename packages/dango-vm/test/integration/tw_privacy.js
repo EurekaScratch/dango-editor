@@ -4,7 +4,7 @@ const VM = require('../../src/virtual-machine');
 
 const mockRenderer = () => ({
     setLayerGroupOrdering: () => {
-        // not relevant to this test
+        // Not relevant to this test
     },
 
     privateSkinAccess: true,

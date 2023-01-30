@@ -154,10 +154,10 @@ class MockTimer {
             }
         });
 
-        // sort so that earlier timeouts run before later timeouts
+        // Sort so that earlier timeouts run before later timeouts
         ready.sort((a, b) => a.time < b.time);
 
-        // next tick, call everything that's ready
+        // Next tick, call everything that's ready
         global.setTimeout(() => {
             ready.forEach(o => o.handler());
         }, 0);

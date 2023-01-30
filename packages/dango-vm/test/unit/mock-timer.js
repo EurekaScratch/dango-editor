@@ -58,15 +58,15 @@ test('start / timeElapsed', t => new Promise(resolve => {
         resolve();
     }, fullDelay);
 
-    // this should not trigger the callback
+    // This should not trigger the callback
     timer.advanceMockTime(halfDelay);
 
-    // give the mock timer a chance to run tasks
+    // Give the mock timer a chance to run tasks
     global.setTimeout(() => {
-        // we've only mock-waited for half the delay so it should not have run yet
+        // We've only mock-waited for half the delay so it should not have run yet
         t.equal(timeoutCalled, 0);
 
-        // this should trigger the callback
+        // This should trigger the callback
         timer.advanceMockTime(halfDelay);
     }, 0);
 }));

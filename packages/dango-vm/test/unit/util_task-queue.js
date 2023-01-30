@@ -5,10 +5,12 @@ const TaskQueue = require('../../src/util/task-queue');
 const MockTimer = require('../fixtures/mock-timer');
 const testCompare = require('../fixtures/test-compare');
 
-// Max tokens = 1000
-// Refill 1000 tokens per second (1 per millisecond)
-// Token bucket starts empty
-// Max total cost of queued tasks = 10000 tokens = 10 seconds
+/*
+ * Max tokens = 1000
+ * Refill 1000 tokens per second (1 per millisecond)
+ * Token bucket starts empty
+ * Max total cost of queued tasks = 10000 tokens = 10 seconds
+ */
 const makeTestQueue = () => {
     const bukkit = new TaskQueue(1000, 1000, {
         startingTokens: 0,
@@ -65,7 +67,7 @@ test('run tasks', async t => {
         }, 1)
     ];
 
-    // advance 10 simulated milliseconds per JS tick
+    // Advance 10 simulated milliseconds per JS tick
     while (bukkit.length > 0) {
         await bukkit._timer.advanceMockTimeAsync(10);
     }
@@ -100,7 +102,7 @@ test('cancel', async t => {
             testCompare(t, bukkit._timer.timeElapsed(), '<', 10, 'Canceled task must not delay other tasks');
         }, 5);
 
-    // give the bucket a chance to make a mistake
+    // Give the bucket a chance to make a mistake
     await bukkit._timer.advanceMockTimeAsync(1);
 
     t.equal(bukkit.length, 2);
@@ -144,12 +146,12 @@ test('cancelAll', async t => {
         )
     ];
 
-    // advance time, but not enough that any task should run
+    // Advance time, but not enough that any task should run
     await bukkit._timer.advanceMockTimeAsync(100);
 
     bukkit.cancelAll();
 
-    // advance enough that both tasks would run if they hadn't been canceled
+    // Advance enough that both tasks would run if they hadn't been canceled
     await bukkit._timer.advanceMockTimeAsync(10000);
 
     return Promise.all(promises).then(() => {
@@ -186,7 +188,7 @@ test('max total cost', async t => {
         await bukkit._timer.advanceMockTimeAsync(1000);
     }
 
-    // this should be 10 if the last task is rejected or 11 if it runs
+    // This should be 10 if the last task is rejected or 11 if it runs
     t.equal(numTasks, 10);
     t.end();
 });

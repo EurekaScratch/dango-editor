@@ -1,5 +1,5 @@
 const test = require('tap').test;
-// const JSONRPC = require('../../src/util/jsonrpc');
+// Const JSONRPC = require('../../src/util/jsonrpc');
 
 test('constructor', t => {
     t.end();

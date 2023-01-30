@@ -140,9 +140,11 @@ test('Project loaded emits runtime event', t => {
 });
 
 test('Cloud variable limit allows only 10 cloud variables', t => {
-    // This is a test of just the cloud variable limit mechanism
-    // The functions being tested below need to be used when
-    // creating and deleting cloud variables in the runtime.
+    /*
+     * This is a test of just the cloud variable limit mechanism
+     * The functions being tested below need to be used when
+     * creating and deleting cloud variables in the runtime.
+     */
 
     const rt = new Runtime();
 
@@ -151,8 +153,10 @@ test('Cloud variable limit allows only 10 cloud variables', t => {
     for (let i = 0; i < 10; i++) {
         t.equal(rt.canAddCloudVariable(), true);
         rt.addCloudVariable();
-        // Adding a cloud variable should change the
-        // result of the hasCloudData check
+        /*
+         * Adding a cloud variable should change the
+         * result of the hasCloudData check
+         */
         t.equal(rt.hasCloudData(), true);
     }
 
@@ -160,8 +164,10 @@ test('Cloud variable limit allows only 10 cloud variables', t => {
     // We should be at the cloud variable limit now
     t.equal(rt.canAddCloudVariable(), false);
 
-    // Removing a cloud variable should allow the addition of exactly one more
-    // when we are at the cloud variable limit
+    /*
+     * Removing a cloud variable should allow the addition of exactly one more
+     * when we are at the cloud variable limit
+     */
     rt.removeCloudVariable();
 
     t.equal(rt.canAddCloudVariable(), true);
@@ -223,8 +229,10 @@ test('setCompatibilityMode restarts if it was already running', t => {
     });
 
     rt.setCompatibilityMode(true);
-    // TW: We make an intentional API change here. Changing compatibility mode won't emit a RUNTIME_STARTED
-    // if the runtime is already running.
+    /*
+     * TW: We make an intentional API change here. Changing compatibility mode won't emit a RUNTIME_STARTED
+     * if the runtime is already running.
+     */
     t.equal(started, false);
     t.end();
 });

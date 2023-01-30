@@ -155,10 +155,12 @@ test('serializing and deserializing sb3 preserves sprite layer order', t => {
     vm.attachRenderer(new FakeRenderer());
     return vm.loadProject(readFileToBuffer(path.resolve(__dirname, '../fixtures/ordering.sb2')))
         .then(() => {
-            // Target get layer order needs a renderer,
-            // fake the numbers we would get back from the
-            // renderer in order to test that they are serialized
-            // correctly
+            /*
+             * Target get layer order needs a renderer,
+             * fake the numbers we would get back from the
+             * renderer in order to test that they are serialized
+             * correctly
+             */
             vm.runtime.targets[0].getLayerOrder = () => 0;
             vm.runtime.targets[1].getLayerOrder = () => 20;
             vm.runtime.targets[2].getLayerOrder = () => 10;
@@ -171,15 +173,19 @@ test('serializing and deserializing sb3 preserves sprite layer order', t => {
             t.equal(Array.isArray(result.targets), true);
             t.equal(result.targets.length, 4);
 
-            // First check that the sprites are ordered correctly (as they would
-            // appear in the target pane)
+            /*
+             * First check that the sprites are ordered correctly (as they would
+             * appear in the target pane)
+             */
             t.equal(result.targets[0].name, 'Stage');
             t.equal(result.targets[1].name, 'First');
             t.equal(result.targets[2].name, 'Second');
             t.equal(result.targets[3].name, 'Third');
 
-            // Check that they are in the correct layer order (as they would render
-            // back to front on the stage)
+            /*
+             * Check that they are in the correct layer order (as they would render
+             * back to front on the stage)
+             */
             t.equal(result.targets[0].layerOrder, 0);
             t.equal(result.targets[1].layerOrder, 2);
             t.equal(result.targets[2].layerOrder, 1);
@@ -191,15 +197,19 @@ test('serializing and deserializing sb3 preserves sprite layer order', t => {
             sb3.deserialize(
                 JSON.parse(JSON.stringify(serializedObject)), new Runtime(), null, false)
                 .then(({targets}) => {
-                    // First check that the sprites are ordered correctly (as they would
-                    // appear in the target pane)
+                    /*
+                     * First check that the sprites are ordered correctly (as they would
+                     * appear in the target pane)
+                     */
                     t.equal(targets[0].sprite.name, 'Stage');
                     t.equal(targets[1].sprite.name, 'First');
                     t.equal(targets[2].sprite.name, 'Second');
                     t.equal(targets[3].sprite.name, 'Third');
 
-                    // Check that they are in the correct layer order (as they would render
-                    // back to front on the stage)
+                    /*
+                     * Check that they are in the correct layer order (as they would render
+                     * back to front on the stage)
+                     */
                     t.equal(targets[0].layerOrder, 0);
                     t.equal(targets[1].layerOrder, 2);
                     t.equal(targets[2].layerOrder, 1);
@@ -283,16 +293,16 @@ test('deserializeBlocks on already deserialized input', t => {
 test('getExtensionIdForOpcode', t => {
     t.equal(sb3.getExtensionIdForOpcode('wedo_loopy'), 'wedo');
 
-    // does not consider CORE to be extensions
+    // Does not consider CORE to be extensions
     t.false(sb3.getExtensionIdForOpcode('control_loopy'));
 
-    // only considers things before the first underscore
+    // Only considers things before the first underscore
     t.equal(sb3.getExtensionIdForOpcode('hello_there_loopy'), 'hello');
 
-    // does not return anything for opcodes with no extension
+    // Does not return anything for opcodes with no extension
     t.false(sb3.getExtensionIdForOpcode('hello'));
 
-    // forbidden characters must be replaced with '-'
+    // Forbidden characters must be replaced with '-'
     t.equal(sb3.getExtensionIdForOpcode('hi:there/happy_people'), 'hi-there-happy');
 
     t.end();
@@ -335,8 +345,10 @@ test('load origin value from SB3 file json metadata', t => {
         })
         .then(() => vm.loadProject(readFileToBuffer(originAbsentSB3ProjectPath)))
         .then(() => {
-            // After loading a project with an origin, then loading one without an origin,
-            // origin value should no longer be set.
+            /*
+             * After loading a project with an origin, then loading one without an origin,
+             * origin value should no longer be set.
+             */
             t.equal(vm.runtime.origin, null);
             t.end();
         });

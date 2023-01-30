@@ -25,8 +25,10 @@ test('say/think and wait', t => {
         vm.loadProject(project).then(() => {
             vm.greenFlag();
 
-            // After two seconds, stop the project.
-            // The test will fail if the project throws.
+            /*
+             * After two seconds, stop the project.
+             * The test will fail if the project throws.
+             */
             setTimeout(() => {
                 vm.stopAll();
                 t.end();

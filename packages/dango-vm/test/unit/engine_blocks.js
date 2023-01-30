@@ -380,8 +380,10 @@ test('move no obscure shadow', t => {
 
 test('move - attaching new shadow', t => {
     const b = new Blocks(new Runtime());
-    // Block/shadow are null to mimic state right after a procedure_call block
-    // is mutated by adding an input. The "move" will attach the new shadow.
+    /*
+     * Block/shadow are null to mimic state right after a procedure_call block
+     * is mutated by adding an input. The "move" will attach the new shadow.
+     */
     b.createBlock({
         id: 'foo',
         opcode: 'TEST_BLOCK',
@@ -443,8 +445,10 @@ test('change', t => {
 
     t.equal(b._blocks.foo.fields.someField.value, 'final-value');
 
-    // Invalid cases
-    // No `element`
+    /*
+     * Invalid cases
+     * No `element`
+     */
     b.changeBlock({
         id: 'foo',
         name: 'someField',
@@ -490,8 +494,10 @@ test('delete', t => {
 });
 
 test('delete chain', t => {
-    // Create a chain of connected blocks and delete the top one.
-    // All of them should be deleted.
+    /*
+     * Create a chain of connected blocks and delete the top one.
+     * All of them should be deleted.
+     */
     const b = new Blocks(new Runtime());
     b.createBlock({
         id: 'foo',
@@ -528,8 +534,10 @@ test('delete chain', t => {
 });
 
 test('delete inputs', t => {
-    // Create a block with two inputs, one of which has its own input.
-    // Delete the block - all of them should be deleted.
+    /*
+     * Create a block with two inputs, one of which has its own input.
+     * Delete the block - all of them should be deleted.
+     */
     const b = new Blocks(new Runtime());
     b.createBlock({
         id: 'foo',
@@ -757,7 +765,7 @@ test('updateAssetName function updates name according to asset type', t => {
     t.equals(b.getBlock('id1').fields.SOUND_MENU.value, 'name1');
     t.equals(b.getBlock('id2').fields.COSTUME.value, 'name1');
     b.updateAssetName('name1', 'name2', 'sound');
-    // only sound should get renamed
+    // Only sound should get renamed
     t.equals(b.getBlock('id1').fields.SOUND_MENU.value, 'name2');
     t.equals(b.getBlock('id2').fields.COSTUME.value, 'name1');
     t.end();
@@ -959,20 +967,20 @@ test('updateTargetSpecificBlocks changes sprite clicked hat to stage clicked for
         opcode: 'event_whenstageclicked'
     });
 
-    // originallySpriteClicked does not update when on a non-stage target
-    b.updateTargetSpecificBlocks(false /* isStage */);
+    // OriginallySpriteClicked does not update when on a non-stage target
+    b.updateTargetSpecificBlocks(false /* IsStage */);
     t.equals(b.getBlock('originallySpriteClicked').opcode, 'event_whenthisspriteclicked');
 
-    // originallySpriteClicked does update when on a stage target
-    b.updateTargetSpecificBlocks(true /* isStage */);
+    // OriginallySpriteClicked does update when on a stage target
+    b.updateTargetSpecificBlocks(true /* IsStage */);
     t.equals(b.getBlock('originallySpriteClicked').opcode, 'event_whenstageclicked');
 
-    // originallyStageClicked does not update when on a stage target
-    b.updateTargetSpecificBlocks(true /* isStage */);
+    // OriginallyStageClicked does not update when on a stage target
+    b.updateTargetSpecificBlocks(true /* IsStage */);
     t.equals(b.getBlock('originallyStageClicked').opcode, 'event_whenstageclicked');
 
-    // originallyStageClicked does update when on a non-stage target
-    b.updateTargetSpecificBlocks(false/* isStage */);
+    // OriginallyStageClicked does update when on a non-stage target
+    b.updateTargetSpecificBlocks(false/* IsStage */);
     t.equals(b.getBlock('originallyStageClicked').opcode, 'event_whenthisspriteclicked');
 
     t.end();

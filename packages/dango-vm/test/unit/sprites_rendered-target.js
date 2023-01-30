@@ -5,8 +5,10 @@ const Runtime = require('../../src/engine/runtime');
 const FakeRenderer = require('../fixtures/fake-renderer');
 
 test('clone effects', t => {
-    // Create two clones and ensure they have different graphic effect objects.
-    // Regression test for Github issue #224
+    /*
+     * Create two clones and ensure they have different graphic effect objects.
+     * Regression test for Github issue #224
+     */
     const r = new Runtime();
     const spr = new Sprite(null, r);
     const a = new RenderedTarget(spr, r);
@@ -138,9 +140,11 @@ test('deleteCostume', t => {
     const renderer = new FakeRenderer();
     a.renderer = renderer;
 
-    // x* Costume 1        * Costume 2
-    //    Costume 2   =>     Costume 3
-    //    Costume 3
+    /*
+     * X* Costume 1        * Costume 2
+     *    Costume 2   =>     Costume 3
+     *    Costume 3
+     */
     a.setCostume(0);
     const deletedCostume = a.deleteCostume(0);
     t.equals(a.sprite.costumes.length, 2);
@@ -149,9 +153,11 @@ test('deleteCostume', t => {
     t.equals(a.currentCostume, 0);
     t.deepEqual(deletedCostume, o1);
 
-    //    Costume 1          Costume 1
-    // x* Costume 2   =>   * Costume 3
-    //    Costume 3
+    /*
+     *    Costume 1          Costume 1
+     * x* Costume 2   =>   * Costume 3
+     *    Costume 3
+     */
     a.sprite.costumes = [o1, o2, o3];
     a.setCostume(1);
     const deletedCostume2 = a.deleteCostume(1);
@@ -161,9 +167,11 @@ test('deleteCostume', t => {
     t.equals(a.currentCostume, 1);
     t.deepEqual(deletedCostume2, o2);
 
-    //    Costume 1          Costume 1
-    //    Costume 2   =>   * Costume 2
-    // x* Costume 3
+    /*
+     *    Costume 1          Costume 1
+     *    Costume 2   =>   * Costume 2
+     * x* Costume 3
+     */
     a.sprite.costumes = [o1, o2, o3];
     a.setCostume(2);
     const deletedCostume3 = a.deleteCostume(2);
@@ -182,11 +190,13 @@ test('deleteCostume', t => {
     t.equals(a.currentCostume, 0);
     t.equal(noDeletedCostume, null);
 
-    //   Costume 1          Costume 1
-    // x Costume 2          Costume 3
-    //   Costume 3   =>   * Costume 4
-    // * Costume 4          Costume 5
-    //   Costume 5
+    /*
+     *   Costume 1          Costume 1
+     * x Costume 2          Costume 3
+     *   Costume 3   =>   * Costume 4
+     * * Costume 4          Costume 5
+     *   Costume 5
+     */
     a.sprite.costumes = [o1, o2, o3, o4, o5];
     a.setCostume(3);
     a.deleteCostume(1);
@@ -197,11 +207,13 @@ test('deleteCostume', t => {
     t.equals(a.sprite.costumes[3].id, 5);
     t.equals(a.currentCostume, 2);
 
-    //   Costume 1          Costume 1
-    // * Costume 2        * Costume 2
-    //   Costume 3   =>     Costume 3
-    // x Costume 4          Costume 5
-    //   Costume 5
+    /*
+     *   Costume 1          Costume 1
+     * * Costume 2        * Costume 2
+     *   Costume 3   =>     Costume 3
+     * x Costume 4          Costume 5
+     *   Costume 5
+     */
     a.sprite.costumes = [o1, o2, o3, o4, o5];
     a.setCostume(1);
     a.deleteCostume(3);
@@ -212,11 +224,13 @@ test('deleteCostume', t => {
     t.equals(a.sprite.costumes[3].id, 5);
     t.equals(a.currentCostume, 1);
 
-    //   Costume 1          Costume 1
-    // * Costume 2        * Costume 2
-    //   Costume 3   =>     Costume 3
-    //   Costume 4          Costume 4
-    // x Costume 5
+    /*
+     *   Costume 1          Costume 1
+     * * Costume 2        * Costume 2
+     *   Costume 3   =>     Costume 3
+     *   Costume 4          Costume 4
+     * x Costume 5
+     */
     a.sprite.costumes = [o1, o2, o3, o4, o5];
     a.setCostume(1);
     a.deleteCostume(4);
@@ -346,8 +360,10 @@ test('layers', t => { // TODO this tests fake functionality. Move layering tests
     a.goBackwardLayers(2);
     t.equals(a.renderer.order, 3);
     a.goToBack();
-    // Note, there are only sprites in this test, no stage, and the addition
-    // of layer groups, goToBack no longer specifies a minimum order number
+    /*
+     * Note, there are only sprites in this test, no stage, and the addition
+     * of layer groups, goToBack no longer specifies a minimum order number
+     */
     t.equals(a.renderer.order, 0);
     a.goForwardLayers(1);
     t.equals(a.renderer.order, 1);
@@ -362,7 +378,7 @@ test('getLayerOrder returns result of renderer getDrawableOrder or null if rende
     const s = new Sprite(null, r);
     const a = new RenderedTarget(s, r);
 
-    // getLayerOrder should return null if there is no renderer attached to the runtime
+    // GetLayerOrder should return null if there is no renderer attached to the runtime
     t.equal(a.getLayerOrder(), null);
 
     const renderer = new FakeRenderer();

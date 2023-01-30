@@ -24,7 +24,7 @@ const testExtensionInfo = {
             opcode: 'reporter',
             blockType: BlockType.REPORTER,
             text: 'simple text',
-            blockIconURI: 'invalid icon URI' // trigger the 'scratch_extension' path
+            blockIconURI: 'invalid icon URI' // Trigger the 'scratch_extension' path
         },
         {
             opcode: 'inlineImage',
@@ -37,7 +37,7 @@ const testExtensionInfo = {
                 }
             }
         },
-        '---', // separator between groups of blocks in an extension
+        '---', // Separator between groups of blocks in an extension
         {
             opcode: 'command',
             blockType: BlockType.COMMAND,
@@ -68,7 +68,7 @@ const testExtensionInfo = {
         },
         {
             opcode: 'loop',
-            blockType: BlockType.LOOP, // implied branchCount of 1 unless otherwise stated
+            blockType: BlockType.LOOP, // Implied branchCount of 1 unless otherwise stated
             isTerminal: true,
             text: [
                 'loopty [MANY] loops'
@@ -132,7 +132,7 @@ const testCategoryInfo = function (t, block) {
 };
 
 const testButton = function (t, button) {
-    t.same(button.json, null); // should be null or undefined
+    t.same(button.json, null); // Should be null or undefined
     t.equal(button.xml, '<button text="this is a button" callbackKey="MAKE_A_VARIABLE"></button>');
 };
 
@@ -173,7 +173,7 @@ const testInlineImage = function (t, inlineImage) {
     t.notOk(inlineImage.json.hasOwnProperty('previousStatement'));
     t.notOk(inlineImage.json.hasOwnProperty('nextStatement'));
     t.notOk(inlineImage.json.extensions && inlineImage.json.extensions.length); // OK if it's absent or empty
-    t.equal(inlineImage.json.message0, 'text and %1'); // block text followed by inline image
+    t.equal(inlineImage.json.message0, 'text and %1'); // Block text followed by inline image
     t.notOk(inlineImage.json.hasOwnProperty('message1'));
     t.same(inlineImage.json.args0, [
         // %1 in message0: the block icon
@@ -190,7 +190,7 @@ const testInlineImage = function (t, inlineImage) {
 };
 
 const testSeparator = function (t, separator) {
-    t.same(separator.json, null); // should be null or undefined
+    t.same(separator.json, null); // Should be null or undefined
     t.equal(separator.xml, '<sep gap="36"/>');
 };
 
@@ -222,9 +222,9 @@ const testConditional = function (t, conditional) {
     t.ok(conditional.json.hasOwnProperty('nextStatement'));
     t.notOk(conditional.json.extensions && conditional.json.extensions.length); // OK if it's absent or empty
     t.equal(conditional.json.message0, 'test if %1 is spiffy and if so then');
-    t.equal(conditional.json.message1, '%1'); // placeholder for substack #1
+    t.equal(conditional.json.message1, '%1'); // Placeholder for substack #1
     t.equal(conditional.json.message2, 'or elsewise');
-    t.equal(conditional.json.message3, '%1'); // placeholder for substack #2
+    t.equal(conditional.json.message3, '%1'); // Placeholder for substack #2
     t.notOk(conditional.json.hasOwnProperty('message4'));
     t.strictSame(conditional.json.args0[0], {
         type: 'input_value',
@@ -249,11 +249,11 @@ const testLoop = function (t, loop) {
     testCategoryInfo(t, loop);
     t.equal(loop.json.outputShape, ScratchBlocksConstants.OUTPUT_SHAPE_SQUARE);
     t.ok(loop.json.hasOwnProperty('previousStatement'));
-    t.notOk(loop.json.hasOwnProperty('nextStatement')); // isTerminal is set on this block
+    t.notOk(loop.json.hasOwnProperty('nextStatement')); // IsTerminal is set on this block
     t.notOk(loop.json.extensions && loop.json.extensions.length); // OK if it's absent or empty
     t.equal(loop.json.message0, 'loopty %1 loops');
-    t.equal(loop.json.message1, '%1'); // placeholder for substack
-    t.equal(loop.json.message2, '%1'); // placeholder for loop arrow
+    t.equal(loop.json.message1, '%1'); // Placeholder for substack
+    t.equal(loop.json.message2, '%1'); // Placeholder for loop arrow
     t.notOk(loop.json.hasOwnProperty('message3'));
     t.strictSame(loop.json.args0[0], {
         type: 'input_value',
@@ -263,7 +263,7 @@ const testLoop = function (t, loop) {
         type: 'input_statement',
         name: 'SUBSTACK'
     });
-    t.equal(loop.json.lastDummyAlign2, 'RIGHT'); // move loop arrow to right side
+    t.equal(loop.json.lastDummyAlign2, 'RIGHT'); // Move loop arrow to right side
     t.equal(loop.json.args2[0].type, 'field_image');
     t.equal(loop.json.args2[0].flip_rtl, true);
     t.notOk(loop.json.hasOwnProperty('args3'));

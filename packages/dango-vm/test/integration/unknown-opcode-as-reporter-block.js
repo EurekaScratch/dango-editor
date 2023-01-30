@@ -18,15 +18,17 @@ test('unknown opcode', t => {
     vm.loadProject(project).then(() => {
         vm.greenFlag();
 
-        // The project has 4 blocks in a single stack:
-        //      when green flag
-        //      if "unknown block"
-        //      set volume to "unknown block"
-        //      play sound "unknown block"
-        // the "unknown block" has unknown opcode and was created by
-        // dragging a discontinued extension.
-        // It should be parsed in without error and a shadow block
-        // should be created where appropriate.
+        /*
+         * The project has 4 blocks in a single stack:
+         *      when green flag
+         *      if "unknown block"
+         *      set volume to "unknown block"
+         *      play sound "unknown block"
+         * the "unknown block" has unknown opcode and was created by
+         * dragging a discontinued extension.
+         * It should be parsed in without error and a shadow block
+         * should be created where appropriate.
+         */
         const blocks = vm.runtime.targets[0].blocks;
         const topBlockId = blocks.getScripts()[0];
         const secondBlockId = blocks.getNextBlock(topBlockId);

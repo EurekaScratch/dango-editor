@@ -2,12 +2,12 @@ const fs = require('fs');
 const Cast = require('../../../src/util/cast');
 
 /*
-To use output:
-Blockly.Xml.domToWorkspace(
-    new DOMParser().parseFromString(XML_GOES_HERE, 'text/xml').documentElement,
-    Blockly.getMainWorkspace()
-);
-*/
+ *To use output:
+ *Blockly.Xml.domToWorkspace(
+ *    new DOMParser().parseFromString(XML_GOES_HERE, 'text/xml').documentElement,
+ *    Blockly.getMainWorkspace()
+ *);
+ */
 
 const VALUES = [
     '0',

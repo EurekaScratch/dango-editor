@@ -266,9 +266,9 @@ test('deleteSprite updates editingTarget when sprite being deleted is current ed
     t.equal(vm.runtime.targets.length, 1);
     t.equal(vm.editingTarget.id, otherTarget.id);
 
-    // now let's try them in the other order in the runtime.targets list
+    // Now let's try them in the other order in the runtime.targets list
 
-    // can't reuse deleted targets
+    // Can't reuse deleted targets
     const currTarget2 = spr1.createClone();
     const otherTarget2 = spr2.createClone();
 
@@ -371,8 +371,10 @@ test('reorderCostume', t => {
     spr.name = 'foo';
     const target = spr.createClone();
 
-    // Stub out reorder on target, tested in rendered-target tests.
-    // Just want to know if it is called with the right params.
+    /*
+     * Stub out reorder on target, tested in rendered-target tests.
+     * Just want to know if it is called with the right params.
+     */
     let costumeIndex = null;
     let newIndex = null;
     target.reorderCostume = (_costumeIndex, _newIndex) => {
@@ -402,8 +404,10 @@ test('reorderSound', t => {
     spr.name = 'foo';
     const target = spr.createClone();
 
-    // Stub out reorder on target, tested in rendered-target tests.
-    // Just want to know if it is called with the right params.
+    /*
+     * Stub out reorder on target, tested in rendered-target tests.
+     * Just want to know if it is called with the right params.
+     */
     let soundIndex = null;
     let newIndex = null;
     target.reorderSound = (_soundIndex, _newIndex) => {
@@ -600,16 +604,16 @@ test('drag IO redirect', t => {
     vm.emitWorkspaceUpdate = () => null;
     vm.emitTargetsUpdate = () => null;
 
-    // postSpriteInfo should go to the editing target by default``
+    // PostSpriteInfo should go to the editing target by default``
     vm.postSpriteInfo('sprite1 info');
     t.equal(sprite1Info[0], 'sprite1 info');
 
-    // postSprite info goes to the drag target if it exists
+    // PostSprite info goes to the drag target if it exists
     vm.startDrag('sprite2');
     vm.postSpriteInfo('sprite2 info');
     t.equal(sprite2Info[0], 'sprite2 info');
 
-    // stop drag should set the editing target
+    // Stop drag should set the editing target
     vm.stopDrag('sprite2');
     t.equal(vm.editingTarget.id, 'sprite2');
 
@@ -672,7 +676,7 @@ test('setVariableValue requests update for cloud variable', t => {
     const spr = new Sprite(null, vm.runtime);
     const target = spr.createClone();
     target.isStage = true;
-    target.createVariable('a-variable', 'a-name', Variable.SCALAR_TYPE, true /* isCloud */);
+    target.createVariable('a-variable', 'a-name', Variable.SCALAR_TYPE, true /* IsCloud */);
 
     vm.runtime.targets = [target];
 
@@ -795,9 +799,11 @@ test('shareBlocksToTarget shares global variables without any name changes', t =
         // Verify the shared block id is different
         t.notEqual(newBlockId, 'a block');
 
-        // Verify that the variables haven't changed, the variable still exists on the
-        // stage, it should still have the same name and value, and there should be
-        // no variables on the target.
+        /*
+         * Verify that the variables haven't changed, the variable still exists on the
+         * stage, it should still have the same name and value, and there should be
+         * no variables on the target.
+         */
         t.equal(Object.keys(target.variables).length, 0);
         t.equal(Object.keys(stage.variables).length, 1);
         t.equal(stage.variables['mock var id'].name, 'a mock variable');
@@ -855,9 +861,11 @@ test('shareBlocksToTarget shares a local variable to the stage, creating a globa
         t.type(stage.blocks.getBlock(newBlockId).fields.VARIABLE, 'object');
         t.equal(stage.blocks.getBlock(newBlockId).fields.VARIABLE.id, 'StageVarFromLocal_mock var id');
 
-        // Verify that a new global variable was created, the old one still exists on
-        // the target and still has the same name and value, and the new one has
-        // a new name and value 0.
+        /*
+         * Verify that a new global variable was created, the old one still exists on
+         * the target and still has the same name and value, and the new one has
+         * a new name and value 0.
+         */
         t.equal(Object.keys(target.variables).length, 1);
         t.equal(target.variables['mock var id'].name, 'a mock variable');
         t.equal(vm.getVariableValue(target.id, 'mock var id'), 10);
@@ -912,8 +920,10 @@ test('shareBlocksToTarget chooses a fresh name for a new global variable checkin
     // Verify that the block does not exist on the stage
     t.type(stage.blocks.getBlock('a block'), 'undefined');
 
-    // Create a variable that conflicts with what will be the new name for the
-    // new global variable to ensure a fresh name is chosen
+    /*
+     * Create a variable that conflicts with what will be the new name for the
+     * new global variable to ensure a fresh name is chosen
+     */
     otherTarget.createVariable('a different var', 'Stage: a mock variable', Variable.SCALAR_TYPE);
 
     // Share the block to the stage
@@ -930,9 +940,11 @@ test('shareBlocksToTarget chooses a fresh name for a new global variable checkin
         t.type(stage.blocks.getBlock(newBlockId).fields.VARIABLE, 'object');
         t.equal(stage.blocks.getBlock(newBlockId).fields.VARIABLE.id, 'StageVarFromLocal_mock var id');
 
-        // Verify that a new global variable was created, the old one still exists on
-        // the target and still has the same name and value, and the new one has
-        // a new name and value 0.
+        /*
+         * Verify that a new global variable was created, the old one still exists on
+         * the target and still has the same name and value, and the new one has
+         * a new name and value 0.
+         */
         t.equal(Object.keys(target.variables).length, 1);
         t.equal(target.variables['mock var id'].name, 'a mock variable');
         t.equal(vm.getVariableValue(target.id, 'mock var id'), 10);

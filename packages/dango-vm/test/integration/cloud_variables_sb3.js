@@ -63,8 +63,10 @@ test('importing an sb3 project with cloud variables at the limit for a project',
 });
 
 test('importing an sb3 project with cloud variables exceeding the limit for a project', t => {
-    // This tests a hacked project where additional cloud variables exceeding
-    // the project limit have been added.
+    /*
+     * This tests a hacked project where additional cloud variables exceeding
+     * the project limit have been added.
+     */
     const vm = new VirtualMachine();
     vm.attachStorage(makeTestStorage());
 
@@ -117,8 +119,10 @@ test('importing one project after the other resets cloud variable limit', t => {
 });
 
 test('local cloud variables get imported as regular variables', t => {
-    // This tests a hacked project where a sprite-local variable is
-    // has the cloud variable flag set.
+    /*
+     * This tests a hacked project where a sprite-local variable is
+     * has the cloud variable flag set.
+     */
     const vm = new VirtualMachine();
     vm.attachStorage(makeTestStorage());
 

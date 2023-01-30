@@ -18,8 +18,10 @@ test('importing sb2 project where block comment is converted to workspace commen
 
         const target = vm.runtime.targets[1];
 
-        // Sprite 1 has 3 Comments, 1 block comment and 2 workspace comments (which were
-        // originally created via a block comment to workspace comment conversion in Scratch 2.0).
+        /*
+         * Sprite 1 has 3 Comments, 1 block comment and 2 workspace comments (which were
+         * originally created via a block comment to workspace comment conversion in Scratch 2.0).
+         */
         const targetComments = Object.values(target.comments);
         t.equal(targetComments.length, 3);
         const spriteWorkspaceComments = targetComments.filter(comment => comment.blockId === null);

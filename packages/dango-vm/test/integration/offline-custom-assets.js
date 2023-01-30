@@ -14,12 +14,16 @@ const VirtualMachine = require('../../src/index');
 const projectUri = path.resolve(__dirname, '../fixtures/offline-custom-assets.sb2');
 const projectZip = AdmZip(projectUri);
 const project = Buffer.from(fs.readFileSync(projectUri));
-// Custom costume from sb2 file (which was downloaded from offline editor)
-// This sound should not be available on our servers
+/*
+ * Custom costume from sb2 file (which was downloaded from offline editor)
+ * This sound should not be available on our servers
+ */
 const costume = projectZip.readFile('1.svg');
 const costumeData = new Uint8Array(costume);
-// Custom sound recording from sb2 file (which was downloaded from offline editor)
-// This sound should not be available on our servers
+/*
+ * Custom sound recording from sb2 file (which was downloaded from offline editor)
+ * This sound should not be available on our servers
+ */
 const sound = projectZip.readFile('0.wav');
 const soundData = new Uint8Array(sound);
 

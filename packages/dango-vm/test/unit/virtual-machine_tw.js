@@ -19,7 +19,7 @@ test('emitTargetsUpdate targetList is lazy', t => {
     });
     vm.emitTargetsUpdate();
     t.equal(calledToJSON, false);
-    void targetsUpdateEvent.targetList; // should trigger lazy compute
+    void targetsUpdateEvent.targetList; // Should trigger lazy compute
     t.equal(calledToJSON, true);
     t.end();
 });

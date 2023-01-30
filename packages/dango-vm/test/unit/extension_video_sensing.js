@@ -38,8 +38,10 @@ const readPNG = name => (
         createReadStream(join(__dirname, `${pngPrefix}${name}.png`))
             .pipe(png)
             .on('parsed', () => {
-                // Copy the RGBA pixel values into a separate typed array and
-                // cast the array to Uint32, the array format VideoMotion takes.
+                /*
+                 * Copy the RGBA pixel values into a separate typed array and
+                 * cast the array to Uint32, the array format VideoMotion takes.
+                 */
                 resolve(new Uint32Array(new Uint8ClampedArray(png.data).buffer));
             })
             .on('error', reject);
@@ -52,8 +54,10 @@ const readPNG = name => (
  * @returns {object} mapping of keys in framesMap to image data read from disk
  */
 const readFrames = (() => {
-    // Use this immediately invoking function expression (IIFE) to delay reading
-    // once to the first test that calls readFrames.
+    /*
+     * Use this immediately invoking function expression (IIFE) to delay reading
+     * once to the first test that calls readFrames.
+     */
     let _promise = null;
 
     return () => {
@@ -84,10 +88,12 @@ const isNearAngle = (actual, expect, optMargin = 10) => (
     (wrapClamp(actual - expect, 0, 359) > 360 - optMargin)
 );
 
-// A fake scratch-render drawable that will be used by VideoMotion to restrain
-// the area considered for motion detection in VideoMotion.getLocalMotion
+/*
+ * A fake scratch-render drawable that will be used by VideoMotion to restrain
+ * the area considered for motion detection in VideoMotion.getLocalMotion
+ */
 const fakeDrawable = {
-    updateCPURenderAttributes () {}, // no-op, since isTouching always returns true
+    updateCPURenderAttributes () {}, // No-op, since isTouching always returns true
 
     getFastBounds () {
         return {
@@ -103,9 +109,11 @@ const fakeDrawable = {
     }
 };
 
-// A fake MotionState used to test the stored values in
-// VideoMotion.getLocalMotion, VideoSensing.videoOn and
-// VideoSensing.whenMotionGreaterThan.
+/*
+ * A fake MotionState used to test the stored values in
+ * VideoMotion.getLocalMotion, VideoSensing.videoOn and
+ * VideoSensing.whenMotionGreaterThan.
+ */
 const fakeMotionState = {
     motionFrameNumber: -1,
     motionAmount: -1,
@@ -125,8 +133,10 @@ const fakeTarget = {
 const fakeRuntime = {
     targets: [fakeTarget],
 
-    // Without defined devices, VideoSensing will not try to start sampling from
-    // a video source.
+    /*
+     * Without defined devices, VideoSensing will not try to start sampling from
+     * a video source.
+     */
     ioDevices: null,
 
     renderer: {
@@ -218,8 +228,10 @@ test('detect motionDirection between frames', t => {
         .then(frames => {
             const detect = new VideoMotion();
 
-            // Each of these pairs is moving in the given direction. Does the detector
-            // guess a value to that?
+            /*
+             * Each of these pairs is moving in the given direction. Does the detector
+             * guess a value to that?
+             */
             const directionMargin = 10;
             const framePairs = [
                 {
@@ -248,8 +260,10 @@ test('detect motionDirection between frames', t => {
                 }
             ];
 
-            // Add both frames of a pair and check if the motionDirection is near the
-            // expected angle.
+            /*
+             * Add both frames of a pair and check if the motionDirection is near the
+             * expected angle.
+             */
             let index = 0;
             for (const {frames: [frame1, frame2], direction} of framePairs) {
                 detect.addFrame(frame1);
@@ -275,8 +289,10 @@ test('detect local motionDirection between frames', t => {
         .then(frames => {
             const detect = new VideoMotion();
 
-            // Each of these pairs is moving in the given direction. Does the detector
-            // guess a value to that?
+            /*
+             * Each of these pairs is moving in the given direction. Does the detector
+             * guess a value to that?
+             */
             const directionMargin = 10;
             const framePairs = [
                 {
@@ -305,8 +321,10 @@ test('detect local motionDirection between frames', t => {
                 }
             ];
 
-            // Add both frames of a pair and check if the local motionDirection is near
-            // the expected angle.
+            /*
+             * Add both frames of a pair and check if the local motionDirection is near
+             * the expected angle.
+             */
             let index = 0;
             for (const {frames: [frame1, frame2], direction} of framePairs) {
                 detect.addFrame(frame1);
@@ -333,8 +351,10 @@ test('videoOn returns value dependent on arguments', t => {
         .then(frames => {
             const sensing = new VideoSensing(fakeRuntime);
 
-            // With these two frame test if we get expected values depending on the
-            // arguments to videoOn.
+            /*
+             * With these two frame test if we get expected values depending on the
+             * arguments to videoOn.
+             */
             sensing.detect.addFrame(frames.center);
             sensing.detect.addFrame(frames.left);
 
@@ -385,8 +405,10 @@ test('whenMotionGreaterThan returns true if local motion meets target', t => {
         .then(frames => {
             const sensing = new VideoSensing(fakeRuntime);
 
-            // With these two frame test if we get expected values depending on the
-            // arguments to whenMotionGreaterThan.
+            /*
+             * With these two frame test if we get expected values depending on the
+             * arguments to whenMotionGreaterThan.
+             */
             sensing.detect.addFrame(frames.center);
             sensing.detect.addFrame(frames.left);
 

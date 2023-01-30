@@ -1,5 +1,5 @@
 const test = require('tap').test;
-// const JSONRPCWebSocket = require('../../src/util/jsonrpc-web-socket');
+// Const JSONRPCWebSocket = require('../../src/util/jsonrpc-web-socket');
 
 test('constructor', t => {
     t.end();

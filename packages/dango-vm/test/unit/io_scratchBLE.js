@@ -1,5 +1,5 @@
 const test = require('tap').test;
-// const ScratchBLE = require('../../src/io/scratchBLE');
+// Const ScratchBLE = require('../../src/io/scratchBLE');
 
 test('constructor', t => {
     t.end();
