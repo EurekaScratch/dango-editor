@@ -8,7 +8,12 @@ import Runtime, {MenuItems} from '../engine/runtime';
  * Technically this can be a translatable object, but in reality it will probably just be
  * a string here.
  */
-type FormattableString = string;
+export type FormattableString = string;
+
+/**
+ * The environment of the extension.
+ */
+export type SandboxMode = 'worker' | 'iframe' | 'unsandboxed';
 
 /**
  * Standard Scratch extension class.
@@ -16,7 +21,18 @@ type FormattableString = string;
  */
 export interface StandardScratchExtensionClass {
     new?: (runtime: Runtime) => void;
+    /**
+     * Scratch will call this method *once* when the extension loads.
+     * This method's job is to tell Scratch things like the extension's ID, name, and what blocks it supports.
+     */
     getInfo: () => ExtensionMetadata;
+}
+
+/**
+ * Dango's Extension class.
+ */
+export interface DangoExtensionClass extends StandardScratchExtensionClass {
+    getInfo: () => DangoExtensionMetadata;
 }
   
  /**
@@ -76,6 +92,13 @@ export interface StandardScratchExtensionClass {
      * @deprecated only exists in documentation, not implemented
      */
     translation_map?: Record<string, Record<string, string>>;
+}
+
+/**
+ * Dango's Extension Metadata.
+ */
+export interface DangoExtensionMetadata extends ExtensionMetadata {
+    sandboxMode?: SandboxMode;
 }
 
 export interface ExtensionMenu {

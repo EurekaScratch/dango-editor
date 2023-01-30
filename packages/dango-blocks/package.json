@@ -13,9 +13,8 @@
   "browser": "./shim/vertical.js",
   "scripts": {
     "deploy": "rimraf gh-pages/closure-library/scripts/ci/CloseAdobeDialog.exe && gh-pages -t -d gh-pages -m \"Build for $(git log --pretty=format:%H -n1)\"",
-    "build": "yarn run prepublish",
-    "prepublish": "python3 build.py && webpack",
-    "prepublish:old": "python2 build_legacy.py && webpack",
+    "build": "python3 build.py && webpack",
+    "build:old": "python2 build_legacy.py && webpack",
     "test:unit": "node tests/jsunit/test_runner.js",
     "test:lint": "eslint .",
     "test:messages": "yarn run translate && node i18n/test_scratch_msgs.js",
@@ -45,8 +44,8 @@
     "json": "9.0.6",
     "rimraf": "2.7.1",
     "selenium-webdriver": "4.5.0",
+    "terser-webpack-plugin": "^4.2.3",
     "transifex": "1.6.6",
-    "uglifyjs-webpack-plugin": "2.2.0",
     "webpack": "4.46.0",
     "webpack-cli": "3.3.12"
   }

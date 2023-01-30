@@ -17,10 +17,11 @@
   },
   "scripts": {
     "start": "yarn workspace scratch-gui start",
+    "build:dist": "NODE_ENV=production yarn build",
     "build": "yarn block:build && yarn workspace scratch-gui build",
     "test:unit": "yarn workspace scratch-gui test:unit && yarn workspace scratch-vm tap:unit",
     "vm:start": "yarn workspace scratch-vm start",
     "vm:type": "yarn workspace scratch-vm checktype",
-    "block:build": "yarn workspace scratch-blocks prepublish:old"
+    "block:build": "yarn workspace scratch-blocks build:old"
   }
 }

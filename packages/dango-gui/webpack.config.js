@@ -5,7 +5,7 @@ var webpack = require('webpack');
 // Plugins
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var TerserPlugin = require('terser-webpack-plugin');
 
 // PostCss
 var autoprefixer = require('autoprefixer');
@@ -95,8 +95,9 @@ const base = {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                include: /\.min\.js$/
+            new TerserPlugin({
+                include: /\.min\.js$/,
+                minify: TerserPlugin.swcMinify
             })
         ]
     },
@@ -150,26 +151,26 @@ module.exports = [
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'gui'],
                 template: 'src/playground/index.ejs',
-                title: 'Scratch 3.0 GUI',
+                title: 'Dango GUI',
                 sentryConfig: process.env.SENTRY_CONFIG ? '"' + process.env.SENTRY_CONFIG + '"' : null
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'blocksonly'],
                 template: 'src/playground/index.ejs',
                 filename: 'blocks-only.html',
-                title: 'Scratch 3.0 GUI: Blocks Only Example'
+                title: 'Dango GUI: Blocks Only Example'
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'compatibilitytesting'],
                 template: 'src/playground/index.ejs',
                 filename: 'compatibility-testing.html',
-                title: 'Scratch 3.0 GUI: Compatibility Testing'
+                title: 'Dango GUI: Compatibility Testing'
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'player'],
                 template: 'src/playground/index.ejs',
                 filename: 'player.html',
-                title: 'Scratch 3.0 GUI: Player Example'
+                title: 'Dango GUI: Player Example'
             }),
             new CopyWebpackPlugin({
                 patterns: [
