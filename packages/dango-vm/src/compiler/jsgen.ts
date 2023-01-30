@@ -444,6 +444,9 @@ class JSGenerator {
             return new TypedInput(`p${node.index}`, TYPE_LAMBDA);
         case 'args.stringNumber':
             return new TypedInput(`p${node.index}`, TYPE_UNKNOWN);
+        case 'noop':
+            // todo: remove noop entirely
+            return new TypedInput(`undefined`, TYPE_UNKNOWN);
         case 'compat':
             // Compatibility layer inputs never use flags.
             return new TypedInput(`(${this.generateCompatibilityLayerCall(node, false)})`, TYPE_UNKNOWN);

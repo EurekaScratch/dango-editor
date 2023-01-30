@@ -305,6 +305,11 @@ class ScriptTreeGenerator {
                 kind: 'motion.y'
             };
         case 'operator_lambda': {
+            if (this.thread.stackClick) {
+                return {
+                    kind: 'noop'
+                };
+            }
             const lambdaId = block.id;
             const variant = `L${lambdaId}`;
             if (!this.script.dependedProcedures.includes(variant)) {

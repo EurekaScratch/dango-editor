@@ -38,6 +38,8 @@ class Scratch3OperatorsBlocks {
         };
     }
     lambda (_: any, util: any) {
+        // Don't trigger in stackClick
+        if (util.thread.stackClick) return;
         // If lambda expression has been executed, restore the state.
         if (util.thread.lambdaParent) {
             util.reuseStackForNextBlock(util.thread.lambdaParent.pop());

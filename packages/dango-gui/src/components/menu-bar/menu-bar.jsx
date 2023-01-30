@@ -77,7 +77,7 @@ import languageIcon from '../language-selector/language-icon.svg';
 import aboutIcon from './icon--about.svg';
 
 // import scratchLogo from './scratch-logo.svg';
-import clipccLogoLight from './clipcc-logo-light.svg';
+import dangoLogo from './dango-logo.svg';
 
 import sharedMessages from '../../lib/shared-messages';
 
@@ -833,7 +833,7 @@ MenuBar.propTypes = {
 };
 
 MenuBar.defaultProps = {
-    logo: clipccLogoLight,
+    logo: dangoLogo,
     onShare: () => {}
 };
 
