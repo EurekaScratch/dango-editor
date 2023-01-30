@@ -38,11 +38,12 @@ class FrameLoop {
         this._interpolationAnimation = null;
         this._stepAnimation = null;
     }
-    setFramerate (fps: any) {
+    setFramerate (fps: number) {
+        if (!fps) return;
         this.framerate = fps;
         this._restart();
     }
-    setInterpolation (interpolation: any) {
+    setInterpolation (interpolation: boolean) {
         this.interpolation = interpolation;
         this._restart();
     }

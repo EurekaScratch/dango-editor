@@ -40,7 +40,7 @@ const vmManagerHOC = function (WrappedComponent) {
                     warpTimer: this.props.warpTimer
                 });
                 this.props.vm.renderer.setUseHighQualityRender(this.props.hqpen);
-                this.props.vm.setFramerate(this.props.framerate);
+                this.props.vm.setFramerate(this.props.fps);
                 this.props.vm.setInterpolation(this.props.interpolation);
             }
             if (!this.props.isPlayerOnly && !this.props.isStarted) {
