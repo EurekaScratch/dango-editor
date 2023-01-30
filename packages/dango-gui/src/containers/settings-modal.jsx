@@ -19,7 +19,10 @@ class SettingsModal extends React.Component {
             'handleChangeHQPen',
             'handleChangeSaveSettings',
             'handleChangeWarpTimer',
-            'handleChangeInterpolation'
+            'handleChangeInterpolation',
+            'handleChangeInfiniteCloning',
+            'handleChangeRemoveFencing',
+            'handleChangeMiscLimits'
         ]);
     }
 
@@ -55,6 +58,24 @@ class SettingsModal extends React.Component {
     handleChangeInterpolation (option) {
         this.props.vm.setInterpolation(option);
     }
+    
+    handleChangeInfiniteCloning (option) {
+        this.props.vm.setRuntimeOptions({
+            maxClones: option ? Infinity : 300
+        });
+    }
+    
+    handleChangeRemoveFencing (option) {
+        this.props.vm.setRuntimeOptions({
+            fencing: option
+        });
+    }
+    
+    handleChangeMiscLimits (option) {
+        this.props.vm.setRuntimeOptions({
+            miscLimits: option
+        });
+    }
 
     render () {
         return (
@@ -66,6 +87,9 @@ class SettingsModal extends React.Component {
                 onChangeSaveSettings={this.handleChangeSaveSettings}
                 onChangeWarpTimer={this.handleChangeWarpTimer}
                 onChangeInterpolation={this.handleChangeInterpolation}
+                onChangeInfiniteCloning={this.handleChangeInfiniteCloning}
+                onChangeRemoveFencing={this.handleChangeRemoveFencing}
+                onChangeMiscLimits={this.handleChangeMiscLimits}
                 {...this.props}
             />
         );
@@ -79,6 +103,9 @@ SettingsModal.propTypes = {
     framerate: PropTypes.number.isRequired,
     compiler: PropTypes.bool.isRequired,
     hqpen: PropTypes.bool.isRequired,
+    infiniteCloning: PropTypes.bool.isRequired,
+    removeFencing: PropTypes.bool.isRequired,
+    miscLimits: PropTypes.bool.isRequired,
     hideNonOriginalBlocks: PropTypes.bool.isRequired,
     saveSettings: PropTypes.bool.isRequired,
     saveExtension: PropTypes.bool.isRequired,
@@ -92,6 +119,9 @@ const mapStateToProps = state => ({
     framerate: state.scratchGui.settings.framerate,
     compiler: state.scratchGui.settings.compiler,
     hqpen: state.scratchGui.settings.hqpen,
+    infiniteCloning: state.scratchGui.settings.infiniteCloning,
+    removeFencing: state.scratchGui.settings.removeFencing,
+    miscLimits: state.scratchGui.settings.miscLimits,
     hideNonOriginalBlocks: state.scratchGui.settings.hideNonOriginalBlocks,
     saveSettings: state.scratchGui.settings.saveSettings,
     saveExtension: state.scratchGui.settings.saveExtension

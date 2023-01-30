@@ -4,9 +4,13 @@ const RESET_DEFAULT = 'scratch-gui/settings/RESET_DEFAULT';
 
 const defaultState = {
     framerate: 30,
-    compiler: false,
+    compiler: true,
+    warpTimer: true,
     hqpen: false,
     hideNonOriginalBlocks: false,
+    infiniteCloning: false,
+    removeFencing: false,
+    miscLimits: false,
     saveSettings: false,
     saveExtension: true
 };

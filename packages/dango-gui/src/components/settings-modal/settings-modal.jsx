@@ -75,6 +75,26 @@ const messages = defineMessages({
         defaultMessage: 'Hide non-original Blocks',
         description: 'Label of Hide non-original Blocks',
         id: 'gui.settingsModal.hideNonoriginalBlocks.label'
+    },
+    limits: {
+        defaultMessage: 'Limits',
+        description: 'Label of Limits',
+        id: 'gui.settingsModal.limits'
+    },
+    infiniteCloning: {
+        defaultMessage: 'Infinite Clones',
+        description: 'Label of Infinite Clones',
+        id: 'gui.settingsModal.infiniteCloning'
+    },
+    removeFencing: {
+        defaultMessage: 'Remove Fencing',
+        description: 'Label of Remove Fencing',
+        id: 'gui.settingsModal.removeFencing'
+    },
+    miscLimits: {
+        defaultMessage: 'Remove Miscellaneous Limits',
+        description: 'Label of misc limits',
+        id: 'gui.settingsModal.miscLimits'
     }
 });
 
@@ -102,6 +122,9 @@ class SettingsModal extends React.Component {
             },
             project: (ref) => {
                 this.categoryRef.project.current = ref
+            },
+            limits: (ref) => {
+                this.categoryRef.limits.current = ref
             }
         };
     }
@@ -211,6 +234,7 @@ class SettingsModal extends React.Component {
                         scrollbar
                     >
                         <p onClick={this.handleJumpToCategory('features')}>{this.props.intl.formatMessage(messages.features)}</p>
+                        <p onClick={this.handleJumpToCategory('limits')}>{this.props.intl.formatMessage(messages.limits)}</p>
                         <p onClick={this.handleJumpToCategory('project')}>{this.props.intl.formatMessage(messages.project)}</p>
                         {/*Object.keys(this.props.extensionSettings).map(id => (
                             <p
@@ -293,6 +317,42 @@ class SettingsModal extends React.Component {
                         </div>
                         <p
                             className={classNames(styles.category)}
+                            ref={this.categoryRef.limits}
+                        >
+                            {this.props.intl.formatMessage(messages.limits)}
+                        </p>
+                        <div className={classNames(styles.item)}>
+                            <p className={classNames(styles.text)}>
+                                {this.props.intl.formatMessage(messages.infiniteCloning)}
+                            </p>
+                            <Elastic />
+                            <Switch
+                                onChange={this.handleChangeSettingsItem('infiniteCloning', this.props.onChangeInfiniteCloning)}
+                                value={this.props.infiniteCloning}
+                            />
+                        </div>
+                        <div className={classNames(styles.item)}>
+                            <p className={classNames(styles.text)}>
+                                {this.props.intl.formatMessage(messages.removeFencing)}
+                            </p>
+                            <Elastic />
+                            <Switch
+                                onChange={this.handleChangeSettingsItem('removeFencing', this.props.onChangeRemoveFencing)}
+                                value={this.props.removeFencing}
+                            />
+                        </div>
+                        <div className={classNames(styles.item)}>
+                            <p className={classNames(styles.text)}>
+                                {this.props.intl.formatMessage(messages.miscLimits)}
+                            </p>
+                            <Elastic />
+                            <Switch
+                                onChange={this.handleChangeSettingsItem('miscLimits', this.props.onChangeMiscLimits)}
+                                value={this.props.miscLimits}
+                            />
+                        </div>
+                        <p
+                            className={classNames(styles.category)}
                             ref={this.categoryRef.project}
                         >
                             {this.props.intl.formatMessage(messages.project)}
@@ -342,6 +402,9 @@ SettingsModal.propTypes = {
     framerate: PropTypes.number.isRequired,
     compiler: PropTypes.bool.isRequired,
     hqpen: PropTypes.bool.isRequired,
+    infiniteCloning: PropTypes.bool.isRequired,
+    removeFencing: PropTypes.bool.isRequired,
+    miscLimits: PropTypes.bool.isRequired,
     hideNonOriginalBlocks: PropTypes.bool.isRequired,
     saveSettings: PropTypes.bool.isRequired,
     saveOptionalExtension: PropTypes.bool.isRequired,
@@ -352,7 +415,10 @@ SettingsModal.propTypes = {
     onChangeHQPen: PropTypes.func.isRequired,
     onChangeSaveSettings: PropTypes.func.isRequired,
     onChangeWarpTimer: PropTypes.func.isRequired,
-    onChangeInterpolation: PropTypes.func.isRequired
+    onChangeInterpolation: PropTypes.func.isRequired,
+    onChangeInfiniteCloning: PropTypes.func.isRequired,
+    onChangeRemoveFencing: PropTypes.func.isRequired,
+    onChangeMiscLimits: PropTypes.func.isRequired
 };
 
 export default injectIntl(SettingsModal);

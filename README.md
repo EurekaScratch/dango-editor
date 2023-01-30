@@ -14,5 +14,6 @@ A Scratch mod focused on new features, Based on [Turbowarp](https://github.com/T
 - [x] TypeScript VM
 - [ ] More standardized Extension API
 - [x] Compatible with ClipCC Extension
+- [ ] Scoped Variable
 # ⚓ License
 Since clipcc-vm uses AGPL-3.0, this project will also use the same license. see [LICENSE](./LICENSE).

@@ -39,6 +39,11 @@ const vmManagerHOC = function (WrappedComponent) {
                     enabled: this.props.compiler,
                     warpTimer: this.props.warpTimer
                 });
+                this.props.vm.setRuntimeOptions({
+                    infiniteCloning: this.props.infiniteCloning ? Infinity : 300,
+                    fencing: this.props.removeFencing,
+                    miscLimits: this.props.miscLimits
+                });
                 this.props.vm.renderer.setUseHighQualityRender(this.props.hqpen);
                 this.props.vm.setFramerate(this.props.fps);
                 this.props.vm.setInterpolation(this.props.interpolation);
@@ -115,6 +120,9 @@ const vmManagerHOC = function (WrappedComponent) {
         compiler: PropTypes.bool,
         warpTimer: PropTypes.bool,
         hqpen: PropTypes.bool,
+        infiniteCloning: PropTypes.bool.isRequired,
+        removeFencing: PropTypes.bool.isRequired,
+        miscLimits: PropTypes.bool.isRequired,
         canSave: PropTypes.bool,
         cloudHost: PropTypes.string,
         fontsLoaded: PropTypes.bool,
@@ -141,6 +149,9 @@ const vmManagerHOC = function (WrappedComponent) {
             compiler: state.scratchGui.settings.compiler,
             warpTimer: state.scratchGui.settings.warpTimer,
             hqpen: state.scratchGui.settings.hqpen,
+            infiniteCloning: state.scratchGui.settings.infiniteCloning,
+            removeFencing: state.scratchGui.settings.removeFencing,
+            miscLimits: state.scratchGui.settings.miscLimits,
             fontsLoaded: state.scratchGui.fontsLoaded,
             isLoadingWithId: getIsLoadingWithId(loadingState),
             locale: state.locales.locale,
