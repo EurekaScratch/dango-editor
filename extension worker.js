@@ -1049,6 +1049,10 @@ var ArgumentType;
      */
     ArgumentType["BOOLEAN"] = "Boolean";
     /**
+     * Lambda value with square placeholder
+     */
+    ArgumentType["LAMBDA"] = "Lambda";
+    /**
      * Numeric value with color picker
      */
     ArgumentType["COLOR"] = "color";
@@ -1130,6 +1134,10 @@ var BlockType;
      * General reporter with numeric or string value
      */
     BlockType["REPORTER"] = "reporter";
+    /**
+     * Lambda reporter with callable function.
+     */
+    BlockType["Lambda"] = "Lambda";
 })(BlockType || (BlockType = {}));
 ;
 exports.default = BlockType;
