@@ -1,4 +1,4 @@
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import BlockType from '../../extension-support/block-type';
 import ArgumentType from '../../extension-support/argument-type';
 import Cast from '../../util/cast';
@@ -34,7 +34,7 @@ class TurboWarpBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'getLastKeyPressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'tw.blocks.lastKeyPressed',
                         default: 'last key pressed',
@@ -44,7 +44,7 @@ class TurboWarpBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getButtonIsDown',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'tw.blocks.buttonIsDown',
                         default: '[MOUSE_BUTTON] mouse button down?',
@@ -64,7 +64,7 @@ class TurboWarpBlocks implements StandardScratchExtensionClass {
                 mouseButton: {
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'tw.blocks.mouseButton.primary',
                                 default: '(0) primary',
@@ -73,7 +73,7 @@ class TurboWarpBlocks implements StandardScratchExtensionClass {
                             value: '0'
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'tw.blocks.mouseButton.middle',
                                 default: '(1) middle',
@@ -82,7 +82,7 @@ class TurboWarpBlocks implements StandardScratchExtensionClass {
                             value: '1'
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'tw.blocks.mouseButton.secondary',
                                 default: '(2) secondary',

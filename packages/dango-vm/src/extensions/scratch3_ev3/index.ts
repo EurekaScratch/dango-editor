@@ -2,7 +2,7 @@ import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import Cast from '../../util/cast';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import uid from '../../util/uid';
 import BT from '../../io/bt';
 import Base64Util from '../../util/base64-util';
@@ -879,7 +879,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'motorTurnClockwise',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.motorTurnClockwise',
                         default: 'motor [PORT] turn this way for [TIME] seconds',
@@ -900,7 +900,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorTurnCounterClockwise',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.motorTurnCounterClockwise',
                         default: 'motor [PORT] turn that way for [TIME] seconds',
@@ -921,7 +921,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorSetPower',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.motorSetPower',
                         default: 'motor [PORT] set power [POWER] %',
@@ -942,7 +942,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getMotorPosition',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.getMotorPosition',
                         default: 'motor [PORT] position',
@@ -959,7 +959,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenButtonPressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.whenButtonPressed',
                         default: 'when button [PORT] pressed',
@@ -976,7 +976,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenDistanceLessThan',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.whenDistanceLessThan',
                         default: 'when distance < [DISTANCE]',
@@ -992,7 +992,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenBrightnessLessThan',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.whenBrightnessLessThan',
                         default: 'when brightness < [DISTANCE]',
@@ -1008,7 +1008,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'buttonPressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.buttonPressed',
                         default: 'button [PORT] pressed?',
@@ -1025,7 +1025,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getDistance',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.getDistance',
                         default: 'distance',
@@ -1035,7 +1035,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getBrightness',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.getBrightness',
                         default: 'brightness',
@@ -1045,7 +1045,7 @@ class Scratch3Ev3Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'beep',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'ev3.beepNote',
                         default: 'beep note [NOTE] for [TIME] secs',

@@ -1,7 +1,7 @@
 import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import log from '../../util/log';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import MathUtil from '../../util/math-util';
 import BLE from '../../io/ble';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
@@ -448,7 +448,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
     get TILT_MENU () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.tiltDirectionMenu.front',
                     default: 'front',
@@ -457,7 +457,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: TiltAxisValues.FRONT
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.tiltDirectionMenu.back',
                     default: 'back',
@@ -466,7 +466,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: TiltAxisValues.BACK
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.tiltDirectionMenu.left',
                     default: 'left',
@@ -475,7 +475,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: TiltAxisValues.LEFT
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.tiltDirectionMenu.right',
                     default: 'right',
@@ -489,7 +489,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
         return [
             ...this.TILT_MENU,
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.tiltDirectionMenu.any',
                     default: 'any',
@@ -502,7 +502,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
     get PUSH_PULL_MENU () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.pushed',
                     default: 'pushed',
@@ -511,7 +511,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: PushPullValues.PUSHED
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.pulled',
                     default: 'pulled',
@@ -524,7 +524,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
     get GESTURE_MENU () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.shaken',
                     default: 'shaken',
@@ -533,7 +533,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: GestureValues.SHAKEN
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.startedFalling',
                     default: 'started falling',
@@ -542,7 +542,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: GestureValues.STARTED_FALLING
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.turnedFaceUp',
                     default: 'turned face up',
@@ -551,7 +551,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 value: GestureValues.TURNED_FACE_UP
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'gdxfor.turnedFaceDown',
                     default: 'turned face down',
@@ -587,7 +587,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'whenGesture',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.whenGesture',
                         default: 'when [GESTURE]',
@@ -604,7 +604,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenForcePushedOrPulled',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.whenForcePushedOrPulled',
                         default: 'when force sensor [PUSH_PULL]',
@@ -621,7 +621,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getForce',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.getForce',
                         default: 'force',
@@ -632,7 +632,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 '---',
                 {
                     opcode: 'whenTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.whenTilted',
                         default: 'when tilted [TILT]',
@@ -649,7 +649,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'isTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.isTilted',
                         default: 'tilted [TILT]?',
@@ -666,7 +666,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getTilt',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.getTilt',
                         default: 'tilt angle [TILT]',
@@ -684,7 +684,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 '---',
                 {
                     opcode: 'isFreeFalling',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.isFreeFalling',
                         default: 'falling?',
@@ -694,7 +694,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getSpinSpeed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.getSpin',
                         default: 'spin speed [DIRECTION]',
@@ -711,7 +711,7 @@ class Scratch3GdxForBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getAcceleration',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'gdxfor.getAcceleration',
                         default: 'acceleration [DIRECTION]',

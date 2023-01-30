@@ -1,4 +1,4 @@
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 // @ts-expect-error TS(2732): Cannot find module 'scratch-translate-extension-la... Remove this comment to see the full error message
 import languageNames from 'scratch-translate-extension-languages/languages.json';
 import ArgumentType from '../../extension-support/argument-type';
@@ -129,7 +129,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
     get VOICE_INFO () {
         return {
             [ALTO_ID]: {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'text2speech.alto',
                     default: 'alto',
@@ -139,7 +139,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
                 playbackRate: 1
             },
             [TENOR_ID]: {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'text2speech.tenor',
                     default: 'tenor',
@@ -149,7 +149,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
                 playbackRate: 1
             },
             [SQUEAK_ID]: {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'text2speech.squeak',
                     default: 'squeak',
@@ -159,7 +159,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
                 playbackRate: 1.19 // +3 semitones
             },
             [GIANT_ID]: {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'text2speech.giant',
                     default: 'giant',
@@ -169,7 +169,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
                 playbackRate: 0.84 // -3 semitones
             },
             [KITTEN_ID]: {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'text2speech.kitten',
                     default: 'kitten',
@@ -387,7 +387,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
         // supported language.
         let defaultTextToSpeak = 'hello';
         if (this.isSupportedLanguage(this.getEditorLanguage())) {
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             defaultTextToSpeak = formatMessage({
                 id: 'text2speech.defaultTextToSpeak',
                 default: 'hello',
@@ -396,7 +396,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
         }
         return {
             id: 'text2speech',
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             name: formatMessage({
                 id: 'text2speech.categoryName',
                 default: 'Text to Speech',
@@ -407,7 +407,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'speakAndWait',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'text2speech.speakAndWaitBlock',
                         default: 'speak [WORDS]',
@@ -423,7 +423,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setVoice',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'text2speech.setVoiceBlock',
                         default: 'set voice to [VOICE]',
@@ -440,7 +440,7 @@ class Scratch3Text2SpeechBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setLanguage',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'text2speech.setLanguageBlock',
                         default: 'set language to [LANGUAGE]',

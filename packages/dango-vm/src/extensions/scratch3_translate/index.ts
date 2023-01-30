@@ -5,7 +5,7 @@ import log from '../../util/log';
 import fetchWithTimeout from '../../util/fetch-with-timeout';
 // @ts-expect-error TS(2732): Cannot find module 'scratch-translate-extension-la... Remove this comment to see the full error message
 import languageNames from 'scratch-translate-extension-languages/languages.json';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
 /**
  * Icon svg to be displayed in the blocks category menu, encoded as a data URI.
@@ -95,7 +95,7 @@ class Scratch3TranslateBlocks implements StandardScratchExtensionClass {
         this._randomLanguageCode = this._supportedLanguages[Math.floor(Math.random() * this._supportedLanguages.length)].value;
         return {
             id: 'translate',
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             name: formatMessage({
                 id: 'translate.categoryName',
                 default: 'Translate',
@@ -106,7 +106,7 @@ class Scratch3TranslateBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'getTranslate',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'translate.translateBlock',
                         default: 'translate [WORDS] to [LANGUAGE]',
@@ -116,7 +116,7 @@ class Scratch3TranslateBlocks implements StandardScratchExtensionClass {
                     arguments: {
                         WORDS: {
                             type: ArgumentType.STRING,
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             defaultValue: formatMessage({
                                 id: 'translate.defaultTextToTranslate',
                                 default: 'hello',
@@ -132,7 +132,7 @@ class Scratch3TranslateBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getViewerLanguage',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'translate.viewerLanguage',
                         default: 'language',

@@ -2,7 +2,7 @@ import {StandardScratchExtensionClass} from '../../extension-support/extension-m
 import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import Cast from '../../util/cast';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import color from '../../util/color';
 import BLE from '../../io/ble';
 import Base64Util from '../../util/base64-util';
@@ -1152,7 +1152,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'motorOnFor',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.motorOnFor',
                         default: 'turn motor [MOTOR_ID] for [DURATION] seconds',
@@ -1173,7 +1173,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorOnForRotation',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.motorOnForRotation',
                         default: 'turn motor [MOTOR_ID] for [ROTATION] rotations',
@@ -1194,7 +1194,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorOn',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.motorOn',
                         default: 'turn motor [MOTOR_ID] on',
@@ -1211,7 +1211,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorOff',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.motorOff',
                         default: 'turn motor [MOTOR_ID] off',
@@ -1228,7 +1228,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setMotorPower',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.setMotorPower',
                         default: 'set motor [MOTOR_ID] speed to [POWER] %',
@@ -1249,7 +1249,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setMotorDirection',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.setMotorDirection',
                         default: 'set motor [MOTOR_ID] direction [MOTOR_DIRECTION]',
@@ -1271,7 +1271,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getMotorPosition',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.getMotorPosition',
                         default: 'motor [MOTOR_REPORTER_ID] position',
@@ -1288,7 +1288,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenColor',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.whenColor',
                         default: 'when [COLOR] brick seen',
@@ -1305,7 +1305,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'seeingColor',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.seeingColor',
                         default: 'seeing [COLOR] brick?',
@@ -1322,7 +1322,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.whenTilted',
                         default: 'when tilted [TILT_DIRECTION_ANY]',
@@ -1340,7 +1340,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getTiltAngle',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.getTiltAngle',
                         default: 'tilt angle [TILT_DIRECTION]',
@@ -1357,7 +1357,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setLightHue',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'boost.setLightHue',
                         default: 'set light color to [HUE]',
@@ -1427,7 +1427,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.motorDirection.forward',
                                 default: 'this way',
@@ -1436,7 +1436,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostMotorDirection.FORWARD
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.motorDirection.backward',
                                 default: 'that way',
@@ -1445,7 +1445,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostMotorDirection.BACKWARD
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.motorDirection.reverse',
                                 default: 'reverse',
@@ -1459,7 +1459,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.up',
                                 default: 'up',
@@ -1468,7 +1468,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.UP
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.down',
                                 default: 'down',
@@ -1477,7 +1477,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.DOWN
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.left',
                                 default: 'left',
@@ -1486,7 +1486,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.LEFT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.right',
                                 default: 'right',
@@ -1500,7 +1500,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.up',
                                 default: 'up'
@@ -1508,7 +1508,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.UP
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.down',
                                 default: 'down'
@@ -1516,7 +1516,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.DOWN
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.left',
                                 default: 'left'
@@ -1524,7 +1524,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.LEFT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.right',
                                 default: 'right'
@@ -1532,7 +1532,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostTiltDirection.RIGHT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.tiltDirection.any',
                                 default: 'any',
@@ -1546,7 +1546,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.red',
                                 default: 'red',
@@ -1555,7 +1555,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostColor.RED
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.blue',
                                 default: 'blue',
@@ -1564,7 +1564,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostColor.BLUE
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.green',
                                 default: 'green',
@@ -1573,7 +1573,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostColor.GREEN
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.yellow',
                                 default: 'yellow',
@@ -1582,16 +1582,16 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostColor.YELLOW
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.white',
                                 default: 'white',
-                                desription: 'the color white'
+                                description: 'the color white'
                             }),
                             value: BoostColor.WHITE
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.black',
                                 default: 'black',
@@ -1600,7 +1600,7 @@ class Scratch3BoostBlocks implements StandardScratchExtensionClass {
                             value: BoostColor.BLACK
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'boost.color.any',
                                 default: 'any color',

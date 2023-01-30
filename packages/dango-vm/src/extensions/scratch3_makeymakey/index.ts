@@ -1,4 +1,4 @@
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
@@ -104,31 +104,31 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
     */
     get KEY_TEXT_SHORT () {
         return {
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             [KEY_ID_SPACE]: formatMessage({
                 id: 'makeymakey.spaceKey',
                 default: 'space',
                 description: 'The space key on a computer keyboard.'
             }),
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             [KEY_ID_LEFT]: formatMessage({
                 id: 'makeymakey.leftArrowShort',
                 default: 'left',
                 description: 'Short name for the left arrow key on a computer keyboard.'
             }),
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             [KEY_ID_UP]: formatMessage({
                 id: 'makeymakey.upArrowShort',
                 default: 'up',
                 description: 'Short name for the up arrow key on a computer keyboard.'
             }),
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             [KEY_ID_RIGHT]: formatMessage({
                 id: 'makeymakey.rightArrowShort',
                 default: 'right',
                 description: 'Short name for the right arrow key on a computer keyboard.'
             }),
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             [KEY_ID_DOWN]: formatMessage({
                 id: 'makeymakey.downArrowShort',
                 default: 'down',
@@ -166,7 +166,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'whenMakeyKeyPressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'makeymakey.whenKeyPressed',
                         default: 'when [KEY] key pressed',
@@ -183,7 +183,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenCodePressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'makeymakey.whenKeysPressedInOrder',
                         default: 'when [SEQUENCE] pressed in order',
@@ -204,7 +204,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'makeymakey.spaceKey',
                                 default: 'space',
@@ -213,7 +213,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
                             value: KEY_ID_SPACE
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'makeymakey.upArrow',
                                 default: 'up arrow',
@@ -222,7 +222,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
                             value: KEY_ID_UP
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'makeymakey.downArrow',
                                 default: 'down arrow',
@@ -231,7 +231,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
                             value: KEY_ID_DOWN
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'makeymakey.rightArrow',
                                 default: 'right arrow',
@@ -240,7 +240,7 @@ class Scratch3MakeyMakeyBlocks implements StandardScratchExtensionClass {
                             value: KEY_ID_RIGHT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'makeymakey.leftArrow',
                                 default: 'left arrow',

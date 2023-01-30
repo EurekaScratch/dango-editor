@@ -3,7 +3,7 @@ import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import Clone from '../../util/clone';
 import Cast from '../../util/cast';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import Video from '../../io/video';
 import VideoMotion from './library';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
@@ -273,7 +273,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
     get ATTRIBUTE_INFO () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.motion',
                     default: 'motion',
@@ -282,7 +282,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 value: SensingAttribute.MOTION
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.direction',
                     default: 'direction',
@@ -304,7 +304,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
     get SUBJECT_INFO () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.sprite',
                     default: 'sprite',
@@ -313,7 +313,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 value: SensingSubject.SPRITE
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.stage',
                     default: 'stage',
@@ -340,7 +340,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
     get VIDEO_STATE_INFO () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.off',
                     default: 'off',
@@ -349,7 +349,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 value: VideoState.OFF
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.on',
                     default: 'on',
@@ -358,7 +358,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 value: VideoState.ON
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'videoSensing.onFlipped',
                     default: 'on flipped',
@@ -387,7 +387,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
         // Return extension definition
         return {
             id: 'videoSensing',
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             name: formatMessage({
                 id: 'videoSensing.categoryName',
                 default: 'Video Sensing',
@@ -400,7 +400,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                     // @todo this hat needs to be set itself to restart existing
                     // threads like Scratch 2's behaviour.
                     opcode: 'whenMotionGreaterThan',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'videoSensing.whenMotionGreaterThan',
                         default: 'when video motion > [REFERENCE]',
@@ -417,7 +417,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'videoOn',
                     blockType: BlockType.REPORTER,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'videoSensing.videoOn',
                         default: 'video [ATTRIBUTE] on [SUBJECT]',
@@ -438,7 +438,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'videoToggle',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'videoSensing.videoToggle',
                         default: 'turn video [VIDEO_STATE]',
@@ -454,7 +454,7 @@ class Scratch3VideoSensingBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setVideoTransparency',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'videoSensing.setVideoTransparency',
                         default: 'set video transparency to [TRANSPARENCY]',

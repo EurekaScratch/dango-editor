@@ -1,7 +1,7 @@
 import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import Cast from '../../util/cast';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import color from '../../util/color';
 import BLE from '../../io/ble';
 import Base64Util from '../../util/base64-util';
@@ -811,7 +811,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'motorOnFor',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.motorOnFor',
                         default: 'turn [MOTOR_ID] on for [DURATION] seconds',
@@ -832,7 +832,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorOn',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.motorOn',
                         default: 'turn [MOTOR_ID] on',
@@ -849,7 +849,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'motorOff',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.motorOff',
                         default: 'turn [MOTOR_ID] off',
@@ -866,7 +866,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'startMotorPower',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.startMotorPower',
                         default: 'set [MOTOR_ID] power to [POWER]',
@@ -887,7 +887,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setMotorDirection',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.setMotorDirection',
                         default: 'set [MOTOR_ID] direction to [MOTOR_DIRECTION]',
@@ -909,7 +909,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'setLightHue',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.setLightHue',
                         default: 'set light color to [HUE]',
@@ -925,7 +925,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'playNoteFor',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.playNoteFor',
                         default: 'play note [NOTE] for [DURATION] seconds',
@@ -946,7 +946,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenDistance',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.whenDistance',
                         default: 'when distance [OP] [REFERENCE]',
@@ -967,7 +967,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'whenTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.whenTilted',
                         default: 'when tilted [TILT_DIRECTION_ANY]',
@@ -985,7 +985,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getDistance',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.getDistance',
                         default: 'distance',
@@ -995,7 +995,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'isTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.isTilted',
                         default: 'tilted [TILT_DIRECTION_ANY]?',
@@ -1012,7 +1012,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getTiltAngle',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'wedo2.getTiltAngle',
                         default: 'tilt angle [TILT_DIRECTION]',
@@ -1033,7 +1033,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorId.default',
                                 default: 'motor',
@@ -1042,7 +1042,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2MotorLabel.DEFAULT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorId.a',
                                 default: 'motor A',
@@ -1051,7 +1051,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2MotorLabel.A
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorId.b',
                                 default: 'motor B',
@@ -1060,7 +1060,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2MotorLabel.B
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorId.all',
                                 default: 'all motors',
@@ -1074,7 +1074,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorDirection.forward',
                                 default: 'this way',
@@ -1083,7 +1083,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2MotorDirection.FORWARD
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorDirection.backward',
                                 default: 'that way',
@@ -1092,7 +1092,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2MotorDirection.BACKWARD
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.motorDirection.reverse',
                                 default: 'reverse',
@@ -1106,7 +1106,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.up',
                                 default: 'up',
@@ -1115,7 +1115,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.UP
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.down',
                                 default: 'down',
@@ -1124,7 +1124,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.DOWN
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.left',
                                 default: 'left',
@@ -1133,7 +1133,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.LEFT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.right',
                                 default: 'right',
@@ -1147,7 +1147,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                     acceptReporters: true,
                     items: [
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.up',
                                 default: 'up'
@@ -1155,7 +1155,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.UP
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.down',
                                 default: 'down'
@@ -1163,7 +1163,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.DOWN
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.left',
                                 default: 'left'
@@ -1171,7 +1171,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.LEFT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.right',
                                 default: 'right'
@@ -1179,7 +1179,7 @@ class Scratch3WeDo2Blocks implements StandardScratchExtensionClass {
                             value: WeDo2TiltDirection.RIGHT
                         },
                         {
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             text: formatMessage({
                                 id: 'wedo2.tiltDirection.any',
                                 default: 'any',

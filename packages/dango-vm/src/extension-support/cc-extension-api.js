@@ -30,7 +30,7 @@ const argumentType = [
  * Information used for converting Scratch argument types into scratch-blocks data.
  * @type {object.<ArgumentType, {shadowType: string, fieldType: string}>}
  */
- const ArgumentTypeMap = (() => {
+const ArgumentTypeMap = (() => {
     const map = {};
     map[ArgumentType.ANGLE] = {
         shadow: {
@@ -136,7 +136,7 @@ class ExtensionAPI {
                     id: this.categoryInfo[i].messageId,
                     default: this.categoryInfo[i].messageId
                 });
-                this.categoryInfo[i].menus = []
+                this.categoryInfo[i].menus = [];
                 for (const j in this.categoryInfo[i].blocks) {
                     this.categoryInfo[i].blocks[j].info.text = formatMessage({
                         id: this.categoryInfo[i].blocks[j].info.messageId,
@@ -152,14 +152,14 @@ class ExtensionAPI {
                         blockInfo,
                         inputList: []
                     };
-                    let block = this.blocks.get(this.categoryInfo[i].blocks[j].info.opcode);
+                    const block = this.blocks.get(this.categoryInfo[i].blocks[j].info.opcode);
                     for (const paramId in block.param) {
                         // if the param doesn't have menu or it's an field
                         if (!block.param[paramId].menu || block.param[paramId].field) continue;
                         // if the param uses an existing menu
-                        if (typeof(block.param[paramId].menu) === 'string') continue;
+                        if (typeof (block.param[paramId].menu) === 'string') continue;
                         let menuItems;
-                        if (typeof(block.param[paramId].menu) === 'function') {
+                        if (typeof (block.param[paramId].menu) === 'function') {
                             menuItems = block.param[paramId].menu;
                         } else {
                             menuItems = block.param[paramId].menu.map(item => ([
@@ -186,7 +186,7 @@ class ExtensionAPI {
                                     options: menuItems
                                 }]
                             }
-                        })
+                        });
                     }
                     this._processBlockArguments(context, this.blocks.get(this.categoryInfo[i].blocks[j].info.opcode));
                 }
@@ -231,7 +231,7 @@ class ExtensionAPI {
             colourTertiary: category.color3
         };
         const blockInfo = this._generateBlockInfo(block);
-        if (block.option.filter) blockInfo.filter = block.option.filter; //filter过滤器
+        if (block.option.filter) blockInfo.filter = block.option.filter; // filter过滤器
         const context = {
             argsMap: {},
             blockJSON,
@@ -245,16 +245,16 @@ class ExtensionAPI {
             // if the param doesn't have menu or it's an field
             if (!block.param[paramId].menu || block.param[paramId].field) continue;
             // if the param uses an existing menu
-            if (typeof(block.param[paramId].menu) === 'string') continue;
+            if (typeof (block.param[paramId].menu) === 'string') continue;
             // check whether the menu specified an id
             if (!block.param[paramId].menuId) {
                 // automatically generate an id
                 block.param[paramId].menuId = `${block.opcode}.menu_${paramId}`;
             }
 
-            //动态菜单 传function
+            // 动态菜单 传function
             let menuItems;
-            if (typeof(block.param[paramId].menu) === 'function') {
+            if (typeof (block.param[paramId].menu) === 'function') {
                 menuItems = block.param[paramId].menu;
             } else {
                 menuItems = block.param[paramId].menu.map(item => ([
@@ -361,7 +361,7 @@ class ExtensionAPI {
 
         this.blockInfo.push(blockInfo);
         this.blocks.set(block.opcode, block);
-
+        
         return category;
     }
 
@@ -442,7 +442,7 @@ class ExtensionAPI {
                     argJSON.check = argTypeInfo.check;
                 }
 
-                let valueName, shadowType, fieldName;
+                let valueName; let shadowType; let fieldName;
                 if (param.menu && param.field) {
                     argJSON.type = 'field_dropdown';
                     argJSON.options = param.menu.map(item => ([
@@ -541,7 +541,7 @@ class ExtensionAPI {
 
     addCategory (category) {
         // 阻止多次添加同名 category
-        if (!!this._getCategory(category.categoryId)) {
+        if (this._getCategory(category.categoryId)) {
             console.warn('reject to add category twice');
             return;
         }

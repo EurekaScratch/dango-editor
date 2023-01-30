@@ -2,7 +2,7 @@ import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import Clone from '../../util/clone';
 import Cast from '../../util/cast';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import MathUtil from '../../util/math-util';
 import Timer from '../../util/timer';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
@@ -168,7 +168,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
     get DRUM_INFO () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumSnare',
                     default: '(1) Snare Drum',
@@ -177,7 +177,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '1-snare'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumBass',
                     default: '(2) Bass Drum',
@@ -186,7 +186,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '2-bass-drum'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumSideStick',
                     default: '(3) Side Stick',
@@ -195,7 +195,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '3-side-stick'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumCrashCymbal',
                     default: '(4) Crash Cymbal',
@@ -204,7 +204,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '4-crash-cymbal'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumOpenHiHat',
                     default: '(5) Open Hi-Hat',
@@ -213,7 +213,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '5-open-hi-hat'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumClosedHiHat',
                     default: '(6) Closed Hi-Hat',
@@ -222,7 +222,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '6-closed-hi-hat'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumTambourine',
                     default: '(7) Tambourine',
@@ -231,7 +231,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '7-tambourine'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumHandClap',
                     default: '(8) Hand Clap',
@@ -240,7 +240,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '8-hand-clap'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumClaves',
                     default: '(9) Claves',
@@ -249,7 +249,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '9-claves'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumWoodBlock',
                     default: '(10) Wood Block',
@@ -258,7 +258,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '10-wood-block'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumCowbell',
                     default: '(11) Cowbell',
@@ -267,7 +267,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '11-cowbell'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumTriangle',
                     default: '(12) Triangle',
@@ -276,7 +276,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '12-triangle'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumBongo',
                     default: '(13) Bongo',
@@ -285,7 +285,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '13-bongo'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumConga',
                     default: '(14) Conga',
@@ -294,7 +294,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '14-conga'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumCabasa',
                     default: '(15) Cabasa',
@@ -303,7 +303,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '15-cabasa'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumGuiro',
                     default: '(16) Guiro',
@@ -312,7 +312,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '16-guiro'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumVibraslap',
                     default: '(17) Vibraslap',
@@ -321,7 +321,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 fileName: '17-vibraslap'
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.drumCuica',
                     default: '(18) Cuica',
@@ -343,7 +343,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
     get INSTRUMENT_INFO () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentPiano',
                     default: '(1) Piano',
@@ -354,7 +354,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [24, 36, 48, 60, 72, 84, 96, 108]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentElectricPiano',
                     default: '(2) Electric Piano',
@@ -365,7 +365,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentOrgan',
                     default: '(3) Organ',
@@ -376,7 +376,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentGuitar',
                     default: '(4) Guitar',
@@ -387,7 +387,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentElectricGuitar',
                     default: '(5) Electric Guitar',
@@ -398,7 +398,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentBass',
                     default: '(6) Bass',
@@ -409,7 +409,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [36, 48]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentPizzicato',
                     default: '(7) Pizzicato',
@@ -420,7 +420,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentCello',
                     default: '(8) Cello',
@@ -431,7 +431,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [36, 48, 60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentTrombone',
                     default: '(9) Trombone',
@@ -441,7 +441,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [36, 48, 60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentClarinet',
                     default: '(10) Clarinet',
@@ -451,7 +451,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [48, 60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentSaxophone',
                     default: '(11) Saxophone',
@@ -461,7 +461,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [36, 60, 84]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentFlute',
                     default: '(12) Flute',
@@ -471,7 +471,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60, 72]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentWoodenFlute',
                     default: '(13) Wooden Flute',
@@ -481,7 +481,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60, 72]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentBassoon',
                     default: '(14) Bassoon',
@@ -491,7 +491,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [36, 48, 60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentChoir',
                     default: '(15) Choir',
@@ -502,7 +502,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [48, 60, 72]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentVibraphone',
                     default: '(16) Vibraphone',
@@ -513,7 +513,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60, 72]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentMusicBox',
                     default: '(17) Music Box',
@@ -524,7 +524,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentSteelDrum',
                     default: '(18) Steel Drum',
@@ -535,7 +535,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentMarimba',
                     default: '(19) Marimba',
@@ -545,7 +545,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentSynthLead',
                     default: '(20) Synth Lead',
@@ -556,7 +556,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 samples: [60]
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 name: formatMessage({
                     id: 'music.instrumentSynthPad',
                     default: '(21) Synth Pad',
@@ -775,7 +775,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
     getInfo () {
         return {
             id: 'music',
-            // @ts-expect-error TS(2349): This expression is not callable.
+            
             name: formatMessage({
                 id: 'music.categoryName',
                 default: 'Music',
@@ -787,7 +787,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'playDrumForBeats',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.playDrumForBeats',
                         default: 'play drum [DRUM] for [BEATS] beats',
@@ -808,7 +808,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'midiPlayDrumForBeats',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.midiPlayDrumForBeats',
                         default: 'play drum [DRUM] for [BEATS] beats',
@@ -830,7 +830,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'restForBeats',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.restForBeats',
                         default: 'rest for [BEATS] beats',
@@ -846,7 +846,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'playNoteForBeats',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.playNoteForBeats',
                         default: 'play note [NOTE] for [BEATS] beats',
@@ -866,7 +866,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setInstrument',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.setInstrument',
                         default: 'set instrument to [INSTRUMENT]',
@@ -883,7 +883,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'midiSetInstrument',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.midiSetInstrument',
                         default: 'set instrument to [INSTRUMENT]',
@@ -900,7 +900,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setTempo',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.setTempo',
                         default: 'set tempo to [TEMPO]',
@@ -916,7 +916,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'changeTempo',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.changeTempo',
                         default: 'change tempo by [TEMPO]',
@@ -931,7 +931,7 @@ class Scratch3MusicBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getTempo',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'music.getTempo',
                         default: 'tempo',

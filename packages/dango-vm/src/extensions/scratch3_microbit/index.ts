@@ -2,7 +2,7 @@ import ArgumentType from '../../extension-support/argument-type';
 import BlockType from '../../extension-support/block-type';
 import log from '../../util/log';
 import cast from '../../util/cast';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import BLE from '../../io/ble';
 import Base64Util from '../../util/base64-util';
 import {StandardScratchExtensionClass} from '../../extension-support/extension-metadata';
@@ -400,7 +400,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitButtons.B
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.buttonsMenu.any',
                     default: 'any',
@@ -416,7 +416,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
     get GESTURES_MENU () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.gesturesMenu.moved',
                     default: 'moved',
@@ -425,7 +425,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitGestures.MOVED
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.gesturesMenu.shaken',
                     default: 'shaken',
@@ -434,7 +434,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitGestures.SHAKEN
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.gesturesMenu.jumped',
                     default: 'jumped',
@@ -450,7 +450,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
     get PIN_STATE_MENU () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.pinStateMenu.on',
                     default: 'on',
@@ -459,7 +459,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitPinState.ON
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.pinStateMenu.off',
                     default: 'off',
@@ -475,7 +475,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
     get TILT_DIRECTION_MENU () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.tiltDirectionMenu.front',
                     default: 'front',
@@ -484,7 +484,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitTiltDirection.FRONT
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.tiltDirectionMenu.back',
                     default: 'back',
@@ -493,7 +493,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitTiltDirection.BACK
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.tiltDirectionMenu.left',
                     default: 'left',
@@ -502,7 +502,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 value: MicroBitTiltDirection.LEFT
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.tiltDirectionMenu.right',
                     default: 'right',
@@ -519,7 +519,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
         return [
             ...this.TILT_DIRECTION_MENU,
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
+                
                 text: formatMessage({
                     id: 'microbit.tiltDirectionMenu.any',
                     default: 'any',
@@ -554,7 +554,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
             blocks: [
                 {
                     opcode: 'whenButtonPressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.whenButtonPressed',
                         default: 'when [BTN] button pressed',
@@ -571,7 +571,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'isButtonPressed',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.isButtonPressed',
                         default: '[BTN] button pressed?',
@@ -589,7 +589,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 '---',
                 {
                     opcode: 'whenGesture',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.whenGesture',
                         default: 'when [GESTURE]',
@@ -607,7 +607,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 '---',
                 {
                     opcode: 'displaySymbol',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.displaySymbol',
                         default: 'display [MATRIX]',
@@ -623,7 +623,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'displayText',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.displayText',
                         default: 'display text [TEXT]',
@@ -633,7 +633,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                     arguments: {
                         TEXT: {
                             type: ArgumentType.STRING,
-                            // @ts-expect-error TS(2349): This expression is not callable.
+                            
                             defaultValue: formatMessage({
                                 id: 'microbit.defaultTextToDisplay',
                                 default: 'Hello!',
@@ -649,7 +649,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'displayClear',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.clearDisplay',
                         default: 'clear display',
@@ -660,7 +660,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 '---',
                 {
                     opcode: 'whenTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.whenTilted',
                         default: 'when tilted [DIRECTION]',
@@ -677,7 +677,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'isTilted',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.isTilted',
                         default: 'tilted [DIRECTION]?',
@@ -694,7 +694,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 },
                 {
                     opcode: 'getTiltAngle',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.tiltAngle',
                         default: 'tilt angle [DIRECTION]',
@@ -712,7 +712,7 @@ class Scratch3MicroBitBlocks implements StandardScratchExtensionClass {
                 '---',
                 {
                     opcode: 'whenPinConnected',
-                    // @ts-expect-error TS(2349): This expression is not callable.
+                    
                     text: formatMessage({
                         id: 'microbit.whenPinConnected',
                         default: 'when pin [PIN] connected',

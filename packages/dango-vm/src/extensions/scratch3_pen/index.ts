@@ -4,7 +4,7 @@ import TargetType from '../../extension-support/target-type';
 import Cast from '../../util/cast';
 import Clone from '../../util/clone';
 import Color from '../../util/color';
-import * as formatMessage from 'format-message';
+import formatMessage from 'format-message';
 import MathUtil from '../../util/math-util';
 import RenderedTarget from '../../sprites/rendered-target';
 import log from '../../util/log';
@@ -196,7 +196,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
     _initColorParam () {
         return [
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
                 text: formatMessage({
                     id: 'pen.colorMenu.color',
                     default: 'color',
@@ -205,7 +204,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 value: ColorParam.COLOR
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
                 text: formatMessage({
                     id: 'pen.colorMenu.saturation',
                     default: 'saturation',
@@ -214,7 +212,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 value: ColorParam.SATURATION
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
                 text: formatMessage({
                     id: 'pen.colorMenu.brightness',
                     default: 'brightness',
@@ -223,7 +220,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 value: ColorParam.BRIGHTNESS
             },
             {
-                // @ts-expect-error TS(2349): This expression is not callable.
                 text: formatMessage({
                     id: 'pen.colorMenu.transparency',
                     default: 'transparency',
@@ -270,7 +266,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
     getInfo () {
         return {
             id: 'pen',
-            // @ts-expect-error TS(2349): This expression is not callable.
             name: formatMessage({
                 id: 'pen.categoryName',
                 default: 'Pen',
@@ -281,7 +276,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'clear',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.clear',
                         default: 'erase all',
@@ -291,7 +285,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'stamp',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.stamp',
                         default: 'stamp',
@@ -302,7 +295,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'penDown',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.penDown',
                         default: 'pen down',
@@ -313,7 +305,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'penUp',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.penUp',
                         default: 'pen up',
@@ -324,7 +315,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setPenColorToColor',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.setColor',
                         default: 'set pen color to [COLOR]',
@@ -340,7 +330,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'changePenColorParamBy',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.changeColorParam',
                         default: 'change pen [COLOR_PARAM] by [VALUE]',
@@ -362,7 +351,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setPenColorParamTo',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.setColorParam',
                         default: 'set pen [COLOR_PARAM] to [VALUE]',
@@ -384,7 +372,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'changePenSizeBy',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.changeSize',
                         default: 'change pen size by [SIZE]',
@@ -401,7 +388,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setPenSizeTo',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.setSize',
                         default: 'set pen size to [SIZE]',
@@ -419,7 +405,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setPenShadeToNumber',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.setShade',
                         default: 'set pen shade to [SHADE]',
@@ -436,7 +421,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'changePenShadeBy',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.changeShade',
                         default: 'change pen shade by [SHADE]',
@@ -453,7 +437,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'setPenHueToNumber',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.setHue',
                         default: 'set pen color to [HUE]',
@@ -470,7 +453,6 @@ class Scratch3PenBlocks implements StandardScratchExtensionClass {
                 {
                     opcode: 'changePenHueBy',
                     blockType: BlockType.COMMAND,
-                    // @ts-expect-error TS(2349): This expression is not callable.
                     text: formatMessage({
                         id: 'pen.changeHue',
                         default: 'change pen color by [HUE]',
