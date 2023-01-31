@@ -53,7 +53,7 @@ Blockly.Blocks['data_blockvariable'] = {
         true,
         false
     );
-    this.insertValueInput(0, 'DUMMY_INPUT').appendField(this.plusminus_, 'PLUS_MINUS');
+    this.insertDummyInput(0, 'DUMMY_INPUT').appendField(this.plusminus_, 'PLUS_MINUS');
   },
   mutationToDom: function() {
     var container = document.createElement('mutation');
