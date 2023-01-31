@@ -46,6 +46,18 @@ Blockly.DataCategory = function(workspace) {
   var xmlList = [];
 
   Blockly.DataCategory.addCreateButton(xmlList, workspace, 'VARIABLE');
+  
+  xmlList.push(Blockly.Xml.textToDom(
+      '<xml><block type="data_blockvariable" gap="16">' +
+      '<mutation argumentids="[&quot;VAR1&quot;]"/>' +
+        '<value name="VAR1">' +
+          '<shadow type="argument_reporter_string_number">' +
+            '<mutation colours="[&quot;#FF8C1A&quot;,&quot;#FF8000&quot;,&quot;#DB6E00&quot;]" />' +
+            '<field name="VALUE">var1</field>' +
+          '</shadow>' +
+        '</value>' +
+      '</block></xml>'
+  ).firstChild);
 
   for (var i = 0; i < variableModelList.length; i++) {
     Blockly.DataCategory.addDataVariable(xmlList, variableModelList[i]);

@@ -1258,6 +1258,17 @@ Blockly.Block.prototype.appendDummyInput = function(opt_name) {
 };
 
 /**
+ * Shortcut for inserting a dummy input row.
+ * @param {number} index The index to insert the input.
+ * @param {string=} opt_name Language-neutral identifier which may used to find
+ *     this input again.  Should be unique to this block.
+ * @return {!Blockly.Input} The input object created.
+ */
+Blockly.Block.prototype.insertDummyInput = function(index, opt_name) {
+  return this.insertInput_(index, Blockly.DUMMY_INPUT, opt_name || '');
+};
+
+/**
  * Initialize this block using a cross-platform, internationalization-friendly
  * JSON description.
  * @param {!Object} json Structured data describing the block.

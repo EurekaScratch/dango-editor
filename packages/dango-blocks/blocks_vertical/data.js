@@ -28,6 +28,231 @@ goog.require('Blockly.Colours');
 goog.require('Blockly.constants');
 goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 
+Blockly.Blocks['data_blockvariable'] = {
+  /**
+   * Block to create a variable in block.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.DATA_BLOCKVARIABLE,
+      "message1": "%1", // Statement
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "SUBSTACK"
+        }
+      ],
+      "category": Blockly.Categories.data,
+      "extensions": ["colours_data", "shape_statement"]
+    });
+    this.argumentIds_ = [];
+    this.plusminus_ = new Blockly.FieldPlusMinus(
+        this.handlePlus_.bind(this),
+        this.handleMinus_.bind(this),
+        true,
+        false
+    );
+    this.insertValueInput(0, 'DUMMY_INPUT').appendField(this.plusminus_, 'PLUS_MINUS');
+  },
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('argumentids', JSON.stringify(this.argumentIds_));
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    var argumentIds = xmlElement.getAttribute('argumentids');
+    // don't update if args are not changed
+    if (JSON.stringify(this.argumentIds_) === argumentIds) {
+      return;
+    }
+    this.argumentIds_ = JSON.parse(argumentIds);
+    if (this.argumentIds_.length >= 1) {
+      this.plusminus_.setEnableMinus(true);
+    } else {
+      this.plusminus_.setEnableMinus(false);
+    }
+    this.updateDisplay_();
+  },
+  customContextMenu: function(menuOptions, originalBlock) {
+    if (originalBlock) {
+      var index = this.findBlockIndex_(originalBlock);
+      menuOptions.push({
+        enabled: true,
+        text: Blockly.Msg.INSERT_INPUT,
+        callback: this.insertInputWithIndex_.bind(this, index, null)
+      });
+      menuOptions.push({
+        enabled: this.argumentIds_.length >= 2,
+        text: Blockly.Msg.DELETE_INPUT,
+        callback: this.removeInputWithIndex_.bind(this, index, null)
+      });
+    }
+  },
+  findBlockIndex_: function(block) {
+    for (var i = 0; i < this.childBlocks_.length; ++i) {
+      if (this.childBlocks_[i] === block) {
+        return i + 1;
+      }
+    }
+    return 0;
+  },
+  handlePlus_: function() {
+    this.insertInputWithIndex_(this.argumentIds_.length + 1);
+  },
+  handleMinus_: function() {
+    this.removeInputWithIndex_(this.argumentIds_.length);
+  },
+  insertInputWithIndex_: function(index, name) {
+    Blockly.Events.setGroup(true);
+    var oldMutation = Blockly.Xml.domToText(this.mutationToDom());
+    if (this.argumentIds_.length === 2) {
+      this.plusminus_.setEnableMinus(true);
+    }
+
+    if (!name) name = Blockly.utils.genUid();
+    this.argumentIds_.splice(index - 1, 0, name);
+    var input = this.insertValueInput(index, name);
+    Blockly.Events.disable();
+    var newBlock = this.workspace.newBlock('argument_reporter_string_number');
+    newBlock.setFieldValue('var' + index, 'VALUE');
+    const colorArray = [
+      Blockly.Colours.data.primary,
+      Blockly.Colours.data.secondary,
+      Blockly.Colours.data.tertiary
+    ];
+    newBlock.updateColor(colorArray);
+    newBlock.setShadow(true);
+    if (!this.isInsertionMarker()) {
+      newBlock.initSvg();
+      newBlock.render(false);
+    }
+    Blockly.Events.enable();
+    if (Blockly.Events.isEnabled()) {
+      Blockly.Events.fire(new Blockly.Events.BlockCreate(newBlock));
+    }
+    newBlock.outputConnection.connect(input.connection);
+
+    var newMutation = Blockly.Xml.domToText(this.mutationToDom());
+    Blockly.Events.fire(new Blockly.Events.BlockChange(this, 'mutation', null, oldMutation, newMutation));
+    Blockly.Events.setGroup(false);
+  },
+  removeInputWithIndex_: function(index) {
+    // not allowed to remove input when there are less than 2 inputs
+    if (this.argumentIds_.length <= 1) return;
+    Blockly.Events.setGroup(true);
+    var oldMutation = Blockly.Xml.domToText(this.mutationToDom());
+    if (this.argumentIds_.length === 2) {
+      this.plusminus_.setEnableMinus(false);
+    }
+    this.removeInput(this.argumentIds_[index - 1]);
+    this.argumentIds_.splice(index - 1, 1);
+    var newMutation = Blockly.Xml.domToText(this.mutationToDom());
+    Blockly.Events.fire(new Blockly.Events.BlockChange(this, 'mutation', null, oldMutation, newMutation));
+    Blockly.Events.setGroup(false);
+  },
+  updateDisplay_: function() {
+    var wasRendered = this.rendered;
+    this.rendered = false;
+
+    // disconnect old blocks, except the first one and the last one
+    var connectionMap = {};
+    for (var i = 1; i < this.inputList.length - 1; ++i) {
+      var input = this.inputList[i];
+      if (input.connection) {
+        var target = input.connection.targetBlock();
+        var saveInfo = {
+          shadow: input.connection.getShadowDom(),
+          block: target
+        };
+        connectionMap[input.name] = saveInfo;
+        input.connection.setShadowDom(null);
+        if (target) {
+          input.connection.disconnect();
+        }
+      }
+    }
+
+    // remove all inputs, except the first one and the last one
+    for (var i = 1; i < this.inputList.length - 1; ++i) {
+      this.inputList[i].dispose();
+    }
+    this.inputList.splice(1, this.inputList.length - 2);
+
+    // create inputs
+    for (var i = 0; i < this.argumentIds_.length; ++i) {
+      var id = this.argumentIds_[i];
+      var input = this.insertValueInput(i + 1, id);
+
+      // populate args
+      var oldBlock = null;
+      var oldShadow = null;
+      if (connectionMap && (id in connectionMap)) {
+        var saveInfo = connectionMap[id];
+        oldBlock = saveInfo['block'];
+        oldShadow = saveInfo['shadow'];
+      }
+
+      if (oldBlock) {
+        // reattach the old block and shadow dom
+        connectionMap[input.name] = null;
+        oldBlock.outputConnection.connect(input.connection);
+        if (!oldShadow) {
+          // create shadow dom
+          oldShadow = goog.dom.createDom('shadow');
+          oldShadow.setAttribute('type', 'argument_reporter_string_number');
+          var mutationDom = goog.dom.createDom('mutation', null, '');
+          mutationDom.setAttribute('colours', '[&quot;#FF8C1A&quot;,&quot;#FF8000&quot;,&quot;#DB6E00&quot;]');
+          oldShadow.appendChild(mutationDom);
+          var fieldDom = goog.dom.createDom('field', null, '');
+          fieldDom.setAttribute('name', 'VALUE');
+          oldShadow.appendChild(fieldDom);
+        }
+        input.connection.setShadowDom(oldShadow);
+      } else {
+        // attach shadow
+        Blockly.Events.disable();
+        var newBlock = this.workspace.newBlock('argument_reporter_string_number');
+        // todo read by argumentdefault?
+        newBlock.setFieldValue('var' + i, 'VALUE');
+        newBlock.setShadow(true);
+        const colorArray = [
+          Blockly.Colours.data.primary,
+          Blockly.Colours.data.secondary,
+          Blockly.Colours.data.tertiary
+        ];
+        newBlock.updateColor(colorArray);
+        if (!this.isInsertionMarker()) {
+          newBlock.initSvg();
+          newBlock.render(false);
+        }
+        Blockly.Events.enable();
+        if (Blockly.Events.isEnabled()) {
+          Blockly.Events.fire(new Blockly.Events.BlockCreate(newBlock));
+        }
+        newBlock.outputConnection.connect(input.connection);
+      }
+    }
+
+    // delete unused shadow
+    for (var id in connectionMap) {
+      var saveInfo = connectionMap[id];
+      if (saveInfo) {
+        var block = saveInfo['block'];
+        if (block && block.isShadow()) {
+          block.dispose();
+          connectionMap[id] = null;
+        }
+      }
+    }
+
+    this.rendered = wasRendered;
+    if (wasRendered && !this.isInsertionMarker()) {
+      this.initSvg();
+      this.render();
+    }
+  }
+};
 
 Blockly.Blocks['data_variable'] = {
   /**

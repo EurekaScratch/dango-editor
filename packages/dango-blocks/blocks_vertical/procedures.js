@@ -1095,6 +1095,25 @@ Blockly.Blocks['argument_lambda'] = {
       ],
       "extensions": ["colours_more", "output_lambda"]
     });
+    this.colours_ = [];
+  },
+  mutationToDom: function () {
+    var container = document.createElement('mutation');
+    container.setAttribute('colours', JSON.stringify(this.colours_));
+    return container;
+  },
+  domToMutation: function (xmlElement) {
+      var colours = xmlElement.getAttribute('colours');
+      // don't update if colours are not changed
+      if (!colours || JSON.stringify(this.colours_) === colours) {
+        return;
+      }
+    this.colours_ = JSON.parse(colours);
+    this.setColour(this.colours_[0], this.colours_[1], this.colours_[2]);
+  },
+  updateColor: function (colorArray) {
+      this.colours_ = colorArray;
+      this.setColour(this.colours_[0], this.colours_[1], this.colours_[2]);
   }
 };
 
@@ -1110,6 +1129,25 @@ Blockly.Blocks['argument_reporter_boolean'] = {
       ],
       "extensions": ["colours_more", "output_boolean"]
     });
+    this.colours_ = [];
+  },
+  mutationToDom: function () {
+    var container = document.createElement('mutation');
+    container.setAttribute('colours', JSON.stringify(this.colours_));
+    return container;
+  },
+  domToMutation: function (xmlElement) {
+      var colours = xmlElement.getAttribute('colours');
+      // don't update if colours are not changed
+      if (!colours || JSON.stringify(this.colours_) === colours) {
+        return;
+      }
+    this.colours_ = JSON.parse(colours);
+    this.setColour(this.colours_[0], this.colours_[1], this.colours_[2]);
+  },
+  updateColor: function (colorArray) {
+      this.colours_ = colorArray;
+      this.setColour(this.colours_[0], this.colours_[1], this.colours_[2]);
   }
 };
 
@@ -1125,6 +1163,25 @@ Blockly.Blocks['argument_reporter_string_number'] = {
       ],
       "extensions": ["colours_more", "output_number", "output_string"]
     });
+    this.colours_ = [];
+  },
+  mutationToDom: function () {
+    var container = document.createElement('mutation');
+    container.setAttribute('colours', JSON.stringify(this.colours_));
+    return container;
+  },
+  domToMutation: function (xmlElement) {
+      var colours = xmlElement.getAttribute('colours');
+      // don't update if colours are not changed
+      if (!colours || JSON.stringify(this.colours_) === colours) {
+        return;
+      }
+    this.colours_ = JSON.parse(colours);
+    this.setColour(this.colours_[0], this.colours_[1], this.colours_[2]);
+  },
+  updateColor: function (colorArray) {
+      this.colours_ = colorArray;
+      this.setColour(this.colours_[0], this.colours_[1], this.colours_[2]);
   }
 };
 

@@ -58,6 +58,7 @@ Blockly.Msg.CONTROL_ALLATONCE = 'all at once';
 Blockly.Msg.CONTROL_EXECUTE = 'execute %1';
 
 // Data blocks
+Blockly.Msg.DATA_BLOCKVARIABLE = 'block variable';
 Blockly.Msg.DATA_SETVARIABLETO = 'set %1 to %2';
 Blockly.Msg.DATA_CHANGEVARIABLEBY = 'change %1 by %2';
 Blockly.Msg.DATA_SHOWVARIABLE = 'show variable %1';
