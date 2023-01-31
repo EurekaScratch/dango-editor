@@ -11,6 +11,7 @@ import extensionLibraryContent from '../lib/libraries/extensions/index.jsx';
 
 import LibraryComponent from '../components/library/library.jsx';
 import extensionIcon from '../components/action-menu/icon--sprite.svg';
+import extensionTags from '../lib/libraries/dango-extension-tags';
 
 import JSZip from 'jszip';
 import vm from 'vm';
@@ -167,6 +168,7 @@ class ExtensionLibrary extends React.PureComponent {
         return (
             <LibraryComponent
                 data={extensionLibraryThumbnailData}
+                tags={extensionTags}
                 filterable
                 showUploadButton
                 id="extensionLibrary"

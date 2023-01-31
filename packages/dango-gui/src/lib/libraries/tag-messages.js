@@ -125,5 +125,21 @@ export default defineMessages({
         defaultMessage: 'Letters',
         description: 'Tag for filtering a library for letters',
         id: 'gui.libraryTags.letters'
+    },
+    // Dango - extension tags
+    builtin: {
+        defaultMessage: 'Builtin',
+        description: 'Tag for filtering a library for builtin extensions',
+        id: 'gui.libraryTags.builtin'
+    },
+    turbowarp: {
+        defaultMessage: 'Turbowarp',
+        description: 'Tag for filtering a library for extensions from extensions.turbowarp.org',
+        id: 'gui.libraryTags.turbowarp'
+    },
+    clipcc: {
+        defaultMessage: 'ClipCC',
+        description: 'Tag for filtering a library for extensions from codingclip.com/extension',
+        id: 'gui.libraryTags.clipcc'
     }
 });

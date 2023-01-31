@@ -46,6 +46,8 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
+import twIconURL from './tw/tw.svg';
+
 export default [
     {
         name: (
@@ -65,6 +67,7 @@ export default [
                 id="gui.extension.music.description"
             />
         ),
+        tags: ['builtin'],
         featured: true
     },
     {
@@ -85,6 +88,7 @@ export default [
                 id="gui.extension.pen.description"
             />
         ),
+        tags: ['builtin'],
         featured: true
     },
     {
@@ -105,6 +109,7 @@ export default [
                 id="gui.extension.videosensing.description"
             />
         ),
+        tags: ['builtin'],
         featured: true
     },
     {
@@ -127,6 +132,7 @@ export default [
             />
         ),
         featured: true,
+        tags: ['builtin'],
         internetConnectionRequired: true
     },
     {
@@ -149,6 +155,7 @@ export default [
             />
         ),
         featured: true,
+        tags: ['builtin'],
         internetConnectionRequired: true
     },
     {
@@ -164,6 +171,7 @@ export default [
                 id="gui.extension.makeymakey.description"
             />
         ),
+        tags: ['builtin'],
         featured: true
     },
     {
@@ -194,6 +202,7 @@ export default [
                 id="gui.extension.microbit.connectingMessage"
             />
         ),
+        tags: ['builtin'],
         helpLink: 'https://scratch.mit.edu/microbit'
     },
     {
@@ -210,6 +219,7 @@ export default [
             />
         ),
         featured: true,
+        tags: ['builtin'],
         disabled: false,
         bluetoothRequired: true,
         internetConnectionRequired: true,
@@ -241,6 +251,7 @@ export default [
         ),
         featured: true,
         disabled: false,
+        tags: ['builtin'],
         bluetoothRequired: true,
         internetConnectionRequired: true,
         launchPeripheralConnectionFlow: true,
@@ -271,6 +282,7 @@ export default [
             />
         ),
         featured: true,
+        tags: ['builtin'],
         disabled: false,
         bluetoothRequired: true,
         internetConnectionRequired: true,
@@ -302,6 +314,7 @@ export default [
             />
         ),
         featured: true,
+        tags: ['builtin'],
         disabled: false,
         bluetoothRequired: true,
         internetConnectionRequired: true,
@@ -317,5 +330,20 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/vernier'
-    }
+    },
+    {
+        name: 'Turbowarp Blocks',
+        extensionId: 'tw',
+        collaborator: 'Turbowarp',
+        iconURL: twIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Weird new blocks."
+                description="Description for the 'Turbowarp Blocks' extension"
+                id="gui.extension.tw.description"
+            />
+        ),
+        tags: ['builtin', 'turbowarp'],
+        featured: true
+    },
 ];
