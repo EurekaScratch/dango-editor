@@ -55,5 +55,6 @@ export const ScratchDarkTheme = Object.assign({}, ScratchTheme, {
     textPrimary: 'rgb(211, 215, 220)',
     textPrimaryTransparent: 'hsla(0, 100%, 100%, 0.75)',
     motionPrimary: 'rgb(45, 51, 59)',
-    dropHighlight: 'rgb(46, 52, 64)'
+    dropHighlight: 'rgb(46, 52, 64)',
+    uiWhite: 'hsl(214, 13%, 20%)'
 });
