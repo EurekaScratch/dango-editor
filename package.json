@@ -22,6 +22,7 @@
     "test:unit": "yarn workspace scratch-gui test:unit && yarn workspace scratch-vm tap:unit",
     "gui:type": "yarn workspace scratch-gui checktype",
     "vm:start": "yarn workspace scratch-vm start",
+    "vm:build": "yarn workspace scratch-vm build",
     "vm:type": "yarn workspace scratch-vm checktype",
     "vm:docs": "yarn workspace scratch-vm docs",
     "block:build": "yarn workspace scratch-blocks build:old"

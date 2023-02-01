@@ -1,5 +1,4 @@
 @import "../../css/units.css";
-@import "../../css/colors.css";
 
 .input-form {
     height: 2rem;
@@ -8,11 +7,11 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.625rem;
     font-weight: bold;
-    color: $text-primary;
+    color: var(--text-primary);
 
     border-width: 1px;
     border-style: solid;
-    border-color: $ui-black-transparent;
+    border-color: var(--ui-black-transparent);
     border-radius: 2rem;
 
     outline: none;
@@ -32,12 +31,12 @@
 }
 
 .input-form:hover {
-    border-color: $motion-primary;
+    border-color: var(--motion-primary);
 }
 
 .input-form:focus {
-    border-color: $motion-primary;
-    box-shadow: 0 0 0 0.25rem $motion-transparent;
+    border-color: var(--motion-primary);
+    box-shadow: 0 0 0 0.25rem var(--motion-transparent);
 }
 
 .input-small {

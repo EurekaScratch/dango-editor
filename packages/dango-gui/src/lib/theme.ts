@@ -2,7 +2,7 @@ export interface ThemePrototype {
     [propName: string]: string | number;
 }
 
-const defaultSelector = 'div[class^=\'gui_page-wrapper\']';
+const defaultSelector = ':root';
 
 export function applyTheme (theme: ThemePrototype, selector?: string) {
     const root = document.querySelector(selector ?? defaultSelector) as (HTMLElement | null);

@@ -1,5 +1,4 @@
 @import "../../css/units.css";
-@import "../../css/colors.css";
 @import "../../css/z-index.css";
 
 .page-wrapper {
@@ -8,7 +7,7 @@
 
 .body-wrapper {
     height: calc(100% - $menu-bar-height);
-    background-color: $ui-primary;
+    background-color: var(--ui-primary);
 }
 
 .body-wrapper * {
@@ -75,13 +74,13 @@
     margin-bottom: 0;
 
     border-radius: 1rem 1rem 0 0;
-    border: 1px solid $ui-black-transparent;
+    border: 1px solid var(--ui-black-transparent);
 
     padding: 0.125rem 1.25rem 0;
     font-size: 0.75rem;
 
-    background-color: $ui-tertiary;
-    color: $text-primary-transparent;
+    background-color: var(--ui-tertiary);
+    color: var(--text-primary-transparent);
 
     display: flex;
     justify-content: center;
@@ -119,13 +118,13 @@
 }
 
 .tab:hover {
-  background-color: $ui-primary;
+  background-color: var(--ui-primary);
 }
 
 .tab.is-selected {
     height: 90%;
-    color: $motion-primary;
-    background-color: $ui-white;
+    color: var(--motion-primary);
+    background-color: var(--ui-white);
     z-index: 4; /* Make sure selected is always above */
 }
 
@@ -163,7 +162,7 @@
 .tab.is-selected:focus {
     outline: none;
     box-shadow: none;
-    border-color: $ui-black-transparent;
+    border-color: var(--ui-black-transparent);
 }
 
 .tab.is-selected:focus:after {
@@ -236,9 +235,9 @@
     left: 0;
     right: 0;
     z-index: $z-index-extension-button;
-    background: $motion-primary;
+    background: var(--motion-primary);
 
-    border: 1px solid $motion-primary;
+    border: 1px solid var(--motion-primary);
     box-sizing: content-box; /* To match scratch-block vertical toolbox borders */
 }
 

@@ -59,6 +59,9 @@ const base = {
         {
             test: /\.tsx?$/,
             loader: 'ts-loader',
+            options: {
+                allowTsInNodeModules: true
+            },
             include: [
                 path.resolve(__dirname, 'src'),
                 /node_modules[\\/]scratch-[^\\/]+[\\/]src/,
