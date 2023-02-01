@@ -1,12 +1,11 @@
 @import "../../css/units.css";
-@import "../../css/colors.css";
 @import "../../css/z-index.css";
 
 .monitor-container {
     position: absolute;
-    background: $ui-primary;
+    background: var(--ui-primary);
     z-index: $z-index-monitor;
-    border: 1px solid $ui-black-transparent;
+    border: 1px solid var(--ui-black-transparent);
     border-radius: calc($space / 2);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.75rem;
@@ -77,18 +76,18 @@
 }
 
 .list-header {
-    background: $ui-white;
-    border-bottom: 1px solid $ui-black-transparent;
+    background: var(--ui-white);
+    border-bottom: 1px solid var(--ui-black-transparent);
     text-align: center;
     padding: 3px;
     font-size: 0.75rem;
     font-weight: bold;
-    color: $text-primary;
+    color: var(--text-primary);
     width: 100%;
 }
 
 .list-body {
-    background: $ui-primary;
+    background: var(--ui-primary);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -108,7 +107,7 @@
 
 .list-index {
     font-weight: bold;
-    color: $text-primary;
+    color: var(--text-primary);
     margin: 0 3px;
 }
 
@@ -118,20 +117,20 @@
     color: white;
     margin: 0 3px;
     border-radius: calc($space / 2);
-    border: 1px solid $ui-black-transparent;
+    border: 1px solid var(--ui-black-transparent);
     flex-grow: 1;
     height: 22px;
 }
 
 .list-footer {
-    background: $ui-white;
+    background: var(--ui-white);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 3px;
     font-size: 0.75rem;
     font-weight: bold;
-    color: $text-primary;
+    color: var(--text-primary);
 }
 
 .list-empty {
@@ -161,7 +160,7 @@
     padding: 3px 5px;
     border: 0;
     background: none;
-    color: $ui-white;
+    color: var(--ui-white);
     outline: none;
     font-size: 0.75rem;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -174,7 +173,7 @@
     padding: 0;
     padding-right: 5px;
     cursor: pointer;
-    color: $ui-white;
+    color: var(--ui-white);
 }
 
 .add-button {

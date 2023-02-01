@@ -1,4 +1,3 @@
-@import "../../css/colors.css";
 @import "../../css/z-index.css";
 
 .background {
@@ -11,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $motion-primary;
+    background-color: var(--motion-primary);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     color: white;

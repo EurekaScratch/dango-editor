@@ -1,12 +1,11 @@
 @import "../../css/units.css";
-@import "../../css/colors.css";
 
 .library-scroll-grid {
     display: flex;
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
-    background: $ui-secondary;
+    background: var(--ui-secondary);
     flex-grow: 1;
     flex-wrap: wrap;
     overflow-y: auto;
@@ -25,7 +24,7 @@
     justify-content: flex-start;
     align-items: center;
     height: calc($library-filter-bar-height + 2rem); /* padding */
-    background-color: $motion-transparent;
+    background-color: var(--motion-transparent);
     padding: 0 1rem;
     font-size: .875rem;
 }
@@ -72,8 +71,8 @@
 .upload-button {
     padding: .625rem 1rem;
     margin-right: 1rem;
-    background: $motion-primary;
+    background: var(--motion-primary);
     border-radius: 1.375rem;
-    color: $ui-white;
+    color: var(--ui-white);
     height: $library-filter-bar-height;
 }

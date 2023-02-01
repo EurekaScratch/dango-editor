@@ -1,31 +1,38 @@
 import { ThemePrototype } from '../lib/theme';
-import { argbFromHex, themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
+import {
+    argbFromHex,
+    themeFromSourceColor,
+    redFromArgb,
+    greenFromArgb,
+    blueFromArgb,
+    applyTheme
+} from "@material/material-color-utilities";
 
 export function generateThemeFromColor (color: string, darkMode?: boolean) : ThemePrototype {
-    const { schemes } = themeFromSourceColor(argbFromHex(color.substring(1)));
+    const { schemes } = themeFromSourceColor(argbFromHex(color));
     const palette = darkMode ? schemes.dark : schemes.light;
     
     return {
-        uiPrimary: decimalToHex(palette.primaryContainer), /* #E5F0FF */
-        uiSecondary: decimalToHex(palette.secondaryContainer), /* #E9F1FC */
-        uiTertiary: decimalToHex(palette.tertiaryContainer), /* #D9E3F2 */
+        uiPrimary: rgbFromArgb(palette.primaryContainer),
+        uiSecondary: rgbFromArgb(palette.secondaryContainer), /* #E9F1FC */
+        uiTertiary: rgbFromArgb(palette.tertiaryContainer), /* #D9E3F2 */
 
-        uiModalOverlay: 'hsla(215, 100%, 65%, 0.9)', /* 90% transparent version of motion-primary */
+        uiModalOverlay: transparent(rgbFromArgb(palette.primary), 0.9), /* 90% transparent version of motion-primary */
 
-        uiWhite: 'hsla(0, 100%, 100%, 1)', /* #FFFFFF */
-        uiWhiteDim: 'hsla(0, 100%, 100%, 0.75)', /* 25% transparent version of ui-white */
-        uiWhiteTransparent: 'hsla(0, 100%, 100%, 0.25)', /* 25% transparent version of ui-white */
-        uiTransparent: 'hsla(0, 100%, 100%, 0)', /* 25% transparent version of ui-white */
+        uiWhite: rgbFromArgb(palette.background),
+        uiWhiteDim: transparent(rgbFromArgb(palette.background), 0.25), /* 25% transparent version of ui-white */
+        uiWhiteTransparent: transparent(rgbFromArgb(palette.background), 0.25), /* 25% transparent version of ui-white */
+        uiTransparent: transparent(rgbFromArgb(palette.background), 0.25), /* 25% transparent version of ui-white */
 
         uiBlackTransparent: 'hsla(0, 0%, 0%, 0.15)', /* 15% transparent version of black */
 
         textPrimary: 'hsla(225, 15%, 40%, 1)', /* #575E75 */
         textPrimaryTransparent: 'hsla(225, 15%, 40%, 0.75)',
 
-        motionPrimary: decimalToHex(palette.primary),
-        motionTertiary: decimalToHex(palette.tertiary), /* #3373CC */
-        motionTransparent: 'hsla(215, 100%, 65%, 0.35)', /* 35% transparent version of motion-primary */
-        motionLightTransparent: 'hsla(215, 100%, 65%, 0.15)', /* 15% transparent version of motion-primary */
+        motionPrimary: rgbFromArgb(palette.primary),
+        motionTertiary: rgbFromArgb(palette.tertiary), /* #3373CC */
+        motionTransparent: transparent(rgbFromArgb(palette.primary), 0.35), /* 35% transparent version of motion-primary */
+        motionLightTransparent: transparent(rgbFromArgb(palette.primary), 0.15), /* 15% transparent version of motion-primary */
 
         redPrimary: 'hsla(20, 100%, 55%, 1)', /* #FF661A */
         redTertiary: 'hsla(20, 100%, 45%, 1)', /* #E64D00 */
@@ -40,7 +47,7 @@ export function generateThemeFromColor (color: string, darkMode?: boolean) : The
         penPrimary: 'hsla(163, 85%, 40%, 1)', /* #0FBD8C */
         penTransparent: 'hsla(163, 85%, 40%, 0.25)', /* #0FBD8C */
 
-        errorPrimary: 'hsla(30, 100%, 55%, 1)', /* #FF8C1A */
+        errorPrimary: rgbFromArgb(palette.error), /* #FF8C1A */
         errorLight: 'hsla(30, 100%, 70%, 1)', /* #FFB366 */
         errorTransparent: 'hsla(30, 100%, 55%, 0.25)', /* #FF8C1A */
 
@@ -53,16 +60,11 @@ export function generateThemeFromColor (color: string, darkMode?: boolean) : The
     };
 }
 
-/**
- * Convert a Scratch decimal color to a hex string, #RRGGBB.
- * @param {number} decimal RGB color as a decimal.
- * @return {string} RGB color as #RRGGBB hex string.
- */
-function decimalToHex (decimal: number) {
-    if (decimal < 0) {
-        decimal += 0xFFFFFF + 1;
-    }
-    let hex = Number(decimal).toString(16);
-    hex = `#${'000000'.substr(0, 6 - hex.length)}${hex}`;
-    return hex;
+function rgbFromArgb (argb: number) {
+  const [r, g, b] = [redFromArgb, greenFromArgb, blueFromArgb].map((f) => f(argb));
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function transparent (rgbStr: string, transparent: number) {
+    return `rgba${rgbStr.slice(3, -1)}, ${transparent})`;
 }

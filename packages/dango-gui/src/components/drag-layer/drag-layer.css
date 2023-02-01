@@ -1,5 +1,4 @@
 @import "../../css/units.css";
-@import "../../css/colors.css";
 @import "../../css/z-index.css";
 
 .drag-layer {
@@ -29,10 +28,10 @@
     margin-top: -50%;
 
     padding: 0.25rem;
-    border: 2px solid $motion-primary;
-    background: $ui-white;
+    border: 2px solid var(--motion-primary);
+    background: var(--ui-white);
     border-radius: 0.5rem;
 
     /* Use the same drop shadow as stage dragging */
-    box-shadow: 5px 5px 5px $ui-black-transparent;
+    box-shadow: 5px 5px 5px var(--ui-black-transparent);
 }
