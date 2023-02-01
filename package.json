@@ -20,6 +20,7 @@
     "build:dist": "NODE_ENV=production yarn build",
     "build": "yarn block:build && yarn workspace scratch-gui build",
     "test:unit": "yarn workspace scratch-gui test:unit && yarn workspace scratch-vm tap:unit",
+    "gui:type": "yarn workspace scratch-gui checktype",
     "vm:start": "yarn workspace scratch-vm start",
     "vm:type": "yarn workspace scratch-vm checktype",
     "vm:docs": "yarn workspace scratch-vm docs",
