@@ -40,7 +40,12 @@
     stroke: none;
 }
 
+.blocks :global(.scratchCategoryMenu) {
+    background-color: var(--ui-white);
+}
+
 .blocks :global(.blocklyToolboxDiv) {
+    background-color: var(--ui-white);
     border-right: 1px solid $ui-black-transparent;
     border-bottom: 1px solid $ui-black-transparent;
     box-sizing: content-box;
@@ -67,6 +72,10 @@
 .blocks :global(.blocklyFlyout) {
     border-right: 1px solid $ui-black-transparent;
     box-sizing: content-box;
+}
+
+.blocks :global(.blocklyFlyoutBackground) {
+    fill: var(--ui-white);
 }
 
 [dir="rtl"] .blocks :global(.blocklyFlyout) {

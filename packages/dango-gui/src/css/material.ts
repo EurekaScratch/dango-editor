@@ -16,8 +16,8 @@ export function generateThemeFromColor (color: string, darkMode?: boolean) : The
     
     return Object.assign({}, baseTheme, {
         uiPrimary: rgbFromArgb(palette.primaryContainer),
-        uiSecondary: rgbFromArgb(palette.secondaryContainer), /* #E9F1FC */
-        uiTertiary: rgbFromArgb(palette.tertiaryContainer), /* #D9E3F2 */
+        uiSecondary: rgbFromArgb(palette.secondaryContainer),
+        uiTertiary: lighten(rgbFromArgb(palette.secondaryContainer), 0.2),
         uiModalOverlay: transparent(rgbFromArgb(palette.primary), 0.9), /* 90% transparent version of motion-primary */
         uiWhite: rgbFromArgb(palette.background),
         uiWhiteDim: transparent(rgbFromArgb(palette.background), 0.25), /* 25% transparent version of ui-white */
@@ -38,4 +38,14 @@ function rgbFromArgb (argb: number) {
 
 function transparent (rgbStr: string, transparent: number) {
     return `rgba${rgbStr.slice(3, -1)}, ${transparent})`;
+}
+
+function lighten (rgbString: string, ratio: number) {
+    const [r, g, b] = rgbString.slice(4, -1).split(',');
+    const lightenColor = {
+        r: ((1 - ratio) * parseInt(r)) + (ratio * 255),
+        g: ((1 - ratio) * parseInt(g)) + (ratio * 255),
+        b: ((1 - ratio) * parseInt(b)) + (ratio * 255)
+    };
+    return `rgb(${lightenColor.r}, ${lightenColor.g}, ${lightenColor.b})`;
 }
