@@ -14,7 +14,8 @@ const defaultState = {
     saveSettings: false,
     saveExtension: true,
     colorPalette: 'scratch', // 'scratch' or 'material'
-    themeColor: '#4c97ff'
+    themeColor: '#4c97ff',
+    darkMode: 'system'
 };
 
 const initialState = JSON.parse(localStorage.getItem('settings')) || {};

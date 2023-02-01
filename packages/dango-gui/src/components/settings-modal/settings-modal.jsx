@@ -121,7 +121,27 @@ const messages = defineMessages({
         defaultMessage: 'Theme Color',
         description: 'Label of Theme Color',
         id: 'gui.settingsModal.themeColor'
-    }
+    },
+    darkMode: {
+        defaultMessage: 'Dark Mode',
+        description: 'Label of Dark Mode',
+        id: 'gui.settingsModal.darkMode'
+    },
+    dark: {
+        defaultMessage: 'Dark',
+        description: 'Label of Dark',
+        id: 'gui.settingsModal.dark'
+    },
+    light: {
+        defaultMessage: 'Light',
+        description: 'Label of Light',
+        id: 'gui.settingsModal.light'
+    },
+    followSystem: {
+        defaultMessage: 'Follow System',
+        description: 'Label of Follow System',
+        id: 'gui.settingsModal.followSystem'
+    },
 });
 
 const ExperimentalTag = ({intl}) => {
@@ -255,6 +275,16 @@ class SettingsModal extends React.Component {
         }, {
             id: 'material',
             text: this.props.intl.formatMessage(messages.material)
+        }];
+        const darkModeOptions = [{
+            id: 'system',
+            text: this.props.intl.formatMessage(messages.followSystem)
+        }, {
+            id: 'light',
+            text: this.props.intl.formatMessage(messages.light)
+        }, {
+            id: 'dark',
+            text: this.props.intl.formatMessage(messages.dark)
         }];
         return (
             <Modal
@@ -430,6 +460,18 @@ class SettingsModal extends React.Component {
                         >
                             {this.props.intl.formatMessage(messages.theme)}
                         </p>
+                        <div className={classNames(styles.item)}>
+                            <p className={classNames(styles.text)}>
+                                {this.props.intl.formatMessage(messages.darkMode)}
+                            </p>
+                            <Elastic />
+                            <Select
+                                options={darkModeOptions}
+                                onChange={this.handleChangeSettingsItem('darkMode')}
+                                value={this.props.darkMode}
+                                className={styles.selectBig}
+                            />
+                        </div>
                         <div className={classNames(styles.item)}>
                             <p className={classNames(styles.text)}>
                                 {this.props.intl.formatMessage(messages.colorPalette)}
