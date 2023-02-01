@@ -1,4 +1,5 @@
 import { ScratchTheme } from '../css/scratch';
+import { generateThemeFromColor } from '../css/material';
 import { applyTheme } from '../lib/theme';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -44,11 +45,19 @@ import GUIComponent from '../components/gui/gui.jsx';
 import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 
 class GUI extends React.Component {
+    constructor (props) {
+        super(props);
+        if (props.colorPalette === 'scratch') {
+            applyTheme(ScratchTheme);
+        } else {
+            const mduTheme = generateThemeFromColor(props.themeColor);
+            applyTheme(mduTheme);
+        }
+    }
     componentDidMount () {
         setIsScratchDesktop(this.props.isScratchDesktop);
         this.props.onStorageInit(storage);
         this.props.onVmInit(this.props.vm);
-        applyTheme(ScratchTheme);
     }
     componentDidUpdate (prevProps) {
         if (this.props.projectId !== prevProps.projectId && this.props.projectId !== null) {
@@ -58,6 +67,14 @@ class GUI extends React.Component {
             // this only notifies container when a project changes from not yet loaded to loaded
             // At this time the project view in www doesn't need to know when a project is unloaded
             this.props.onProjectLoaded();
+        }
+        if (this.props.colorPalette !== prevProps.colorPalette || this.props.themeColor !== prevProps.themeColor) {
+            if (this.props.colorPalette === 'scratch') {
+                applyTheme(ScratchTheme);
+            } else {
+                const mduTheme = generateThemeFromColor(this.props.themeColor);
+                applyTheme(mduTheme);
+            }
         }
     }
     render () {
@@ -131,6 +148,8 @@ GUI.defaultProps = {
 const mapStateToProps = state => {
     const loadingState = state.scratchGui.projectState.loadingState;
     return {
+        colorPalette: state.scratchGui.settings.colorPalette,
+        themeColor: state.scratchGui.settings.themeColor,
         activeTabIndex: state.scratchGui.editorTab.activeTabIndex,
         alertsVisible: state.scratchGui.alerts.visible,
         backdropLibraryVisible: state.scratchGui.modals.backdropLibrary,
