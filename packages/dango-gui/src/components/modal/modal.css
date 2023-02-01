@@ -1,4 +1,3 @@
-@import "../../css/colors.css";
 @import "../../css/units.css";
 @import "../../css/z-index.css";
 
@@ -9,7 +8,7 @@
     right: 0;
     bottom: 0;
     z-index: $z-index-modal;
-    background-color: $ui-modal-overlay;
+    background-color: var(--ui-modal-overlay);
 }
 
 .modal-content * {
@@ -19,13 +18,13 @@
 .modal-content {
     margin: 100px auto;
     outline: none;
-    border: 4px solid $ui-white-transparent;
+    border: 4px solid var(--ui-white-transparent);
     padding: 0;
     border-radius: $space;
     user-select: none;
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $text-primary;
+    color: var(--text-primary);
     overflow: hidden;
 }
 
@@ -40,7 +39,7 @@
     -webkit-overflow-scrolling: 'touch';
     user-select: none;
 
-    background-color: $ui-secondary;
+    background-color: var(--ui-secondary);
 
     /* Default modal resets */
     margin: 0;
@@ -67,7 +66,7 @@ $sides: 20rem;
 
     box-sizing: border-box;
     width: 100%;
-    background-color: $motion-primary;
+    background-color: var(--motion-primary);
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1rem;
@@ -79,7 +78,7 @@ $sides: 20rem;
     align-items: center;
     padding: 1rem;
     text-decoration: none;
-    color: $ui-white;
+    color: var(--ui-white);
     user-select: none;
 }
 
