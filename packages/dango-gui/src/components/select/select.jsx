@@ -26,8 +26,12 @@ class Select extends React.Component {
             select: Math.max(cur, 0),
             value: cur
         };
-        this.inputRef = createRef();
-        this.menuRef = createRef();
+        this.inputRef = (ref) => {
+            this.inputRef.current = ref
+        };
+        this.menuRef = (ref) => {
+            this.menuRef.current = ref
+        };
     }
 
     handleMouseDown (event) {

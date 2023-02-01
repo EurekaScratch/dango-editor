@@ -1,0 +1,23 @@
+.picker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background: transparent;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    transition: 0.25s ease-out;
+}
+
+.picker:disabled {
+    filter: grayscale(80%);
+}
+
+.picker::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+.picker::-webkit-color-swatch {
+    border-radius: 50%;
+	border: 1px solid var(--ui-black-transparent);
+}

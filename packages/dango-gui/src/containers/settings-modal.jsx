@@ -124,7 +124,9 @@ const mapStateToProps = state => ({
     miscLimits: state.scratchGui.settings.miscLimits,
     hideNonOriginalBlocks: state.scratchGui.settings.hideNonOriginalBlocks,
     saveSettings: state.scratchGui.settings.saveSettings,
-    saveExtension: state.scratchGui.settings.saveExtension
+    saveExtension: state.scratchGui.settings.saveExtension,
+    colorPalette: state.scratchGui.settings.colorPalette,
+    themeColor: state.scratchGui.settings.themeColor
 });
 
 const mapDispatchToProps = dispatch => ({

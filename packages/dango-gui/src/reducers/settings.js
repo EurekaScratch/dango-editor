@@ -12,7 +12,9 @@ const defaultState = {
     removeFencing: false,
     miscLimits: false,
     saveSettings: false,
-    saveExtension: true
+    saveExtension: true,
+    colorPalette: 'scratch', // 'scratch' or 'material'
+    themeColor: '#4c97ff'
 };
 
 const initialState = JSON.parse(localStorage.getItem('settings')) || {};

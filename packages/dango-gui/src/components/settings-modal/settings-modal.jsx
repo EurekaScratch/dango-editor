@@ -9,6 +9,7 @@ import Box from '../box/box.jsx';
 import Modal from '../../containers/modal.jsx';
 import Switch from '../switch/switch.jsx';
 import Select from '../select/select.jsx';
+import ColorPicker from '../color-picker/color-picker.tsx';
 import Input from '../forms/input.jsx';
 import BufferedInputHOC from '../forms/buffered-input-hoc.jsx';
 import styles from './settings-modal.css';
@@ -95,6 +96,31 @@ const messages = defineMessages({
         defaultMessage: 'Remove Miscellaneous Limits',
         description: 'Label of misc limits',
         id: 'gui.settingsModal.miscLimits'
+    },
+    theme: {
+        defaultMessage: 'Theme',
+        description: 'Label of Theme',
+        id: 'gui.settingsModal.theme'
+    },
+    colorPalette: {
+        defaultMessage: 'Color Palette',
+        description: 'Label of Color Palette',
+        id: 'gui.settingsModal.colorPalette'
+    },
+    scratch: {
+        defaultMessage: 'Scratch',
+        description: 'Label of Scratch',
+        id: 'gui.settingsModal.scratch'
+    },
+    material: {
+        defaultMessage: 'Material You',
+        description: 'Label of Material You',
+        id: 'gui.settingsModal.material'
+    },
+    themeColor: {
+        defaultMessage: 'Theme Color',
+        description: 'Label of Theme Color',
+        id: 'gui.settingsModal.themeColor'
     }
 });
 
@@ -125,6 +151,9 @@ class SettingsModal extends React.Component {
             },
             limits: (ref) => {
                 this.categoryRef.limits.current = ref
+            },
+            theme: (ref) => {
+                this.categoryRef.theme.current = ref
             }
         };
     }
@@ -220,6 +249,13 @@ class SettingsModal extends React.Component {
     }
 
     render () {
+        const colorPaletteOptions = [{
+            id: 'scratch',
+            text: this.props.intl.formatMessage(messages.scratch)
+        }, {
+            id: 'material',
+            text: this.props.intl.formatMessage(messages.material)
+        }];
         return (
             <Modal
                 className={styles.modalContent}
@@ -236,6 +272,7 @@ class SettingsModal extends React.Component {
                         <p onClick={this.handleJumpToCategory('features')}>{this.props.intl.formatMessage(messages.features)}</p>
                         <p onClick={this.handleJumpToCategory('limits')}>{this.props.intl.formatMessage(messages.limits)}</p>
                         <p onClick={this.handleJumpToCategory('project')}>{this.props.intl.formatMessage(messages.project)}</p>
+                        <p onClick={this.handleJumpToCategory('theme')}>{this.props.intl.formatMessage(messages.theme)}</p>
                         {/*Object.keys(this.props.extensionSettings).map(id => (
                             <p
                                 key={id}
@@ -387,6 +424,35 @@ class SettingsModal extends React.Component {
                                 value={this.props.hideNonOriginalBlocks}
                             />
                         </div>
+                        <p
+                            className={classNames(styles.category)}
+                            ref={this.categoryRef.theme}
+                        >
+                            {this.props.intl.formatMessage(messages.theme)}
+                        </p>
+                        <div className={classNames(styles.item)}>
+                            <p className={classNames(styles.text)}>
+                                {this.props.intl.formatMessage(messages.colorPalette)}
+                            </p>
+                            <Elastic />
+                            <Select
+                                options={colorPaletteOptions}
+                                onChange={this.handleChangeSettingsItem('colorPalette')}
+                                value={this.props.colorPalette}
+                                className={styles.selectBig}
+                            />
+                        </div>
+                        <div className={classNames(styles.item)}>
+                            <p className={classNames(styles.text)}>
+                                {this.props.intl.formatMessage(messages.themeColor)}
+                            </p>
+                            <Elastic />
+                            <ColorPicker
+                                value={this.props.themeColor}
+                                disabled={this.props.colorPalette !== 'material'}
+                                onChange={this.handleChangeSettingsItem('themeColor')}
+                            />
+                        </div>
                         {/*this.renderExtensionSettings()*/}
                     </Box>
                 </Box>
@@ -408,6 +474,8 @@ SettingsModal.propTypes = {
     hideNonOriginalBlocks: PropTypes.bool.isRequired,
     saveSettings: PropTypes.bool.isRequired,
     saveOptionalExtension: PropTypes.bool.isRequired,
+    colorPalette: PropTypes.string.isRequired,
+    themeColor: PropTypes.string.isRequired,
     onRequestClose: PropTypes.func.isRequired,
     onChangeSettingsItem: PropTypes.func.isRequired,
     onChangeFramerate: PropTypes.func.isRequired,
