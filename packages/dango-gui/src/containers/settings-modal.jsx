@@ -107,6 +107,9 @@ SettingsModal.propTypes = {
     removeFencing: PropTypes.bool.isRequired,
     miscLimits: PropTypes.bool.isRequired,
     hideNonOriginalBlocks: PropTypes.bool.isRequired,
+    colorPalette: PropTypes.string.isRequired,
+    themeColor: PropTypes.string.isRequired,
+    darkMode: PropTypes.string.isRequired,
     saveSettings: PropTypes.bool.isRequired,
     saveExtension: PropTypes.bool.isRequired,
     updateSettings: PropTypes.func.isRequired
@@ -126,7 +129,8 @@ const mapStateToProps = state => ({
     saveSettings: state.scratchGui.settings.saveSettings,
     saveExtension: state.scratchGui.settings.saveExtension,
     colorPalette: state.scratchGui.settings.colorPalette,
-    themeColor: state.scratchGui.settings.themeColor
+    themeColor: state.scratchGui.settings.themeColor,
+    darkMode: state.scratchGui.settings.darkMode
 });
 
 const mapDispatchToProps = dispatch => ({

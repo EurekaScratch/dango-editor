@@ -47,3 +47,13 @@ export const ScratchTheme: ThemePrototype = {
 
     dropHighlight: 'hsla(215, 100%, 77%, 1)', /* lighter than motion-primary */
 };
+
+export const ScratchDarkTheme = Object.assign({}, ScratchTheme, {
+    uiPrimary: 'rgb(37, 41, 50)',
+    uiTertiary: 'rgb(34, 39, 46)',
+    uiModalOverlay: 'hsla(0, 0%, 1%, 0.5)',
+    textPrimary: 'rgb(211, 215, 220)',
+    textPrimaryTransparent: 'hsla(0, 100%, 100%, 0.75)',
+    motionPrimary: 'rgb(45, 51, 59)',
+    dropHighlight: 'rgb(46, 52, 64)'
+});

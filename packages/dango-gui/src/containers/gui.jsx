@@ -1,4 +1,4 @@
-import { ScratchTheme } from '../css/scratch';
+import { ScratchTheme, ScratchDarkTheme } from '../css/scratch';
 import { generateThemeFromColor } from '../css/material';
 import { applyTheme } from '../lib/theme';
 import PropTypes from 'prop-types';
@@ -48,9 +48,9 @@ class GUI extends React.Component {
     constructor (props) {
         super(props);
         if (props.colorPalette === 'scratch') {
-            applyTheme(ScratchTheme);
+            applyTheme(props.darkMode === 'dark' ? ScratchDarkTheme :ScratchTheme);
         } else {
-            const mduTheme = generateThemeFromColor(props.themeColor);
+            const mduTheme = generateThemeFromColor(props.themeColor, props.darkMode === 'dark');
             applyTheme(mduTheme);
         }
     }
@@ -68,11 +68,13 @@ class GUI extends React.Component {
             // At this time the project view in www doesn't need to know when a project is unloaded
             this.props.onProjectLoaded();
         }
-        if (this.props.colorPalette !== prevProps.colorPalette || this.props.themeColor !== prevProps.themeColor) {
+        if (this.props.colorPalette !== prevProps.colorPalette ||
+            this.props.themeColor !== prevProps.themeColor ||
+            this.props.darkMode !== prevProps.darkMode) {
             if (this.props.colorPalette === 'scratch') {
-                applyTheme(ScratchTheme);
+                applyTheme(this.props.darkMode === 'dark' ? ScratchDarkTheme :ScratchTheme);
             } else {
-                const mduTheme = generateThemeFromColor(this.props.themeColor);
+                const mduTheme = generateThemeFromColor(this.props.themeColor, this.props.darkMode === 'dark');
                 applyTheme(mduTheme);
             }
         }
@@ -148,6 +150,7 @@ GUI.defaultProps = {
 const mapStateToProps = state => {
     const loadingState = state.scratchGui.projectState.loadingState;
     return {
+        darkMode: state.scratchGui.settings.darkMode,
         colorPalette: state.scratchGui.settings.colorPalette,
         themeColor: state.scratchGui.settings.themeColor,
         activeTabIndex: state.scratchGui.editorTab.activeTabIndex,
