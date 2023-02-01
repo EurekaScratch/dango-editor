@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "../../node_modules/ts-loader/index.js!../../node_modules/scratch-vm/src/extension-support/tw-iframe-extension-worker-entry.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "../../node_modules/ts-loader/index.js?!../../node_modules/scratch-vm/src/extension-support/tw-iframe-extension-worker-entry.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2224,10 +2224,10 @@ exports.default = minilog.default('vm');
 
 /***/ }),
 
-/***/ "../../node_modules/ts-loader/index.js!../../node_modules/scratch-vm/src/extension-support/tw-iframe-extension-worker-entry.ts":
-/*!********************************************************************************************************************************************************************************!*\
-  !*** /home/runner/work/editor/editor/node_modules/ts-loader!/home/runner/work/editor/editor/node_modules/scratch-vm/src/extension-support/tw-iframe-extension-worker-entry.ts ***!
-  \********************************************************************************************************************************************************************************/
+/***/ "../../node_modules/ts-loader/index.js?!../../node_modules/scratch-vm/src/extension-support/tw-iframe-extension-worker-entry.ts":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** /home/runner/work/editor/editor/node_modules/ts-loader??ref--5!/home/runner/work/editor/editor/node_modules/scratch-vm/src/extension-support/tw-iframe-extension-worker-entry.ts ***!
+  \****************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
