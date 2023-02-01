@@ -1,11 +1,10 @@
-@import "../../css/colors.css";
 @import "../../css/units.css";
 
 .tag-button {
     padding: .625rem 1rem;
-    background: $motion-primary;
+    background: var(--motion-primary);
     border-radius: 1.375rem;
-    color: $ui-white;
+    color: var(--ui-white);
     height: $library-filter-bar-height;
 }
 
@@ -15,5 +14,5 @@
 }
 
 .active {
-    background: $data-primary;
+    background: var(--data-primary);
 }

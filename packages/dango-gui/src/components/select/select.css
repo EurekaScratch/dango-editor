@@ -1,4 +1,3 @@
-@import "../../css/colors.css";
 @import "../../css/units.css";
 
 .container {
@@ -10,20 +9,20 @@
     justify-content: space-between;
     display: flex;
     height: 2.25rem;
-    background-color: $ui-white;
-    border: 1px solid $ui-black-transparent;
+    background-color: var(--ui-white);
+    border: 1px solid var(--ui-black-transparent);
     border-radius: 0.75rem;
     transition: 0.25s ease-out;
     min-width: 2.25rem;
 }
 
 .select:hover {
-    border-color: $motion-primary;
+    border-color: var(--motion-primary);
 }
 
 .select-focus {
-    border-color: $motion-primary;
-    box-shadow: 0 0 0 0.25rem $motion-transparent;
+    border-color: var(--motion-primary);
+    box-shadow: 0 0 0 0.25rem var(--motion-transparent);
 }
 
 .value {
@@ -49,10 +48,10 @@
     position: absolute;
     width: 100%;
     margin-top: 0.25rem;
-    background: $ui-white;
+    background: var(--ui-white);
     border-radius: 0.25rem;
     padding: 0.25rem 0;
-    box-shadow: 0 0 3px 2px $ui-black-transparent;
+    box-shadow: 0 0 3px 2px var(--ui-black-transparent);
     z-index: 1; /* what the fuck. why translateX modifies z-index?! */
 }
 
@@ -63,7 +62,7 @@
 }
 
 .option-select {
-    color: $motion-primary;
+    color: var(--motion-primary);
     font-weight: bold;
 }
 

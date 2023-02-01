@@ -1,4 +1,3 @@
-@import "../../css/colors.css";
 @import "../../css/units.css";
 
 .close-button {
@@ -7,7 +6,7 @@
     justify-content: center;
 
     overflow: hidden;  /* Mask the icon animation */
-    background-color: $ui-black-transparent;
+    background-color: var(--ui-black-transparent);
     border-radius: 50%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     user-select: none;
@@ -17,7 +16,7 @@
 
 .close-button.large:hover {
     transform: scale(1.1, 1.1);
-    box-shadow: 0 0 0 4px $ui-black-transparent;
+    box-shadow: 0 0 0 4px var(--ui-black-transparent);
 }
 
 .close-button.large.orange:hover {
@@ -28,14 +27,14 @@
 .small {
     width: 0.825rem;
     height: 0.825rem;
-    background-color: $motion-primary;
-    color: $ui-white;
+    background-color: var(--motion-primary);
+    color: var(--ui-white);
 }
 
 .large {
     width: 1.75rem;
     height: 1.75rem;
-    box-shadow: 0 0 0 2px $ui-black-transparent;
+    box-shadow: 0 0 0 2px var(--ui-black-transparent);
 }
 
  .large.orange {
