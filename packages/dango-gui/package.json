@@ -12,6 +12,7 @@
   "main": "./dist/scratch-gui.js",
   "scripts": {
     "build": "npm run clean && webpack --colors --bail",
+    "checktype": "tsc --noEmit --watch",
     "clean": "rimraf ./build && mkdirp build && rimraf ./dist && mkdirp dist",
     "i18n:push": "tx-push-src scratch-editor interface translations/en.json",
     "i18n:src": "rimraf ./translations/messages/src && babel src > tmp.js && rimraf tmp.js && build-i18n-src ./translations/messages/src ./translations/ && npm run i18n:push",
@@ -29,6 +30,7 @@
     }
   },
   "dependencies": {
+    "@importantimport/material-color-utilities": "^0.2.1-alpha.0",
     "arraybuffer-loader": "^1.0.6",
     "autoprefixer": "^9.0.1",
     "base64-loader": "1.0.0",

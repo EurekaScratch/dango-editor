@@ -1,3 +1,5 @@
+import { ScratchTheme } from '../css/scratch';
+import { applyTheme } from '../lib/theme';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {compose} from 'redux';
@@ -46,6 +48,7 @@ class GUI extends React.Component {
         setIsScratchDesktop(this.props.isScratchDesktop);
         this.props.onStorageInit(storage);
         this.props.onVmInit(this.props.vm);
+        applyTheme(ScratchTheme);
     }
     componentDidUpdate (prevProps) {
         if (this.props.projectId !== prevProps.projectId && this.props.projectId !== null) {
