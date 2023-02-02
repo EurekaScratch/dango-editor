@@ -13,6 +13,7 @@ export function generateThemeFromColor (color: string, darkMode?: boolean) : The
     const { schemes } = themeFromSourceColor(argbFromHex(color));
     const palette = darkMode ? schemes.dark : schemes.light;
     const baseTheme = darkMode ? ScratchDarkTheme : ScratchTheme;
+    console.log(palette)
     
     return Object.assign({}, baseTheme, {
         uiPrimary: rgbFromArgb(palette.primaryContainer),
@@ -27,7 +28,8 @@ export function generateThemeFromColor (color: string, darkMode?: boolean) : The
         motionTertiary: rgbFromArgb(palette.tertiary), /* #3373CC */
         motionTransparent: transparent(rgbFromArgb(palette.primary), 0.35), /* 35% transparent version of motion-primary */
         motionLightTransparent: transparent(rgbFromArgb(palette.primary), 0.15), /* 15% transparent version of motion-primary */
-        errorPrimary: rgbFromArgb(palette.error), /* #FF8C1A */
+        errorPrimary: rgbFromArgb(palette.error),
+        outline: rgbFromArgb(palette.outline)
     });
 }
 

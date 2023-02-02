@@ -33,6 +33,10 @@
     background-color: var(--ui-primary);
 }
 
+[theme='dark'] .workspace :global(.blocklySvg) {
+    background-color: var(--ui-secondary);
+}
+
 /* Row of "card" buttons for modifying custom procedures */
 .options-row {
     display: flex;
@@ -40,7 +44,7 @@
 }
 
 .option-card {
-    background: white;
+    background: var(--ui-white);
     border: 2px solid var(--ui-black-transparent);
     border-radius: $space;
     padding: calc($space * 2);
@@ -49,6 +53,10 @@
     cursor: pointer;
     transition: all 0.2s;
     flex-basis: 100px;
+}
+
+[theme='dark'] .option-card {
+    border-color: var(--outline);
 }
 
 .option-card:hover {
@@ -85,9 +93,14 @@
     border: 1px solid var(--ui-black-transparent);
     border-radius: 0.25rem;
     padding: 0.75rem 1rem;
-    background: white;
+    background: var(--ui-white);
     font-weight: bold;
     font-size: 0.85rem;
+}
+
+[theme='dark'] .button-row button {
+    background: var(--ui-secondary);
+    color: var(--text-primary);
 }
 
 .button-row button.ok-button {

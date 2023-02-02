@@ -14,6 +14,11 @@
     overflow: hidden;
 }
 
+[theme='dark'] .monitor-container {
+    background: var(--ui-secondary);
+    color: var(--text-primary);
+}
+
 .monitor:hover {
     cursor: pointer;
 }

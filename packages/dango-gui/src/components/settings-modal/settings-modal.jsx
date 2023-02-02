@@ -484,17 +484,18 @@ class SettingsModal extends React.Component {
                                 className={styles.selectBig}
                             />
                         </div>
-                        <div className={classNames(styles.item)}>
-                            <p className={classNames(styles.text)}>
-                                {this.props.intl.formatMessage(messages.themeColor)}
-                            </p>
-                            <Elastic />
-                            <ColorPicker
-                                value={this.props.themeColor}
-                                disabled={this.props.colorPalette !== 'material'}
-                                onChange={this.handleChangeSettingsItem('themeColor')}
-                            />
-                        </div>
+                        {this.props.colorPalette === 'material' && (
+                            <div className={classNames(styles.item)}>
+                                <p className={classNames(styles.text)}>
+                                    {this.props.intl.formatMessage(messages.themeColor)}
+                                </p>
+                                <Elastic />
+                                <ColorPicker
+                                    value={this.props.themeColor}
+                                    onChange={this.handleChangeSettingsItem('themeColor')}
+                                />
+                            </div>
+                        )}
                         {/*this.renderExtensionSettings()*/}
                     </Box>
                 </Box>

@@ -76,6 +76,10 @@
     height: $menu-bar-height;
 }
 
+[theme='dark'] .menu-bar-item {
+    color: white;
+}
+
 .menu-bar-item.hoverable {
     cursor: pointer;
 }

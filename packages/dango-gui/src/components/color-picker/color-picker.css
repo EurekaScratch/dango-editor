@@ -21,3 +21,7 @@
     border-radius: 50%;
 	border: 1px solid var(--ui-black-transparent);
 }
+
+[theme='dark'] .picker::-webkit-color-swatch {
+	border: 1px solid var(--ui-white-transparent);
+}

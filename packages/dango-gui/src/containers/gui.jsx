@@ -48,7 +48,7 @@ class GUI extends React.Component {
     constructor (props) {
         super(props);
         if (props.colorPalette === 'scratch') {
-            applyTheme(props.darkMode === 'dark' ? ScratchDarkTheme :ScratchTheme);
+            applyTheme(props.darkMode === 'dark' ? ScratchDarkTheme : ScratchTheme);
         } else {
             const mduTheme = generateThemeFromColor(props.themeColor, props.darkMode === 'dark');
             applyTheme(mduTheme);
@@ -84,6 +84,8 @@ class GUI extends React.Component {
             throw new Error(
                 `Error in Scratch GUI [location=${window.location}]: ${this.props.error}`);
         }
+        document.body.setAttribute('theme', this.props.darkMode);
+        document.body.setAttribute('color', this.props.colorPalette);
         const {
             /* eslint-disable no-unused-vars */
             assetHost,
@@ -149,8 +151,17 @@ GUI.defaultProps = {
 
 const mapStateToProps = state => {
     const loadingState = state.scratchGui.projectState.loadingState;
+    let darkMode = state.scratchGui.settings.darkMode;
+    if (darkMode === 'system') {
+        if (matchMedia('(prefers-color-scheme: dark)').matches) {
+            darkMode = 'dark';
+        } else {
+            darkMode = 'light';
+        }
+
+    }
     return {
-        darkMode: state.scratchGui.settings.darkMode,
+        darkMode: darkMode,
         colorPalette: state.scratchGui.settings.colorPalette,
         themeColor: state.scratchGui.settings.themeColor,
         activeTabIndex: state.scratchGui.editorTab.activeTabIndex,

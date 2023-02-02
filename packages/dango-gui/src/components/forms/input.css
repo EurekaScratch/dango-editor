@@ -7,6 +7,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.625rem;
     font-weight: bold;
+    background-color: var(--ui-white);
     color: var(--text-primary);
 
     border-width: 1px;
@@ -28,6 +29,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     min-width: 0;
+}
+
+[theme='dark'] .input-form {
+    border-color: var(--outline);
 }
 
 .input-form:hover {

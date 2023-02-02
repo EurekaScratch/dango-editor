@@ -1,6 +1,10 @@
 @import "../../css/units.css";
 @import "../../css/z-index.css";
 
+body {
+    background-color: var(--ui-white);
+}
+
 .page-wrapper {
     height: 100%;
 }
@@ -8,6 +12,10 @@
 .body-wrapper {
     height: calc(100% - $menu-bar-height);
     background-color: var(--ui-primary);
+}
+
+[theme='dark'] .body-wrapper {
+    background-color: var(--ui-secondary);
 }
 
 .body-wrapper * {
@@ -90,6 +98,10 @@
     white-space: nowrap;
 }
 
+[theme='dark'] .tab {
+    border-color: var(--outline);
+}
+
 [dir="ltr"] .tab {
     margin-left: -0.5rem;
 }
@@ -126,6 +138,10 @@
     color: var(--motion-primary);
     background-color: var(--ui-white);
     z-index: 4; /* Make sure selected is always above */
+}
+
+[theme='dark'] .tab:hover {
+    background-color: var(--ui-secondary);
 }
 
 .tab img {

@@ -46,6 +46,8 @@ export const ScratchTheme: ThemePrototype = {
     extensionsLight: 'hsla(163, 57%, 85%, 1)', /* opaque version of extensions-transparent, on white bg */
 
     dropHighlight: 'hsla(215, 100%, 77%, 1)', /* lighter than motion-primary */
+    
+    outline: 'hsla(0, 0%, 0%, 0.15)'
 };
 
 export const ScratchDarkTheme = Object.assign({}, ScratchTheme, {
@@ -56,5 +58,6 @@ export const ScratchDarkTheme = Object.assign({}, ScratchTheme, {
     textPrimaryTransparent: 'hsla(0, 100%, 100%, 0.75)',
     motionPrimary: 'rgb(45, 51, 59)',
     dropHighlight: 'rgb(46, 52, 64)',
-    uiWhite: 'hsl(214, 13%, 20%)'
+    uiWhite: 'hsl(214, 13%, 20%)',
+    outline: 'hsla(100, 100%, 100%, 0.15)'
 });

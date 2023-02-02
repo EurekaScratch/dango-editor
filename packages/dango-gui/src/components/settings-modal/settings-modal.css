@@ -30,6 +30,10 @@
     border-right: solid 1px var(--ui-black-transparent);
 }
 
+[theme='dark'] .menu {
+    border-right: solid 1px var(--outline);
+}
+
 .menu > p {
     margin: 0.5em 0em;
     cursor: pointer;
@@ -62,7 +66,7 @@
 }
 
 .item:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: rgba(240, 240, 240, 0.5);
 }
 
 .input {

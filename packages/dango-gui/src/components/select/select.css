@@ -16,6 +16,11 @@
     min-width: 2.25rem;
 }
 
+[theme='dark'] .select {
+    background-color: var(--ui-white);
+    border: 1px solid var(--outline);
+}
+
 .select:hover {
     border-color: var(--motion-primary);
 }
@@ -38,6 +43,10 @@
 .image {
     padding: 0.5rem;
     transition-duration: 0.3s;
+}
+
+[theme='dark'] .image {
+    filter: invert(1);
 }
 
 .image-rotate {
@@ -68,6 +77,10 @@
 
 .option-focus {
     background-color: #deebff;
+}
+
+[color='material'] .option-focus {
+    background-color: var(--ui-tertiary);
 }
 
 .dummy-input {
