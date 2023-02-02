@@ -4,6 +4,7 @@ body,
     /* probably unecessary, transitional until layout is refactored */
     width: 100%; 
     height: 100%;
+    -webkit-tap-highlight-color: transparent;
     margin: 0;
 
     /* Setting min height/width makes the UI scroll below those sizes */

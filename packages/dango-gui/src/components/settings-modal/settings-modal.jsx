@@ -117,6 +117,11 @@ const messages = defineMessages({
         description: 'Label of Material You',
         id: 'gui.settingsModal.material'
     },
+    custom: {
+        defaultMessage: 'Custom',
+        description: 'Label of Custom',
+        id: 'gui.settingsModal.custom'
+    },
     themeColor: {
         defaultMessage: 'Theme Color',
         description: 'Label of Theme Color',
@@ -275,6 +280,9 @@ class SettingsModal extends React.Component {
         }, {
             id: 'material',
             text: this.props.intl.formatMessage(messages.material)
+        }, {
+            id: 'custom',
+            text: this.props.intl.formatMessage(messages.custom)
         }];
         const darkModeOptions = [{
             id: 'system',
@@ -479,7 +487,7 @@ class SettingsModal extends React.Component {
                             <Elastic />
                             <Select
                                 options={colorPaletteOptions}
-                                onChange={this.handleChangeSettingsItem('colorPalette')}
+                                onChange={this.handleChangeSettingsItem('colorPalette', this.props.onChangeColorPalette)}
                                 value={this.props.colorPalette}
                                 className={styles.selectBig}
                             />
@@ -529,7 +537,8 @@ SettingsModal.propTypes = {
     onChangeInterpolation: PropTypes.func.isRequired,
     onChangeInfiniteCloning: PropTypes.func.isRequired,
     onChangeRemoveFencing: PropTypes.func.isRequired,
-    onChangeMiscLimits: PropTypes.func.isRequired
+    onChangeMiscLimits: PropTypes.func.isRequired,
+    onChangeColorPalette: PropTypes.func.isRequired
 };
 
 export default injectIntl(SettingsModal);

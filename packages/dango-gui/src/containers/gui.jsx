@@ -7,6 +7,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import ReactModal from 'react-modal';
 import VM from 'scratch-vm';
+import bindAll from 'lodash.bindall';
 import {injectIntl, intlShape} from 'react-intl';
 
 import ErrorBoundaryHOC from '../lib/error-boundary-hoc.jsx';
@@ -47,12 +48,8 @@ import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 class GUI extends React.Component {
     constructor (props) {
         super(props);
-        if (props.colorPalette === 'scratch') {
-            applyTheme(props.darkMode === 'dark' ? ScratchDarkTheme : ScratchTheme);
-        } else {
-            const mduTheme = generateThemeFromColor(props.themeColor, props.darkMode === 'dark');
-            applyTheme(mduTheme);
-        }
+        bindAll(this, ['loadTheme']);
+        this.loadTheme();
     }
     componentDidMount () {
         setIsScratchDesktop(this.props.isScratchDesktop);
@@ -70,13 +67,27 @@ class GUI extends React.Component {
         }
         if (this.props.colorPalette !== prevProps.colorPalette ||
             this.props.themeColor !== prevProps.themeColor ||
-            this.props.darkMode !== prevProps.darkMode) {
-            if (this.props.colorPalette === 'scratch') {
-                applyTheme(this.props.darkMode === 'dark' ? ScratchDarkTheme :ScratchTheme);
-            } else {
-                const mduTheme = generateThemeFromColor(this.props.themeColor, this.props.darkMode === 'dark');
-                applyTheme(mduTheme);
-            }
+            this.props.darkMode !== prevProps.darkMode ||
+            this.props.theme !== prevProps.theme) {
+            this.loadTheme();
+        }
+    }
+    loadTheme () {
+        switch (this.props.colorPalette) {
+        case 'scratch':
+            applyTheme(this.props.darkMode === 'dark' ? ScratchDarkTheme : ScratchTheme);
+            break;
+        case 'material': {
+            const mduTheme = generateThemeFromColor(this.props.themeColor, this.props.darkMode === 'dark');
+            applyTheme(mduTheme);
+            break;
+        }
+        case 'custom':
+            applyTheme(this.props.theme);
+            break;
+        default:
+            console.warn('unknown color palette, use scratch instead.');
+            applyTheme(this.props.darkMode === 'dark' ? ScratchDarkTheme : ScratchTheme);
         }
     }
     render () {
@@ -162,6 +173,7 @@ const mapStateToProps = state => {
     }
     return {
         darkMode: darkMode,
+        theme: state.scratchGui.theme,
         colorPalette: state.scratchGui.settings.colorPalette,
         themeColor: state.scratchGui.settings.themeColor,
         activeTabIndex: state.scratchGui.editorTab.activeTabIndex,

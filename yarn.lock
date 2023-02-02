@@ -1622,7 +1622,7 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@material/material-color-utilities@^0.2.1-alpha.0":
+"@material/material-color-utilities@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@material/material-color-utilities/-/material-color-utilities-0.2.0.tgz#adc64dfea1eb124ff0654fa833a180d7080cbbaa"
   integrity sha512-Wux17VAe27abfUyA+yPq/xN7+e6xkj1UFKd9g02KD0HhpM+GRqXLfytJ6nJKhFtliZouQfTcBcOg2cGrt/XbKA==
@@ -2254,6 +2254,14 @@
   integrity sha512-x6zUx9/42B5Kl2Vl9HlopV8JF64wLpX3c+Pst9kc1HgzrsH+mkehe/zmHMQTplIrR48H2gpU7ZqurQolYu8XBA==
   dependencies:
     "@types/react" "*"
+
+"@types/react-redux@5.0.7":
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.7.tgz#01a5181ff6757724a4b59c13852ee6c49f65c101"
+  integrity sha512-2lZLNPU5FiKIJwa7EXeOdyCg7pA9o6DCaGQ/9sJxVgZINIOQDDWXoQz2rVdsrHixOi/wK6hfja/oeCKLtbjofA==
+  dependencies:
+    "@types/react" "*"
+    redux "^3.6.0"
 
 "@types/react@*":
   version "18.0.27"
@@ -13507,7 +13515,7 @@ redux-throttle@0.1.1:
   dependencies:
     lodash.throttle "4.0.1"
 
-redux@3.7.2:
+redux@3.7.2, redux@^3.6.0:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   integrity sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==

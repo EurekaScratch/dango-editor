@@ -7,7 +7,8 @@ import VM from 'scratch-vm';
 
 import SettingsComponent from '../components/settings-modal/settings-modal.jsx';
 
-import {updateSetting} from '../reducers/settings';;
+import {updateSetting} from '../reducers/settings';
+import {updateTheme} from '../reducers/theme';
 
 class SettingsModal extends React.Component {
     constructor (props) {
@@ -22,7 +23,9 @@ class SettingsModal extends React.Component {
             'handleChangeInterpolation',
             'handleChangeInfiniteCloning',
             'handleChangeRemoveFencing',
-            'handleChangeMiscLimits'
+            'handleChangeMiscLimits',
+            'handleChangeColorPalette',
+            'loadAsText'
         ]);
     }
 
@@ -76,6 +79,35 @@ class SettingsModal extends React.Component {
             miscLimits: option
         });
     }
+    
+    loadAsText (file) {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsText(file, 'utf8');
+            reader.onload = () => {
+                resolve(reader.result);
+            };
+        });
+    }
+    
+    handleChangeColorPalette (option) {
+        if (option === 'custom') {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', '.json');
+            input.onchange = async (e) => {
+                const [file] = e.target.files;
+                const content = await this.loadAsText(file);
+                try {
+                    const theme = JSON.parse(content);
+                    this.props.updateTheme(theme);
+                } catch (e) {
+                    console.error('Error occurred while loading custom theme file: \n', e);
+                }
+            }
+            input.click();
+        }
+    }
 
     render () {
         return (
@@ -90,6 +122,7 @@ class SettingsModal extends React.Component {
                 onChangeInfiniteCloning={this.handleChangeInfiniteCloning}
                 onChangeRemoveFencing={this.handleChangeRemoveFencing}
                 onChangeMiscLimits={this.handleChangeMiscLimits}
+                onChangeColorPalette={this.handleChangeColorPalette}
                 {...this.props}
             />
         );
@@ -112,7 +145,8 @@ SettingsModal.propTypes = {
     darkMode: PropTypes.string.isRequired,
     saveSettings: PropTypes.bool.isRequired,
     saveExtension: PropTypes.bool.isRequired,
-    updateSettings: PropTypes.func.isRequired
+    updateSettings: PropTypes.func.isRequired,
+    updateTheme: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -136,7 +170,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    updateSettings: (name, value) => dispatch(updateSetting(name, value))
+    updateSettings: (name, value) => dispatch(updateSetting(name, value)),
+    updateTheme: (value) => dispatch(updateTheme(value)),
 });
 
 export default injectIntl(connect(
