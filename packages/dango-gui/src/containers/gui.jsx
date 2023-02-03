@@ -27,6 +27,7 @@ import {
     closeBackdropLibrary,
     closeTelemetryModal,
     closeSettingsModal,
+    closeAddonsModal,
     openExtensionLibrary
 } from '../reducers/modals';
 
@@ -207,6 +208,7 @@ const mapStateToProps = state => {
         costumesTabVisible: state.scratchGui.editorTab.activeTabIndex === COSTUMES_TAB_INDEX,
         error: state.scratchGui.projectState.error,
         settingsVisible: state.scratchGui.modals.settings,
+        addonsVisible: state.scratchGui.modals.addons,
         isError: getIsError(loadingState),
         isFullScreen: state.scratchGui.mode.isFullScreen,
         isPlayerOnly: state.scratchGui.mode.isPlayerOnly,
@@ -235,6 +237,7 @@ const mapDispatchToProps = dispatch => ({
     onRequestCloseCostumeLibrary: () => dispatch(closeCostumeLibrary()),
     onRequestCloseTelemetryModal: () => dispatch(closeTelemetryModal()),
     onRequestCloseSettingsModal: () => dispatch(closeSettingsModal()),
+    onRequestCloseAddonsModal: () => dispatch(closeAddonsModal())
 });
 
 const ConnectedGUI = injectIntl(connect(
