@@ -13,7 +13,6 @@ export function generateThemeFromColor (color: string, darkMode?: boolean) : The
     const { schemes } = themeFromSourceColor(argbFromHex(color));
     const palette = darkMode ? schemes.dark : schemes.light;
     const baseTheme = darkMode ? ScratchDarkTheme : ScratchTheme;
-    console.log(palette)
     
     return Object.assign({}, baseTheme, {
         uiPrimary: rgbFromArgb(palette.primaryContainer),

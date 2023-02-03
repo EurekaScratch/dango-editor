@@ -22,6 +22,7 @@ import restoreDeletionReducer, {restoreDeletionInitialState} from './restore-del
 import stageSizeReducer, {stageSizeInitialState} from './stage-size';
 import settingsReducer, {settingsInitialState} from './settings';
 import themeReducer, {themeInitialState} from './theme';
+import addonsReducer, {addonsInitialState} from './addons';
 import targetReducer, {targetsInitialState} from './targets';
 import timeoutReducer, {timeoutInitialState} from './timeout';
 import toolboxReducer, {toolboxInitialState} from './toolbox';
@@ -63,6 +64,7 @@ const guiInitialState = {
     vmStatus: vmStatusInitialState,
     settings: settingsInitialState,
     theme: themeInitialState,
+    addons: addonsInitialState,
     workspaceMetrics: workspaceMetricsInitialState
 };
 
@@ -164,6 +166,7 @@ const guiReducer = combineReducers({
     vmStatus: vmStatusReducer,
     settings: settingsReducer,
     theme: themeReducer,
+    addons: addonsReducer,
     workspaceMetrics: workspaceMetricsReducer
 });
 
