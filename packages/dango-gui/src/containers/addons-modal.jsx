@@ -17,18 +17,17 @@ class AddonsModal extends React.Component {
     async componentDidMount () {
         try {
             const addonsInfo = await scratchAddons.methods.getSettingsInfo();
-            console.log(addonsInfo);
             this.setState({
                 loading: false,
                 data: addonsInfo
             });
         } catch (e) {
-            
+            console.error(e);
         }
     }
     async handleChangeState (id, value) {
         if (value.hasOwnProperty('enabled')) {
-            await scratchAddons.methods.changeEnabledState(id, value);
+            await scratchAddons.methods.changeEnabledState(id, value.enabled);
             delete value.enabled;
         }
         if (Object.keys(value).length < 1) return;
