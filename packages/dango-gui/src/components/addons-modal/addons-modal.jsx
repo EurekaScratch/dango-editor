@@ -31,13 +31,22 @@ const Elastic = () => <div className={styles.elastic} />;
 class AddonsModal extends React.Component {
     constructor (props) {
         super(props);
-        this.state={};
-        bindAll(this, ['bufferOperation']);
+        this.state = {};
+        bindAll(this, ['bufferOperation', 'getAddonSetting']);
     }
     bufferOperation (addonId, value) {
         this.setState(Object.assign({}, this.state, {
             [addonId]: value
         }));
+        if (!value.hasOwnProperty('isCollapsed')) {
+            this.props.onChangeState(addonId, value);
+        }
+    }
+    getAddonSetting (addonId, settingId) {
+        if (this.state[addonId] && this.state[addonId].hasOwnProperty(settingId)) {
+            return this.state[addonId][settingId];
+        }
+        return this.props.data.addonSettings[addonId][settingId];
     }
     render () {
         return (
@@ -81,10 +90,18 @@ class AddonsModal extends React.Component {
                                                     <div className={styles.settingItem}>
                                                         <p>{setting.name}</p>
                                                         <Elastic />
-                                                        <Switch />
+                                                        <Switch
+                                                            value={this.getAddonSetting(addonId, setting.id)}
+                                                            onChange={(value) => {
+                                                                this.bufferOperation(addonId, {
+                                                                    [setting.id]: value
+                                                                });
+                                                            }}
+                                                        />
                                                     </div>
                                                 ));
                                                 break;
+                                            case 'positive_integer':
                                             case 'integer':
                                                 settings.push((
                                                     <div className={styles.settingItem}>
@@ -97,6 +114,12 @@ class AddonsModal extends React.Component {
                                                             min={setting.min}
                                                             max={setting.max}
                                                             placeholder={setting.default}
+                                                            value={this.getAddonSetting(addonId, setting.id)}
+                                                            onSubmit={(value) => {
+                                                                this.bufferOperation(addonId, {
+                                                                    [setting.id]: value
+                                                                });
+                                                            }}
                                                         />
                                                     </div>
                                                 ));
@@ -113,7 +136,16 @@ class AddonsModal extends React.Component {
                                                     <div className={styles.settingItem}>
                                                         <p>{setting.name}</p>
                                                         <Elastic />
-                                                        <Select options={processedValue} />
+                                                        <Select
+                                                            className={styles.selectBig}
+                                                            value={this.getAddonSetting(addonId, setting.id)}
+                                                            options={processedValue}
+                                                            onChange={(value) => {
+                                                                this.bufferOperation(addonId, {
+                                                                    [setting.id]: value
+                                                                });
+                                                            }}
+                                                        />
                                                     </div>
                                                 ));
                                                 break;
@@ -123,7 +155,14 @@ class AddonsModal extends React.Component {
                                                     <div className={styles.settingItem}>
                                                         <p>{setting.name}</p>
                                                         <Elastic />
-                                                        <ColorPicker />
+                                                        <ColorPicker
+                                                            value={this.getAddonSetting(addonId, setting.id)}
+                                                            onChange={(value) => {
+                                                                this.bufferOperation(addonId, {
+                                                                    [setting.id]: value
+                                                                });
+                                                            }}
+                                                        />
                                                     </div>
                                                 ));
                                                 break;
@@ -161,7 +200,14 @@ class AddonsModal extends React.Component {
                                                     })}>{manifest.description}</p>
                                                 </div>
                                                 <Elastic />
-                                                <Switch value={this.props.data.addonsEnabled[addonId]} />
+                                                <Switch
+                                                    value={this.props.data.addonsEnabled[addonId]}
+                                                    onChange={(value) => {
+                                                        this.bufferOperation(addonId, {
+                                                            enabled: !this.props.data.addonsEnabled[addonId]
+                                                        });
+                                                    }}
+                                                />
                                             </div>
                                             {this.state[addonId] && !this.state[addonId].isCollapsed && (
                                                 <div className={styles.setting}>
@@ -183,6 +229,7 @@ class AddonsModal extends React.Component {
 
 AddonsModal.propTypes = {
     loading: PropTypes.bool,
+    onChangeState: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired
 };
 
