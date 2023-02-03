@@ -12,6 +12,7 @@ class AddonsModal extends React.Component {
             loading: true,
             data: null
         };
+        bindAll(this, ['handleChangeState']);
     }
     async componentDidMount () {
         try {
@@ -25,19 +26,27 @@ class AddonsModal extends React.Component {
             
         }
     }
+    async handleChangeState (id, value) {
+        if (value.hasOwnProperty('enabled')) {
+            await scratchAddons.methods.changeEnabledState(id, value);
+            delete value.enabled;
+        }
+        if (Object.keys(value).length < 1) return;
+        const newSettings = Object.assign({},
+            scratchAddons.globalState.addonSettings[id],
+            value);
+        await scratchAddons.methods.changeAddonSettings(id, newSettings);
+    }
     render () {
         return (
             <AddonsComponent
                 loading={this.state.loading}
                 data={this.state.data}
+                onChangeState={this.handleChangeState}
                 {...this.props}
             />
         );
     }
 }
-
-AddonsModal.propTypes = {
-    
-};
 
 export default injectIntl(AddonsModal);
