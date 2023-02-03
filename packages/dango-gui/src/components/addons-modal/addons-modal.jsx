@@ -32,6 +32,12 @@ class AddonsModal extends React.Component {
     constructor (props) {
         super(props);
         this.state={};
+        bindAll(this, ['bufferOperation']);
+    }
+    bufferOperation (addonId, value) {
+        this.setState(Object.assign({}, this.state, {
+            [addonId]: value
+        }));
     }
     render () {
         return (
@@ -59,23 +65,110 @@ class AddonsModal extends React.Component {
                                 {this.props.data.manifests.map(({addonId, manifest}, index) => {
                                     // Hide scratch-www related addons.
                                     if (!manifest.tags.includes('editor')) return;
+                                    let author = [];
+                                    let settings = [];
+                                    if (manifest.credits) {
+                                        for (const credit of manifest.credits) {
+                                            author.push(credit.name);
+                                        }
+                                        author = author.join(', ');
+                                    }
+                                    if (manifest.settings) {
+                                        for (const setting of manifest.settings) {
+                                            switch (setting.type) {
+                                            case 'boolean':
+                                                settings.push((
+                                                    <div className={styles.settingItem}>
+                                                        <p>{setting.name}</p>
+                                                        <Elastic />
+                                                        <Switch />
+                                                    </div>
+                                                ));
+                                                break;
+                                            case 'integer':
+                                                settings.push((
+                                                    <div className={styles.settingItem}>
+                                                        <p>{setting.name}</p>
+                                                        <Elastic />
+                                                        <BufferedInput
+                                                            small
+                                                            tabIndex="0"
+                                                            type="number"
+                                                            min={setting.min}
+                                                            max={setting.max}
+                                                            placeholder={setting.default}
+                                                        />
+                                                    </div>
+                                                ));
+                                                break;
+                                            case 'select': {
+                                                const processedValue = [];
+                                                for (const item of setting.potentialValues) {
+                                                    processedValue.push({
+                                                        id: item.id,
+                                                        text: item.name
+                                                    });
+                                                }
+                                                settings.push((
+                                                    <div className={styles.settingItem}>
+                                                        <p>{setting.name}</p>
+                                                        <Elastic />
+                                                        <Select options={processedValue} />
+                                                    </div>
+                                                ));
+                                                break;
+                                            }
+                                            case 'color':
+                                                settings.push((
+                                                    <div className={styles.settingItem}>
+                                                        <p>{setting.name}</p>
+                                                        <Elastic />
+                                                        <ColorPicker />
+                                                    </div>
+                                                ));
+                                                break;
+                                            default:
+                                                console.warn(`unknown settings type ${setting.type} in ${addonId}`);
+                                            }
+                                        }
+                                    }
                                     return (
-                                        <div className={styles.item} key={index}>
-                                            <div className={styles.indicator}>
-                                                <img
-                                                    src={indicatorIcon}
-                                                    className={classNames(
-                                                        styles.image,
-                                                        this.state.showMenu ? styles.imageRotate : null
-                                                    )}
-                                                />
+                                        <div
+                                            key={index}
+                                            className={classNames(styles.item, {
+                                                [styles.expanded]: this.state[addonId] && !this.state[addonId].isCollapsed
+                                            })}
+                                            onClick={() => {
+                                                this.bufferOperation(addonId, {
+                                                    isCollapsed: this.state[addonId] ? !this.state[addonId].isCollapsed : false
+                                                });
+                                            }}
+                                        >
+                                            <div className={styles.abstract}>
+                                                <div className={styles.indicator}>
+                                                    <img
+                                                        src={indicatorIcon}
+                                                        className={classNames(
+                                                            styles.image,
+                                                            (this.state[addonId] && this.state[addonId].isCollapsed) ? null : styles.imageRotate
+                                                        )}
+                                                    />
+                                                </div>
+                                                <div className={styles.info}>
+                                                    <p>{manifest.name}</p>
+                                                    <p className={classNames(styles.description, {
+                                                        [styles.omit]: !this.state[addonId] || this.state[addonId].isCollapsed
+                                                    })}>{manifest.description}</p>
+                                                </div>
+                                                <Elastic />
+                                                <Switch value={this.props.data.addonsEnabled[addonId]} />
                                             </div>
-                                            <div className={styles.info}>
-                                                <p>{manifest.name}</p>
-                                                <p className={styles.description}>{manifest.description}</p>
-                                            </div>
-                                            <Elastic />
-                                            <Switch value={this.props.data.addonsEnabled[addonId]} />
+                                            {this.state[addonId] && !this.state[addonId].isCollapsed && (
+                                                <div className={styles.setting}>
+                                                    {typeof author === 'string' && <p className={styles.author}>Author: {author}</p>}
+                                                    {settings.length !== 0 && settings}
+                                                </div>
+                                            )}
                                         </div>
                                     );
                                 })}
