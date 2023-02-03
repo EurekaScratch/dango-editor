@@ -44,7 +44,8 @@ const vmManagerHOC = function (WrappedComponent) {
                     fencing: this.props.removeFencing,
                     miscLimits: this.props.miscLimits
                 });
-                this.props.vm.renderer.setUseHighQualityRender(this.props.hqpen);
+                // Unavailable when blocks-only
+                if (this.props.vm.renderer) this.props.vm.renderer.setUseHighQualityRender(this.props.hqpen);
                 this.props.vm.setFramerate(this.props.fps);
                 this.props.vm.setInterpolation(this.props.interpolation);
             }

@@ -82,7 +82,7 @@ class ComingSoonContent extends React.Component {
                         [styles.bottom]: (this.props.place === 'bottom')
                     }
                 )}
-                getContent={this.getRandomMessage}
+                getContent={this.props.message || this.getRandomMessage}
                 id={this.props.tooltipId}
             />
         );
@@ -125,6 +125,7 @@ const ComingSoonTooltip = props => (
 ComingSoonTooltip.propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    message: PropTypes.string,
     delayHide: PropTypes.number,
     delayShow: PropTypes.number,
     place: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),

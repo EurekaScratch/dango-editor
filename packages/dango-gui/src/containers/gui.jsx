@@ -30,6 +30,10 @@ import {
     openExtensionLibrary
 } from '../reducers/modals';
 
+import {
+    updateAddonStatus
+} from '../reducers/addons';
+
 import FontLoaderHOC from '../lib/font-loader-hoc.jsx';
 import LocalizationHOC from '../lib/localization-hoc.jsx';
 import SBFileUploaderHOC from '../lib/sb-file-uploader-hoc.jsx';
@@ -48,8 +52,9 @@ import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 class GUI extends React.Component {
     constructor (props) {
         super(props);
-        bindAll(this, ['loadTheme']);
+        bindAll(this, ['loadTheme', 'listenAddon']);
         this.loadTheme();
+        this.listenAddon();
     }
     componentDidMount () {
         setIsScratchDesktop(this.props.isScratchDesktop);
@@ -89,6 +94,21 @@ class GUI extends React.Component {
             console.warn('unknown color palette, use scratch instead.');
             applyTheme(this.props.darkMode === 'dark' ? ScratchDarkTheme : ScratchTheme);
         }
+    }
+    listenAddon () {
+        let attempt = 0;
+        // Polling, maybe there is a better solution?
+        const id = setInterval(() => {
+            if (window.scratchAddons) {
+                console.log('ScratchAddons detected');
+                this.props.updateAddonStatus(true);
+                clearInterval(id);
+                return;
+            }
+            if (attempt > 6) {
+                clearInterval(id);
+            }
+        }, 500);
     }
     render () {
         if (this.props.isError) {
@@ -176,6 +196,7 @@ const mapStateToProps = state => {
         theme: state.scratchGui.theme,
         colorPalette: state.scratchGui.settings.colorPalette,
         themeColor: state.scratchGui.settings.themeColor,
+        addons: state.scratchGui.addons,
         activeTabIndex: state.scratchGui.editorTab.activeTabIndex,
         alertsVisible: state.scratchGui.alerts.visible,
         backdropLibraryVisible: state.scratchGui.modals.backdropLibrary,
@@ -205,6 +226,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+    updateAddonStatus: (value) => dispatch(updateAddonStatus(value)),
     onExtensionButtonClick: () => dispatch(openExtensionLibrary()),
     onActivateTab: tab => dispatch(activateTab(tab)),
     onActivateCostumesTab: () => dispatch(activateTab(COSTUMES_TAB_INDEX)),

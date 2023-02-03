@@ -91,6 +91,11 @@ const ariaMessages = defineMessages({
         id: 'gui.menuBar.tutorialsLibrary',
         defaultMessage: 'Tutorials',
         description: 'accessibility text for the tutorials button'
+    },
+    addonsRequired: {
+        id: 'gui.menuBar.addonsRequired',
+        defaultMessage: 'You need Dango\'s ScratchAddons installed to use this feature.',
+        description: 'accessibility text for the addons'
     }
 });
 
@@ -99,6 +104,7 @@ const MenuBarItemTooltip = ({
     className,
     enable,
     id,
+    message,
     place = 'bottom'
 }) => {
     if (enable) {
@@ -114,6 +120,7 @@ const MenuBarItemTooltip = ({
             place={place}
             tooltipClassName={styles.comingSoonTooltip}
             tooltipId={id}
+            message={message}
         >
             {children}
         </ComingSoonTooltip>
@@ -122,6 +129,7 @@ const MenuBarItemTooltip = ({
 
 
 MenuBarItemTooltip.propTypes = {
+    message: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
     enable: PropTypes.bool,
@@ -542,14 +550,37 @@ class MenuBar extends React.Component {
                             className={classNames(styles.menuBarItem, styles.hoverable)}
                             onMouseUp={this.props.onClickSettings}
                         >
-                                <FormattedMessage
-                                    defaultMessage="Settings"
-                                    description="Text for settings button"
-                                    id="gui.menuBar.settings"
-                                />
+                            <FormattedMessage
+                                defaultMessage="Settings"
+                                description="Text for settings button"
+                                id="gui.menuBar.settings"
+                            />
                         </div>
+                        {this.props.addonsInstalled ? (
+                            <div
+                                className={classNames(styles.menuBarItem, styles.hoverable)}
+                                onMouseUp={this.props.onClickSettings}
+                            >
+                                <FormattedMessage
+                                    defaultMessage="Addons"
+                                    description="Text for addons button"
+                                    id="gui.menuBar.addons"
+                                />
+                            </div>
+                        ) : (
+                            <MenuBarItemTooltip message={ariaMessages.addonsRequired}>
+                                <div
+                                    className={classNames(styles.menuBarItem, styles.hoverable)}
+                                >
+                                    <FormattedMessage
+                                        defaultMessage="Addons"
+                                        description="Text for addons button"
+                                        id="gui.menuBar.addons"
+                                    />
+                                </div>
+                            </MenuBarItemTooltip>
+                        )}
                     </div>
-                    <Divider className={classNames(styles.divider)} />
                     <Divider className={classNames(styles.divider)} />
                     {this.props.canEditTitle ? (
                         <div className={classNames(styles.menuBarItem, styles.growable)}>
@@ -760,6 +791,7 @@ class MenuBar extends React.Component {
 }
 
 MenuBar.propTypes = {
+    addonsInstalled: PropTypes.bool,
     aboutMenuOpen: PropTypes.bool,
     accountMenuOpen: PropTypes.bool,
     authorId: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -841,6 +873,7 @@ const mapStateToProps = (state, ownProps) => {
     const loadingState = state.scratchGui.projectState.loadingState;
     const user = state.session && state.session.session && state.session.session.user;
     return {
+        addonsInstalled: state.scratchGui.addons,
         aboutMenuOpen: aboutMenuOpen(state),
         accountMenuOpen: accountMenuOpen(state),
         fileMenuOpen: fileMenuOpen(state),

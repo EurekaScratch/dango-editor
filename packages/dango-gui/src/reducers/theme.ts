@@ -35,7 +35,7 @@ const resetThemeToDefault = () => ({
 
 export {
     reducer as default,
-    initialState as settingsInitialState,
+    initialState as themeInitialState,
     updateTheme,
     resetThemeToDefault
 };
