@@ -31,6 +31,7 @@ import DragLayer from '../../containers/drag-layer.jsx';
 import ConnectionModal from '../../containers/connection-modal.jsx';
 import TelemetryModal from '../telemetry-modal/telemetry-modal.jsx';
 import SettingsModal from '../../containers/settings-modal.jsx';
+import AddonsModal from '../../containers/addons-modal.jsx';
 
 import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
@@ -107,6 +108,7 @@ const GUIComponent = props => {
         onRequestCloseCostumeLibrary,
         onRequestCloseTelemetryModal,
         onRequestCloseSettingsModal,
+        onRequestCloseAddonsModal,
         onSeeCommunity,
         onShare,
         onShowPrivacyPolicy,
@@ -121,6 +123,7 @@ const GUIComponent = props => {
         telemetryModalVisible,
         tipsLibraryVisible,
         settingsVisible,
+        addonsVisible,
         vm,
         ...componentProps
     } = omit(props, 'dispatch');
@@ -212,6 +215,11 @@ const GUIComponent = props => {
                 {settingsVisible ? (
                     <SettingsModal
                         onRequestClose={onRequestCloseSettingsModal}
+                    />
+                ) : null}
+                {addonsVisible ? (
+                    <AddonsModal
+                        onRequestClose={onRequestCloseAddonsModal}
                     />
                 ) : null}
                 <MenuBar
@@ -398,6 +406,7 @@ GUIComponent.propTypes = {
     intl: intlShape.isRequired,
     isCreating: PropTypes.bool,
     settingsVisible: PropTypes.bool,
+    addonsVisible: PropTypes.bool,
     isFullScreen: PropTypes.bool,
     isPlayerOnly: PropTypes.bool,
     isRtl: PropTypes.bool,
@@ -417,6 +426,7 @@ GUIComponent.propTypes = {
     onRequestCloseCostumeLibrary: PropTypes.func,
     onRequestCloseTelemetryModal: PropTypes.func,
     onRequestCloseSettingsModal: PropTypes.func,
+    onRequestCloseAddonsModal: PropTypes.func,
     onSeeCommunity: PropTypes.func,
     onShare: PropTypes.func,
     onShowPrivacyPolicy: PropTypes.func,

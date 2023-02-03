@@ -1,0 +1,129 @@
+@import "../../css/units.css";
+
+.modal-content {
+    width: 800px;
+}
+
+.tag {
+    margin: 0 0.5rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 80%;
+    background-color: rgb(53, 129, 234);
+    border: 1px solid rgb(42, 103, 187);
+    color: white;
+}
+
+.body {
+    background: var(--ui-white);
+    max-height: 80vh;
+    display: flex;
+}
+
+.content {
+    padding: 1.5rem 2.25rem;
+    overflow-y: auto;
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    position: relative;
+    align-self: stretch;
+}
+
+.image {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    transition-duration: 0.3s;
+}
+
+[theme='dark'] .image {
+    filter: invert(1);
+}
+
+.image-rotate {
+    transform: rotate(180deg);
+}
+
+.spinner-wrapper {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    flex: 1;
+    border-right: solid 1px var(--ui-black-transparent);
+}
+
+[theme='dark'] .menu {
+    border-right: solid 1px var(--outline);
+}
+
+.menu > p {
+    margin: 0.5em 0em;
+    cursor: pointer;
+}
+
+.content {
+    flex: 5;
+}
+
+.elastic {
+    display: flex;
+    margin-right: auto;
+    flex-wrap: 1;
+}
+
+.category {
+    font-weight: bold;
+    margin: 0;
+    padding: 1em 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding: 0.5em 1em;
+    transition-duration: .2s;
+    border-radius: $form-radius;
+}
+
+.item .info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 550px;
+}
+
+.item .info p {
+    margin: 0;
+}
+
+.item .info .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.item:hover {
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+.input {
+    width: 5rem;
+}
+
+.select-small {
+    width: 10rem;
+}
+
+.select-big {
+    width: 15rem;
+}

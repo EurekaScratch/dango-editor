@@ -61,7 +61,8 @@ import {
     loginMenuOpen
 } from '../../reducers/menus';
 import {
-    openSettingsModal
+    openSettingsModal,
+    openAddonsModal
 }  from '../../reducers/modals';
 
 import collectMetadata from '../../lib/collect-metadata';
@@ -256,6 +257,10 @@ class MenuBar extends React.Component {
     }
     handleClickSettings () {
         this.props.onOpenSettings();
+        this.props.onRequestCloseOther();
+    }
+    handleClickAddons () {
+        this.props.onOpenAddons();
         this.props.onRequestCloseOther();
     }
     getSaveToComputerHandler (downloadProjectCallback) {
@@ -559,7 +564,7 @@ class MenuBar extends React.Component {
                         {this.props.addonsInstalled ? (
                             <div
                                 className={classNames(styles.menuBarItem, styles.hoverable)}
-                                onMouseUp={this.props.onClickSettings}
+                                onMouseUp={this.props.onClickAddons}
                             >
                                 <FormattedMessage
                                     defaultMessage="Addons"
@@ -908,6 +913,7 @@ const mapDispatchToProps = dispatch => ({
     onRequestCloseLogin: () => dispatch(closeLoginMenu()),
     onRequestOpenAbout: () => dispatch(openAboutMenu()),
     onClickSettings: () => dispatch(openSettingsModal()),
+    onClickAddons: () => dispatch(openAddonsModal()),
     onRequestCloseAbout: () => dispatch(closeAboutMenu()),
     onClickNew: needSave => dispatch(requestNewProject(needSave)),
     onClickRemix: () => dispatch(remixProject()),
