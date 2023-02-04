@@ -12,7 +12,8 @@
     "nohoist": [
       "**/google-closure-library",
       "**/google-closure-compiler",
-      "**/google-closure-cmd"
+      "**/google-closure-cmd",
+      "**/js-md5"
     ]
   },
   "scripts": {
