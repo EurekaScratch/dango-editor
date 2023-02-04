@@ -35,8 +35,10 @@ class AddonsModal extends React.Component {
         bindAll(this, ['bufferOperation', 'getAddonSetting']);
     }
     bufferOperation (addonId, value) {
+        const originalAddonInfo = this.state[addonId] || {};
+        const newAddonInfo = Object.assign({}, originalAddonInfo, value);
         this.setState(Object.assign({}, this.state, {
-            [addonId]: value
+            [addonId]: newAddonInfo
         }));
         if (!value.hasOwnProperty('isCollapsed')) {
             this.props.onChangeState(addonId, value);
@@ -177,14 +179,16 @@ class AddonsModal extends React.Component {
                                             className={classNames(styles.item, {
                                                 [styles.expanded]: this.state[addonId] && !this.state[addonId].isCollapsed
                                             })}
-                                            onClick={() => {
-                                                this.bufferOperation(addonId, {
-                                                    isCollapsed: this.state[addonId] ? !this.state[addonId].isCollapsed : false
-                                                });
-                                            }}
                                         >
                                             <div className={styles.abstract}>
-                                                <div className={styles.indicator}>
+                                                <div
+                                                    className={styles.indicator}
+                                                    onClick={() => {
+                                                        this.bufferOperation(addonId, {
+                                                            isCollapsed: this.state[addonId] ? !this.state[addonId].isCollapsed : false
+                                                        });
+                                                    }}
+                                                >
                                                     <img
                                                         src={indicatorIcon}
                                                         className={classNames(
@@ -204,7 +208,7 @@ class AddonsModal extends React.Component {
                                                     value={this.props.data.addonsEnabled[addonId]}
                                                     onChange={(value) => {
                                                         this.bufferOperation(addonId, {
-                                                            enabled: !this.props.data.addonsEnabled[addonId]
+                                                            enabled: (this.state[addonId] && this.state[addonId].hasOwnProperty('enabled')) ? !this.state[addonId].enabled : !this.props.data.addonsEnabled[addonId]
                                                         });
                                                     }}
                                                 />
