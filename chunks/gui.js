@@ -1,14 +1,14 @@
 var GUI =
 (window["webpackJsonpGUI"] = window["webpackJsonpGUI"] || []).push([["gui"],{
 
-/***/ "../../node_modules/css-loader/index.js?!../../node_modules/postcss-loader/src/index.js?!./src/playground/index.css":
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** /home/runner/work/editor/editor/node_modules/css-loader??ref--6-1!/home/runner/work/editor/editor/node_modules/postcss-loader/src??postcss!./src/playground/index.css ***!
-  \*****************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!../../node_modules/postcss-loader/src/index.js?!./src/playground/index.css":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!/home/runner/work/editor/editor/node_modules/postcss-loader/src??postcss!./src/playground/index.css ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "../../node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
@@ -30,7 +30,7 @@ exports.locals = {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??postcss!./index.css */ "../../node_modules/css-loader/index.js?!../../node_modules/postcss-loader/src/index.js?!./src/playground/index.css");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??postcss!./index.css */ "./node_modules/css-loader/index.js?!../../node_modules/postcss-loader/src/index.js?!./src/playground/index.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
