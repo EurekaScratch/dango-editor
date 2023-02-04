@@ -83,7 +83,7 @@
     "scratch-blocks": "0.1.0",
     "scratch-l10n": "3.15.20230113032113",
     "scratch-paint": "1.1.31",
-    "scratch-render": "git+https://github.com/TurboWarp/scratch-render.git#develop",
+    "scratch-render": "0.1.0",
     "scratch-render-fonts": "1.0.0-prerelease.20221102164332",
     "scratch-storage": "0.0.0-development",
     "scratch-svg-renderer": "0.2.0-prerelease.20221120235613",
