@@ -35,12 +35,12 @@
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^16",
-    "react-dom": "^16",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-intl": "^2",
     "react-intl-redux": "^0.7",
     "react-popover": "^0.5",
-    "react-redux": "^5",
+    "react-redux": "^5.1.2",
     "react-responsive": "^5",
     "react-style-proptype": "^3",
     "react-tooltip": "^3",
